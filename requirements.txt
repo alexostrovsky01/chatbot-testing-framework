@@ -1,0 +1,10 @@
+# The testing framework
+chatbot-test-framework
+
+# Dependencies for the mock apps
+flask
+boto3
+langchain
+langgraph
+langchain-core
+llama-index

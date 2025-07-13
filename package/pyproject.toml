@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "packaging"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chatbot-test-framework"
+version = "0.1.11"
+authors = [
+  { name="Olex Ostrovskyy", email="alexandr.ostrovsky@gmail.com" },
+]
+description = "An open-source framework for testing conversational AI and chatbot applications."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Testing",
+    "Intended Audience :: Developers",
+]
+# All dependencies from requirements.txt go here
+dependencies = [
+    "requests",
+    "PyYAML",
+    "filelock",
+    "pandas",
+    "boto3",
+    "anthropic",
+    "openai",
+    "google-genai",
+    "numpy",       
+    "scikit-learn"  
+]
+
+# This creates the command-line tool
+[project.scripts]
+chatbot-tester = "chatbot_test_framework.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/<todo>/chatbot-testing-framework"
+"Bug Tracker" = "https://github.com/<todo>/chatbot-testing-framework/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # Tell setuptools to look for packages in the 'src' directory
+
+[tool.setuptools.package-data]
+chatbot_test_framework = ["default_configs/*"]

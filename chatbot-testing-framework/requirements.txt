@@ -1,0 +1,17 @@
+# Core framework and communication
+requests
+PyYAML
+filelock
+pandas
+
+# Cloud and Database
+boto3
+
+# LLM Providers
+anthropic
+openai
+google-genai
+
+# Evaluation & Data Handling (keeping from original for potential future use)
+numpy
+scikit-learn

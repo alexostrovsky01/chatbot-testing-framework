@@ -1,0 +1,42 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build and distribution artifacts
+build/
+dist/
+package/dist/
+*.egg-info/
+
+# Local files
+.DS_Store
+*.local
+*.swp
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# Testing framework results 
+/results/
+
+# Local trace files
+/traces.json
+*.lock
+
+# other files
+docs/build/
+chatbot_test_framework/
+chatbot_test_framework.egg-info/
+structure.txt
+instructions.txt
+pack.zip
+unzip_util.py
+zip_util.py
