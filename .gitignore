@@ -37,6 +37,6 @@ chatbot_test_framework/
 chatbot_test_framework.egg-info/
 structure.txt
 instructions.txt
-pack.zip
+package.zip
 unzip_util.py
 zip_util.py
