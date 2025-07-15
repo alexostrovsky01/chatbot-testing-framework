@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chatbot-test-framework"
-version = "0.1.11"
+version = "0.1.12"
 authors = [
   { name="Olex Ostrovskyy", email="alexandr.ostrovsky@gmail.com" },
 ]
-description = "An open-source framework for testing conversational AI and chatbot applications."
+description = "An open-source framework for testing and tracing conversational AI and chatbot applications."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
@@ -37,8 +37,8 @@ dependencies = [
 chatbot-tester = "chatbot_test_framework.cli:main"
 
 [project.urls]
-"Homepage" = "https://github.com/<todo>/chatbot-testing-framework"
-"Bug Tracker" = "https://github.com/<todo>/chatbot-testing-framework/issues"
+"Homepage" = "https://github.com/alexostrovsky01/chatbot-testing-framework"
+"Bug Tracker" = "https://github.com/alexostrovsky01/chatbot-testing-framework/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]  # Tell setuptools to look for packages in the 'src' directory

@@ -26,6 +26,7 @@ package/dist/
 
 # Testing framework results 
 /results/
+examples/llamaindex/multi_doc_hr_assistant/tests/*
 
 # Local trace files
 /traces.json
@@ -40,3 +41,4 @@ instructions.txt
 package.zip
 unzip_util.py
 zip_util.py
+.env
