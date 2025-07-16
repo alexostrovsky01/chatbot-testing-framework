@@ -2,6 +2,7 @@
 .venv/
 venv/
 env/
+.env
 
 # Python cache files
 __pycache__/
@@ -10,9 +11,9 @@ __pycache__/
 *.pyd
 
 # Build and distribution artifacts
-build/
-dist/
-package/dist/
+# build/
+# dist/
+package/dist/*
 *.egg-info/
 
 # Local files
@@ -25,7 +26,7 @@ package/dist/
 .idea/
 
 # Testing framework results 
-/results/
+# /results/
 examples/llamaindex/multi_doc_hr_assistant/tests/*
 
 # Local trace files
@@ -35,10 +36,9 @@ examples/llamaindex/multi_doc_hr_assistant/tests/*
 # other files
 docs/build/
 chatbot_test_framework/
+# !package/src/chatbot_test_framework/
 chatbot_test_framework.egg-info/
 structure.txt
 instructions.txt
-package.zip
 unzip_util.py
 zip_util.py
-.env

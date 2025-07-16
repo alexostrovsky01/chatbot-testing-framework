@@ -29,12 +29,12 @@ index = VectorStoreIndex.from_documents(docs)
 # --- 2. Build the RAG Pipeline Components ---                                                                    
 llm = OpenAI(model="gpt-4.1")                                                                  
 
-retriever = VectorIndexRetriever(index=index, similarity_top_k=4)                                                 
+retriever = VectorIndexRetriever(index=index, similarity_top_k=2)                                                 
 reranker = CohereRerank(top_n=2)                                                                                  
 synthesizer = get_response_synthesizer(
-        response_mode="refine",
-        use_async=False,
-        streaming=False,
+        # response_mode="refine",
+        # use_async=False,
+        # streaming=False,
         llm=llm
     )                                                                   
                                                                                                                 

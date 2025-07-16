@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chatbot-test-framework"
-version = "0.1.12"
+version = "0.1.14"
 authors = [
   { name="Olex Ostrovskyy", email="alexandr.ostrovsky@gmail.com" },
 ]
 description = "An open-source framework for testing and tracing conversational AI and chatbot applications."
-readme = "README.md"
+readme = "README.md" 
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
