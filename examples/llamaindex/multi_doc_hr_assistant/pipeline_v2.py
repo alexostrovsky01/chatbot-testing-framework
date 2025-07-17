@@ -1,9 +1,41 @@
-from flask import Flask, request, jsonify                                                                         
-from chatbot_test_framework import Tracer, LocalJsonRecorder                                                      
-# Import all the LlamaIndex components from pipeline_v1                                                           
-from pipeline_v1 import llm, retriever, reranker, synthesizer, QueryBundle                                        
+import os   
+import time  
+from flask import Flask, request, jsonify                                                                                                       
+from llama_index.core import (                                                                                    
+    SimpleDirectoryReader,                                                                                        
+    VectorStoreIndex,                                                                                             
+    QueryBundle,                                                                                                  
+)                                                                                                                 
+from llama_index.core.retrievers import VectorIndexRetriever                                                      
+from llama_index.core.query_engine import RetrieverQueryEngine                                                    
+from llama_index.core.response_synthesizers import get_response_synthesizer                                       
+# from llama_index.postprocessor.cohere_rerank import CohereRerank 
+from llama_index.postprocessor.rankgpt_rerank import RankGPTRerank                                              
+from llama_index.core.tools import QueryEngineTool                                                                
+from llama_index.llms.openai import OpenAI                                                                        
+from dotenv import load_dotenv  
+from chatbot_test_framework import Tracer, LocalJsonRecorder    
+
+load_dotenv() # For OPENAI_API_KEY and COHERE_API_KEY  
+# from pipeline_v1 import llm, retriever, reranker, synthesizer, QueryBundle                                        
                                                                                                                 
-# --- Refactor the pipeline into distinct, traceable functions ---                                                
+# --- Refactor the pipeline into distinct, traceable functions ---   
+
+# --- 1. Data Loading and Indexing ---                                                                                                                                               
+docs = SimpleDirectoryReader("data/hr_policies_v2").load_data()                                                   
+index = VectorStoreIndex.from_documents(docs)     
+
+# --- 2. Build the RAG Pipeline Components ---                                                                    
+llm = OpenAI(model="gpt-4.1")                                                                  
+
+retriever = VectorIndexRetriever(index=index, similarity_top_k=2, doc_ids=list(index.ref_doc_info.keys()))                                                 
+# reranker = CohereRerank(top_n=2)                                                                                  
+reranker = RankGPTRerank(
+            llm=llm,
+            top_n=5,
+            verbose=True,
+        )
+synthesizer = get_response_synthesizer(llm=llm) 
                                                                                                                 
 def rewrite_query(question: str):                                                                                 
     print("---V2 STEP: Rewriting Query---")                                                                       
@@ -15,7 +47,8 @@ def retrieve_nodes(queries: list):
     print("---V2 STEP: Retrieving Documents---")                                                                  
     all_nodes = []                                                                                                
     for q in queries:                                                                                             
-        all_nodes.extend(retriever.retrieve(q))    
+        all_nodes.extend(retriever.retrieve(q))   
+        # time.sleep(0.5)  # Simulate delay for each retrieval step 
     print(f"Retrieved {len(all_nodes)} nodes for {len(queries)} queries.")
     print("Retrieved nodes:", [str(node) for node in all_nodes])  # Print first 3 nodes for debugging                                                   
     return all_nodes                                                                                              

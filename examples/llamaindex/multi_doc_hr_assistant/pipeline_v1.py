@@ -1,4 +1,5 @@
-import os                                                                                                         
+import os   
+import time                                                                                                      
 from llama_index.core import (                                                                                    
     SimpleDirectoryReader,                                                                                        
     VectorStoreIndex,                                                                                             
@@ -7,7 +8,8 @@ from llama_index.core import (
 from llama_index.core.retrievers import VectorIndexRetriever                                                      
 from llama_index.core.query_engine import RetrieverQueryEngine                                                    
 from llama_index.core.response_synthesizers import get_response_synthesizer                                       
-from llama_index.postprocessor.cohere_rerank import CohereRerank                                                        
+from llama_index.postprocessor.cohere_rerank import CohereRerank 
+# from llama_index.postprocessor.rankgpt_rerank import RankGPTRerank                                              
 from llama_index.core.tools import QueryEngineTool                                                                
 from llama_index.llms.openai import OpenAI                                                                        
 from dotenv import load_dotenv                                                                                    
@@ -31,12 +33,12 @@ llm = OpenAI(model="gpt-4.1")
 
 retriever = VectorIndexRetriever(index=index, similarity_top_k=2)                                                 
 reranker = CohereRerank(top_n=2)                                                                                  
-synthesizer = get_response_synthesizer(
-        # response_mode="refine",
-        # use_async=False,
-        # streaming=False,
-        llm=llm
-    )                                                                   
+# reranker = RankGPTRerank(
+#             llm=llm,
+#             top_n=2,
+#             verbose=True,
+#         )
+synthesizer = get_response_synthesizer(llm=llm)                                                                   
                                                                                                                 
 # --- 3. Define the V1 "Black Box" Pipeline Function ---                                                          
 def run_full_pipeline_v1(question: str):                                                                          
@@ -49,7 +51,8 @@ def run_full_pipeline_v1(question: str):
     print("---V1 STEP: Retrieving Documents---")                                                                  
     all_nodes = []                                                                                                
     for q in rewritten_queries:                                                                                   
-        all_nodes.extend(retriever.retrieve(q))                                                                   
+        all_nodes.extend(retriever.retrieve(q))        
+        # time.sleep(0.5)  # Simulate delay for each retrieval step                                                           
                                                                                                                 
     # STEP 3: Re-ranking                                                                                          
     print("---V1 STEP: Re-ranking Documents---")                                                                  
