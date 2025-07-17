@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chatbot-test-framework"
-version = "0.1.14"
+version = "0.1.15"
 authors = [
   { name="Olex Ostrovskyy", email="alexandr.ostrovsky@gmail.com" },
 ]
