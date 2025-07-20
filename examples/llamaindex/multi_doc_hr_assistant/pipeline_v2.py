@@ -9,15 +9,13 @@ from llama_index.core import (
 from llama_index.core.retrievers import VectorIndexRetriever                                                      
 from llama_index.core.query_engine import RetrieverQueryEngine                                                    
 from llama_index.core.response_synthesizers import get_response_synthesizer                                       
-# from llama_index.postprocessor.cohere_rerank import CohereRerank 
-from llama_index.postprocessor.rankgpt_rerank import RankGPTRerank                                              
+from llama_index.postprocessor.cohere_rerank import CohereRerank                                           
 from llama_index.core.tools import QueryEngineTool                                                                
 from llama_index.llms.openai import OpenAI                                                                        
 from dotenv import load_dotenv  
 from chatbot_test_framework import Tracer, LocalJsonRecorder    
 
-load_dotenv() # For OPENAI_API_KEY and COHERE_API_KEY  
-# from pipeline_v1 import llm, retriever, reranker, synthesizer, QueryBundle                                        
+load_dotenv() # For OPENAI_API_KEY and COHERE_API_KEY                                         
                                                                                                                 
 # --- Refactor the pipeline into distinct, traceable functions ---   
 
@@ -29,12 +27,7 @@ index = VectorStoreIndex.from_documents(docs)
 llm = OpenAI(model="gpt-4.1")                                                                  
 
 retriever = VectorIndexRetriever(index=index, similarity_top_k=2, doc_ids=list(index.ref_doc_info.keys()))                                                 
-# reranker = CohereRerank(top_n=2)                                                                                  
-reranker = RankGPTRerank(
-            llm=llm,
-            top_n=5,
-            verbose=True,
-        )
+reranker = CohereRerank(top_n=2)                                                                                  
 synthesizer = get_response_synthesizer(llm=llm) 
                                                                                                                 
 def rewrite_query(question: str):                                                                                 
@@ -47,10 +40,7 @@ def retrieve_nodes(queries: list):
     print("---V2 STEP: Retrieving Documents---")                                                                  
     all_nodes = []                                                                                                
     for q in queries:                                                                                             
-        all_nodes.extend(retriever.retrieve(q))   
-        # time.sleep(0.5)  # Simulate delay for each retrieval step 
-    print(f"Retrieved {len(all_nodes)} nodes for {len(queries)} queries.")
-    print("Retrieved nodes:", [str(node) for node in all_nodes])  # Print first 3 nodes for debugging                                                   
+        all_nodes.extend(retriever.retrieve(q))                           
     return all_nodes                                                                                              
                                                                                                                 
 def rerank_nodes(nodes: list, original_question: str):                                                            
@@ -82,8 +72,7 @@ def handle_request():
     try:                                                                                                          
         # --- Execute the pipeline step-by-step ---                                                               
         rewritten_queries = traced_rewrite(question)                                                              
-        retrieved_nodes = traced_retrieve(rewritten_queries)   
-        # final_nodes = retrieved_nodes  # Use retrieved nodes directly                                                   
+        retrieved_nodes = traced_retrieve(rewritten_queries)                                                    
         final_nodes = traced_rerank(retrieved_nodes, question)                                                    
         response = traced_synthesize(final_nodes, question)                                                       
                                                                                                                 
