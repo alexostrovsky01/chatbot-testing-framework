@@ -13,6 +13,8 @@
 
 An open-source framework for end-to-end testing of conversational AI and chatbot applications. It provides tools for tracing, performance evaluation, and latency analysis, helping you ensure your chatbot is reliable, safe, and efficient.
 
+Here is the link to the [documentation](https://chatbot-testing-framework.readthedocs.io/en/latest/) if you want to know more. 
+
 ## ✨ Key Features
 
 *   **Three-Phase Testing:** Systematically test your chatbot by (1) sending questions, (2) evaluating response quality, and (3) analyzing latency.
