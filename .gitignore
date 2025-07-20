@@ -27,7 +27,7 @@ package/dist/*
 
 # Testing framework results 
 # /results/
-examples/llamaindex/multi_doc_hr_assistant/tests/*
+# examples/llamaindex/multi_doc_hr_assistant/tests/*
 
 # Local trace files
 /traces.json
@@ -36,7 +36,7 @@ examples/llamaindex/multi_doc_hr_assistant/tests/*
 # other files
 docs/build/
 chatbot_test_framework/
-# !package/src/chatbot_test_framework/
+!package/src/chatbot_test_framework/
 chatbot_test_framework.egg-info/
 structure.txt
 instructions.txt

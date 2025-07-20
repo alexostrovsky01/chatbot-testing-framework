@@ -1,0 +1,57 @@
+# configs/test_config.yaml
+
+# -------------------------
+# General Settings
+# -------------------------
+dataset_path: "tests/data/test_questions.csv"
+results_dir: "tests/results"
+
+# -------------------------
+# Phase 1: Message Sending
+# -------------------------
+# Configure the client to call our local Flask app.
+client:
+  type: "api"
+  delay: 3  # Delay between requests to avoid overwhelming the server
+  settings:
+    url: "http://127.0.0.1:5001/invoke"
+    method: "POST"
+    headers:
+      "Content-Type": "application/json"
+    body_template: '{ "question": "{question}", "session_id": "{session_id}", "trace_config": {trace_config} }'
+
+# -------------------------
+# Tracing & Data Storage
+# -------------------------
+# The framework will look for traces in a local file.
+# The mock_chatbot_app.py is configured to write to this same file.
+tracing:
+  recorder:
+    type: "local_json"
+    settings:
+      filepath: "tests/results/traces_v1.json"
+# tracing:
+#   recorder:
+#     type: "dynamodb"
+#     settings:
+#       table_name: "chatbot-traces"
+#       region: "us-east-1"
+#       run_id_key: "run_id"
+
+# ------------------------------------
+# Phase 2 & 3: Evaluation & Latency
+# ------------------------------------
+evaluation:
+  prompts_path: "tests/configs/prompts.py"
+  workflow_description: >
+    A multi-step IT support chatbot. It first authorizes the user, then routes their question to a specialized agent (Billing, Password, or General). The agent executes a tool to find an answer, which is then formatted and returned to the user.
+
+  # Configure the LLM evaluator to use Google Gemini.
+  llm_provider:
+    type: "gemini"
+    requests_delay: 20  # Delay between requests to avoid rate limits
+    settings:
+      # You can use 'gemini-2.5-flash', 'gemini-2.5-pro', etc.
+      model: "gemini-2.5-flash"
+      # The API key should be set as an environment variable (GOOGLE_API_KEY).
+      # api_key: "" # <-- Or add it here, but env var is safer.

@@ -1,0 +1,40 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+
+# Deep Dive Workflow Analysis
+
+### Chatbot Performance Analysis Report
+
+**Overall Summary**
+
+The `full_rag_pipeline_v1` step is currently a significant weak point in the workflow, demonstrating a critical inability to handle multi-intent user queries. While it shows some capability in addressing a single aspect of a complex question, its failure to provide complete answers results in poor overall correctness and mediocre relevance.
+
+**Key Findings**
+
+*   **Critical Failure on Multi-Intent Queries:** The pipeline consistently fails to address all topics when a user asks about multiple subjects in a single prompt.
+*   **Low Correctness:** The inability to provide a complete answer directly causes the very low average Correctness Score of 2.0/5.0.
+*   **Partial Relevance:** The pipeline successfully identifies and responds to one part of the user's query, which prevents a total failure but results in a middling Relevance Score of 3.0/5.0.
+*   **Incomplete Responses:** The primary failure mode is generating an answer that is factually correct for one part of the query but incomplete overall, as it ignores other parts of the user's request.
+
+**Step-by-Step Analysis**
+
+#### Step: `full_rag_pipeline_v1`
+*   **Average Correctness Score: 2.00 / 5.0**
+*   **Average Relevance Score: 3.00 / 5.0**
+
+This step performs poorly, especially concerning its correctness. The analysis of failure reasons reveals a clear and consistent pattern: the pipeline struggles with **query complexity**, specifically with **multi-intent inputs**.
+
+The provided failure examples show that when presented with a query containing two distinct topics (e.g., "computer" and "payment"), the pipeline latches onto one topic and provides a relevant answer for it. However, it completely disregards the other topic. This behavior makes the final response incomplete and, therefore, incorrect from the user's perspective, justifying the low 2.0/5.0 Correctness score. The Relevance score of 3.0/5.0 reflects that the generated response is not entirely off-topic, but its failure to address the full scope of the question diminishes its overall relevance. The name of the step, `full_rag_pipeline`, implies it should handle the entirety of a user's request, a standard it currently does not meet.
+
+**Actionable Recommendations**
+
+*   **Implement Query Decomposition:** Enhance the pipeline to first identify if a user prompt contains multiple distinct intents. If it does, the system should break the query down into sub-questions and process each one individually.
+*   **Synthesize Multiple Answers:** After processing sub-questions, the system must be able to synthesize the individual answers into a single, coherent, and comprehensive response that addresses all parts of the user's original query.
+*   **Expand Test Coverage:** Create a dedicated suite of test cases featuring a wide range of multi-intent queries (with two, three, or more distinct topics) to rigorously test and validate the fix.

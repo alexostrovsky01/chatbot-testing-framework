@@ -1,0 +1,12 @@
+[
+  {
+    "run_id": "98786e08-fad3-443c-828a-e0e5c9d07ff7",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 4.3459
+      }
+    ],
+    "total_run_latency_seconds": 4.3459
+  }
+]

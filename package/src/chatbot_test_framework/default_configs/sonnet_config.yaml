@@ -1,0 +1,59 @@
+# -------------------------
+# General Settings
+# -------------------------
+# Path to the dataset with questions and ideal answers/steps
+dataset_path: "data/model_q_n_a_pairs.csv"
+# Directory to save all output reports
+results_dir: "results"
+
+# -------------------------
+# Phase 1: Message Sending
+# -------------------------
+# Configuration for the client that sends messages to the chatbot under test.
+# The `api` client is a generic client that sends HTTP requests.
+client:
+  type: "api" # Currently 'api' is supported.
+  settings:
+    url: "http://your-chatbot-api-endpoint.com/invoke"
+    method: "POST"
+    headers:
+      "Content-Type": "application/json"
+      "x-api-key": "YOUR_API_KEY" # Example header
+    # Template for the request body. '{question}' and '{session_id}' are placeholders.
+    body_template: '{ "question": "{question}", "session_id": "{session_id}" }'
+
+# -------------------------
+# Tracing & Data Storage
+# -------------------------
+# The tracer is integrated into your chatbot application. The recorder specifies
+# where the framework should look for the trace data.
+tracing:
+  recorder:
+    type: "dynamodb" # Options: 'dynamodb', 'local_json'
+    settings:
+      # --- DynamoDB Settings ---
+      table_name: "your-chatbot-traces-table"
+      region: "us-east-1"
+      # The key in the DynamoDB item that uniquely identifies a run for a given question.
+      # This is often a session_id or correlation_id.
+      run_id_key: "sessionId"
+      # --- Local JSON Settings ---
+      # filepath: "results/traces.json"
+
+      # ------------------------------------
+      # Phase 2 & 3: Evaluation & Latency
+      # ------------------------------------
+evaluation:
+  # A high-level description of your chatbot's purpose. This is fed to the
+  # LLM evaluator to provide context for more accurate evaluations.
+  workflow_description: >
+    A multi-agent chatbot for an insurance company. It first authorizes the user, then routes their question to either a Commercial or Property insurance agent, retrieves information from a knowledge base, and synthesizes a final answer.
+
+  # LLM to use for performance evaluation
+  llm_provider:
+    type: "claude" # Options: 'claude', 'openai', 'gemini'
+    settings:
+      # Model name as per the provider's API
+      model: "claude-3-sonnet-20240229"
+      # It is recommended to set the API key as an environment variable (e.g., ANTHROPIC_API_KEY)
+      # api_key: "sk-..."

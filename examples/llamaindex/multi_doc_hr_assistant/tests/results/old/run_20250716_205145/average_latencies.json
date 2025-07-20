@@ -1,0 +1,25 @@
+{
+  "average_step_latencies": [
+    {
+      "step_name": "rewrite_query",
+      "average_latency_seconds": 1.2268,
+      "total_runs_measured": 1
+    },
+    {
+      "step_name": "retrieve_nodes",
+      "average_latency_seconds": 1.0385,
+      "total_runs_measured": 1
+    },
+    {
+      "step_name": "rerank_nodes",
+      "average_latency_seconds": 0.1255,
+      "total_runs_measured": 1
+    },
+    {
+      "step_name": "synthesize_answer",
+      "average_latency_seconds": 1.7458,
+      "total_runs_measured": 1
+    }
+  ],
+  "overall_average_run_latency_seconds": 4.1417
+}

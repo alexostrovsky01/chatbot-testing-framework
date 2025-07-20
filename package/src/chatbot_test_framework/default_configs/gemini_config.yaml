@@ -1,0 +1,47 @@
+# configs/test_config.yaml
+
+# -------------------------
+# General Settings
+# -------------------------
+dataset_path: "data/test_questions.csv"
+results_dir: "results"
+
+# -------------------------
+# Phase 1: Message Sending
+# -------------------------
+# Configure the client to call our local Flask app.
+client:
+  type: "api"
+  settings:
+    url: "http://127.0.0.1:5000/invoke"
+    method: "POST"
+    headers:
+      "Content-Type": "application/json"
+    body_template: '{ "question": "{question}", "session_id": "{session_id}" }'
+
+# -------------------------
+# Tracing & Data Storage
+# -------------------------
+# The framework will look for traces in a local file.
+# The mock_chatbot_app.py is configured to write to this same file.
+tracing:
+  recorder:
+    type: "local_json"
+    settings:
+      filepath: "results/traces.json"
+
+# ------------------------------------
+# Phase 2 & 3: Evaluation & Latency
+# ------------------------------------
+evaluation:
+  workflow_description: >
+    A multi-step IT support chatbot. It first authorizes the user, then routes their question to a specialized agent (Billing, Password, or General). The agent executes a tool to find an answer, which is then formatted and returned to the user.
+
+  # Configure the LLM evaluator to use Google Gemini.
+  llm_provider:
+    type: "gemini"
+    settings:
+      # You can use 'gemini-1.5-flash', 'gemini-pro', etc.
+      model: "gemini-2.5-pro"
+      # The API key should be set as an environment variable (GOOGLE_API_KEY).
+      # api_key: "" # <-- Or add it here, but env var is safer.

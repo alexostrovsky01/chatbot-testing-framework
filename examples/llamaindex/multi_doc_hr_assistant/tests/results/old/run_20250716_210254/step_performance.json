@@ -1,0 +1,114 @@
+[
+  {
+    "session_id": "1f057fb5-2d72-4e14-b11f-01c9767109bb",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The information provided regarding computer setup (IT onboarding) and payroll processes (frequency, pay stubs, direct deposit) aligns well with common HR/IT policies for new employees. The details are specific and actionable, suggesting a successful retrieval and synthesis of relevant information. Without access to the company's specific policies, a perfect score cannot be guaranteed, but it appears factually plausible and consistent."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output directly and comprehensively addresses both key components of the user's question: 'what do I need to know about my computer' (answered with details on equipment, setup, and software approval) and 'how I get paid' (answered with payroll frequency, pay stub access, and direct deposit). All information provided is pertinent to the user's inquiry as a new employee, with no irrelevant details."
+      }
+    }
+  },
+  {
+    "session_id": "efe4050b-32e6-4edc-bdfd-21a22fdcf2fc",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly and precisely answers the user's question regarding the number of vacation days. It also includes a relevant qualifier ('Full-time employees'), which is appropriate for HR policy details. Assuming the underlying data retrieved by the RAG pipeline is accurate, this output is factually correct and complete for the given query."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output is perfectly relevant to both the user's specific question ('How many vacation days do I get per year?') and the overall chatbot's goal of providing HR support, particularly for vacation policy inquiries. There is no extraneous or irrelevant information."
+      }
+    }
+  },
+  {
+    "session_id": "ceeadac1-8f52-41d1-ae6e-4d65cb77d2c9",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly and precisely answers the user's question 'When are performance reviews held?'. Assuming the RAG pipeline has access to the correct internal HR data, the answer 'Performance reviews are held annually every November' is a factual and accurate response, fulfilling the purpose of retrieving specific information."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output is highly relevant. It directly addresses the user's specific query about the timing of performance reviews, and 'Performance Reviews' is explicitly listed as a topic within the overall chatbot's goal. The information provided is exactly what was asked for."
+      }
+    }
+  },
+  {
+    "session_id": "b6f0a563-9cc0-415e-9e35-2817dfee9fce",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly and precisely answers the user's specific question about the maximum claim for a client dinner, providing a clear numerical value per person. This indicates the 'full_rag_pipeline_v1' successfully retrieved and generated the relevant information based on the input."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output is perfectly relevant to the user's question and directly addresses their intent. The query falls squarely within the 'Expense Policy' domain, which is a stated area of expertise for the overall HR support chatbot. There is no extraneous or off-topic information provided."
+      }
+    }
+  },
+  {
+    "session_id": "e5312af1-94d2-4016-a658-71a8b8777b68",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly and precisely answers the user's question regarding vacation day carry-over. It provides specific details (number of days, expiration date) which are expected from a complete policy answer, indicating a successful retrieval of accurate information by the full RAG pipeline."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output is perfectly relevant to the user's query. It directly addresses the 'Can I carry over unused vacation days?' question and provides comprehensive, actionable information without extraneous details, fitting well within the 'Vacation Policy' scope of the HR chatbot."
+      }
+    }
+  },
+  {
+    "session_id": "bf34d725-d647-4f60-980a-030cd1a1c648",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output provides specific, actionable details (Concur portal, 30-day limit, receipt threshold). These are highly plausible and common elements of an expense policy. As a RAG pipeline, it's expected to retrieve and present such factual information accurately from its knowledge base. Assuming the retrieved information aligns with the company's actual policy, the output is factually correct."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output directly and comprehensively answers the user's question, 'How do I submit an expense report?'. It identifies the tool to use (Concur) and provides crucial related policy information (submission timeframe, receipt requirements). This information is highly relevant to the 'how-to' aspect of submitting an expense report and aligns perfectly with the chatbot's overall goal of providing HR support, specifically for Expense Policy."
+      }
+    }
+  },
+  {
+    "session_id": "318a98f1-4718-48b9-b12b-9b4bfbc69633",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly and concisely answers the user's question regarding the first step in the performance review process. 'Self-assessment by the employee' is a common and highly plausible first step in performance reviews, suggesting the RAG pipeline successfully retrieved accurate information from the HR knowledge base. The answer is definitive and well-formed."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output is perfectly relevant as it directly addresses the user's specific query about the performance review process, which is a core topic within the chatbot's stated goal of providing HR support, including performance reviews."
+      }
+    }
+  },
+  {
+    "session_id": "a93ee755-9674-4fb1-a78b-54b709b83377",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly answers the user's question about expensing software. It provides a clear and concise policy statement, specifying the condition (IT approval) necessary for such expenses, which is a plausible and helpful detail for an expense policy query."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The output is highly relevant to the user's question regarding expensing software. It directly addresses the core of the query and falls squarely within the 'Expense Policy' domain, one of the primary functions of the HR support chatbot."
+      }
+    }
+  }
+]

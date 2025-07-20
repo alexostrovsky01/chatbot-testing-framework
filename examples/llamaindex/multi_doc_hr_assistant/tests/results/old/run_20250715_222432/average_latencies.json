@@ -1,0 +1,10 @@
+{
+  "average_step_latencies": [
+    {
+      "step_name": "full_rag_pipeline_v1",
+      "average_latency_seconds": 4.3459,
+      "total_runs_measured": 1
+    }
+  ],
+  "overall_average_run_latency_seconds": 4.3459
+}

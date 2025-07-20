@@ -1,0 +1,24 @@
+[
+  {
+    "run_id": "ab3880ca-322f-4bd1-9b77-4b0ee93e9aa1",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 1.2268
+      },
+      {
+        "step_name": "retrieve_nodes",
+        "latency_seconds": 1.0385
+      },
+      {
+        "step_name": "rerank_nodes",
+        "latency_seconds": 0.1255
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 1.7458
+      }
+    ],
+    "total_run_latency_seconds": 4.1417
+  }
+]

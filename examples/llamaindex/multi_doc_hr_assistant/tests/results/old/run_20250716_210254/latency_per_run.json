@@ -1,0 +1,82 @@
+[
+  {
+    "run_id": "1f057fb5-2d72-4e14-b11f-01c9767109bb",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.4677
+      }
+    ],
+    "total_run_latency_seconds": 2.4677
+  },
+  {
+    "run_id": "efe4050b-32e6-4edc-bdfd-21a22fdcf2fc",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.0053
+      }
+    ],
+    "total_run_latency_seconds": 2.0053
+  },
+  {
+    "run_id": "ceeadac1-8f52-41d1-ae6e-4d65cb77d2c9",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.7292
+      }
+    ],
+    "total_run_latency_seconds": 2.7292
+  },
+  {
+    "run_id": "b6f0a563-9cc0-415e-9e35-2817dfee9fce",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.4568
+      }
+    ],
+    "total_run_latency_seconds": 2.4568
+  },
+  {
+    "run_id": "e5312af1-94d2-4016-a658-71a8b8777b68",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.3138
+      }
+    ],
+    "total_run_latency_seconds": 2.3138
+  },
+  {
+    "run_id": "bf34d725-d647-4f60-980a-030cd1a1c648",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.2613
+      }
+    ],
+    "total_run_latency_seconds": 2.2613
+  },
+  {
+    "run_id": "318a98f1-4718-48b9-b12b-9b4bfbc69633",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.2102
+      }
+    ],
+    "total_run_latency_seconds": 2.2102
+  },
+  {
+    "run_id": "a93ee755-9674-4fb1-a78b-54b709b83377",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.7336
+      }
+    ],
+    "total_run_latency_seconds": 1.7336
+  }
+]
