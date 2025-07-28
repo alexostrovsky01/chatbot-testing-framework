@@ -1,0 +1,1932 @@
+{
+  "071e6953-6b65-4b41-9dc5-445bc0c35bb3": [
+    {
+      "run_id": "071e6953-6b65-4b41-9dc5-445bc0c35bb3",
+      "name": "rewrite_query",
+      "start_time": 1753664028.9854898,
+      "end_time": 1753664029.8688116,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How many vacation days do I get per year?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the annual vacation day policy for employees?  ",
+          "How many vacation days are granted to staff each year?  ",
+          "Are vacation days based on length of service or position?  ",
+          "Do unused vacation days roll over to the next year?  ",
+          "Is there a difference in vacation days between full-time and part-time employees?"
+        ]
+      }
+    },
+    {
+      "run_id": "071e6953-6b65-4b41-9dc5-445bc0c35bb3",
+      "name": "retrieve_docs",
+      "start_time": 1753664029.870646,
+      "end_time": 1753664030.5915318,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How many vacation days do I get per year?",
+            "sub_questions": [
+              "What is the annual vacation day policy for employees?  ",
+              "How many vacation days are granted to staff each year?  ",
+              "Are vacation days based on length of service or position?  ",
+              "Do unused vacation days roll over to the next year?  ",
+              "Is there a difference in vacation days between full-time and part-time employees?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "3881480e-b6ac-4ca3-b744-a47cc89a6c88",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days",
+            "type": "Document"
+          },
+          {
+            "id": "d2472fe4-dcb0-401d-8d99-2b53eff429a0",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Unused vacation days up to a maximum of 5 days,",
+            "type": "Document"
+          },
+          {
+            "id": "c0700d6d-cdf7-43f7-9fc7-2d52344d2137",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "20 days per year, accrued bi-weekly. Time off",
+            "type": "Document"
+          },
+          {
+            "id": "ae640925-ac8c-4fc9-8c16-7a1f2afd314a",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "days annually. Full-time employees receive 20",
+            "type": "Document"
+          },
+          {
+            "id": "cb488e18-4f77-43d8-98d7-22c163f5243f",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "weeks in advance via the employee portal. Unused",
+            "type": "Document"
+          },
+          {
+            "id": "4cf1c9fe-5ce9-4c44-b45d-a80b968a9b2f",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "5 days, can be rolled over to the next calendar",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "071e6953-6b65-4b41-9dc5-445bc0c35bb3",
+      "name": "synthesize_answer",
+      "start_time": 1753664030.593947,
+      "end_time": 1753664030.97462,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How many vacation days do I get per year?",
+            "sub_questions": [
+              "What is the annual vacation day policy for employees?  ",
+              "How many vacation days are granted to staff each year?  ",
+              "Are vacation days based on length of service or position?  ",
+              "Do unused vacation days roll over to the next year?  ",
+              "Is there a difference in vacation days between full-time and part-time employees?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "3881480e-b6ac-4ca3-b744-a47cc89a6c88",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days",
+                "type": "Document"
+              },
+              {
+                "id": "d2472fe4-dcb0-401d-8d99-2b53eff429a0",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Unused vacation days up to a maximum of 5 days,",
+                "type": "Document"
+              },
+              {
+                "id": "c0700d6d-cdf7-43f7-9fc7-2d52344d2137",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "20 days per year, accrued bi-weekly. Time off",
+                "type": "Document"
+              },
+              {
+                "id": "ae640925-ac8c-4fc9-8c16-7a1f2afd314a",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "days annually. Full-time employees receive 20",
+                "type": "Document"
+              },
+              {
+                "id": "cb488e18-4f77-43d8-98d7-22c163f5243f",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "weeks in advance via the employee portal. Unused",
+                "type": "Document"
+              },
+              {
+                "id": "4cf1c9fe-5ce9-4c44-b45d-a80b968a9b2f",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "5 days, can be rolled over to the next calendar",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "You get 20 vacation days per year."
+      }
+    }
+  ],
+  "2ce49c9e-3e2e-4a19-bf96-ffa32ebac461": [
+    {
+      "run_id": "2ce49c9e-3e2e-4a19-bf96-ffa32ebac461",
+      "name": "rewrite_query",
+      "start_time": 1753664033.9861922,
+      "end_time": 1753664034.991094,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the maximum I can claim for a client dinner?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the company or organization\u2019s policy on client dinner expense limits?  ",
+          "Are there specific maximum amounts allowed for client dinners?  ",
+          "Do the maximum claim amounts for client dinners vary by location or client type?  ",
+          "Are there any guidelines on the types of expenses that can be included in a client dinner claim?  ",
+          "What documentation or receipts are required to claim a client dinner expense?"
+        ]
+      }
+    },
+    {
+      "run_id": "2ce49c9e-3e2e-4a19-bf96-ffa32ebac461",
+      "name": "retrieve_docs",
+      "start_time": 1753664034.9933553,
+      "end_time": 1753664037.5535371,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the maximum I can claim for a client dinner?",
+            "sub_questions": [
+              "What is the company or organization\u2019s policy on client dinner expense limits?  ",
+              "Are there specific maximum amounts allowed for client dinners?  ",
+              "Do the maximum claim amounts for client dinners vary by location or client type?  ",
+              "Are there any guidelines on the types of expenses that can be included in a client dinner claim?  ",
+              "What documentation or receipts are required to claim a client dinner expense?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "business-related expenses. This includes travel,",
+            "type": "Document"
+          },
+          {
+            "id": "92b6f085-a334-4bfa-82e2-d30fab18f489",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "and client meals. For client meals, the",
+            "type": "Document"
+          },
+          {
+            "id": "ed8ee3d3-de2d-484d-bdd3-dbc61f22026c",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "the reimbursement limit is $50 per person. All",
+            "type": "Document"
+          },
+          {
+            "id": "a2124c1d-045d-4ab3-b740-5b123bdc815f",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "All expense reports must be",
+            "type": "Document"
+          },
+          {
+            "id": "63b2123c-cbe5-4cf8-bfae-cbc8110f0f4e",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "for all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "26553ce1-c563-4bf6-804b-21e107265549",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "incurred. Original receipts are mandatory",
+            "type": "Document"
+          },
+          {
+            "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "within 30 days of the expense being incurred.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "2ce49c9e-3e2e-4a19-bf96-ffa32ebac461",
+      "name": "synthesize_answer",
+      "start_time": 1753664037.555164,
+      "end_time": 1753664038.004281,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the maximum I can claim for a client dinner?",
+            "sub_questions": [
+              "What is the company or organization\u2019s policy on client dinner expense limits?  ",
+              "Are there specific maximum amounts allowed for client dinners?  ",
+              "Do the maximum claim amounts for client dinners vary by location or client type?  ",
+              "Are there any guidelines on the types of expenses that can be included in a client dinner claim?  ",
+              "What documentation or receipts are required to claim a client dinner expense?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "business-related expenses. This includes travel,",
+                "type": "Document"
+              },
+              {
+                "id": "92b6f085-a334-4bfa-82e2-d30fab18f489",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "and client meals. For client meals, the",
+                "type": "Document"
+              },
+              {
+                "id": "ed8ee3d3-de2d-484d-bdd3-dbc61f22026c",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "the reimbursement limit is $50 per person. All",
+                "type": "Document"
+              },
+              {
+                "id": "a2124c1d-045d-4ab3-b740-5b123bdc815f",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "All expense reports must be",
+                "type": "Document"
+              },
+              {
+                "id": "63b2123c-cbe5-4cf8-bfae-cbc8110f0f4e",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "for all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "26553ce1-c563-4bf6-804b-21e107265549",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "incurred. Original receipts are mandatory",
+                "type": "Document"
+              },
+              {
+                "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "within 30 days of the expense being incurred.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context, the maximum you can claim for a client dinner is $50 per person."
+      }
+    }
+  ],
+  "310b6eaf-d5cd-4a89-9232-25f3eb221b4d": [
+    {
+      "run_id": "310b6eaf-d5cd-4a89-9232-25f3eb221b4d",
+      "name": "rewrite_query",
+      "start_time": 1753664041.0140536,
+      "end_time": 1753664041.658749,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "When are performance reviews held?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the schedule for performance reviews?  ",
+          "How often are performance reviews conducted?  ",
+          "Which months or times of year are performance reviews typically held?  ",
+          "Are there specific dates set for performance reviews?  ",
+          "Who determines the timing of performance reviews?"
+        ]
+      }
+    },
+    {
+      "run_id": "310b6eaf-d5cd-4a89-9232-25f3eb221b4d",
+      "name": "retrieve_docs",
+      "start_time": 1753664041.661821,
+      "end_time": 1753664042.4889832,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "When are performance reviews held?",
+            "sub_questions": [
+              "What is the schedule for performance reviews?  ",
+              "How often are performance reviews conducted?  ",
+              "Which months or times of year are performance reviews typically held?  ",
+              "Are there specific dates set for performance reviews?  ",
+              "Who determines the timing of performance reviews?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "f0a27687-4cba-44e7-85a5-893a62ae2910",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews",
+            "type": "Document"
+          },
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          },
+          {
+            "id": "ec802a86-d045-46e6-bb5e-073ace1031da",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "this meeting. Mid-year check-ins are held in May",
+            "type": "Document"
+          },
+          {
+            "id": "afb578f8-9b58-49ac-a8b9-d5e2de4fa0ad",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "reviews every November. The process includes a",
+            "type": "Document"
+          },
+          {
+            "id": "0aa41b41-7616-45a3-bae3-4773993309b2",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "a self-assessment by the",
+            "type": "Document"
+          },
+          {
+            "id": "a5421d0d-cd7a-4578-b702-3463ddba8b3a",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "15th and last day of each month via the employee",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "310b6eaf-d5cd-4a89-9232-25f3eb221b4d",
+      "name": "synthesize_answer",
+      "start_time": 1753664042.4952447,
+      "end_time": 1753664042.773727,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "When are performance reviews held?",
+            "sub_questions": [
+              "What is the schedule for performance reviews?  ",
+              "How often are performance reviews conducted?  ",
+              "Which months or times of year are performance reviews typically held?  ",
+              "Are there specific dates set for performance reviews?  ",
+              "Who determines the timing of performance reviews?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "f0a27687-4cba-44e7-85a5-893a62ae2910",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews",
+                "type": "Document"
+              },
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              },
+              {
+                "id": "ec802a86-d045-46e6-bb5e-073ace1031da",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "this meeting. Mid-year check-ins are held in May",
+                "type": "Document"
+              },
+              {
+                "id": "afb578f8-9b58-49ac-a8b9-d5e2de4fa0ad",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "reviews every November. The process includes a",
+                "type": "Document"
+              },
+              {
+                "id": "0aa41b41-7616-45a3-bae3-4773993309b2",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "a self-assessment by the",
+                "type": "Document"
+              },
+              {
+                "id": "a5421d0d-cd7a-4578-b702-3463ddba8b3a",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "15th and last day of each month via the employee",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Performance reviews are held every November."
+      }
+    }
+  ],
+  "40c33caa-6d8f-4bac-a74a-967fa89d4600": [
+    {
+      "run_id": "40c33caa-6d8f-4bac-a74a-967fa89d4600",
+      "name": "rewrite_query",
+      "start_time": 1753664045.7837136,
+      "end_time": 1753664046.5445561,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How do I submit an expense report?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What information is required to submit an expense report?  ",
+          "What platform or system should I use to submit an expense report?  ",
+          "What are the steps to fill out and upload an expense report?  ",
+          "Who do I send the completed expense report to?  ",
+          "Are there any deadlines or policies I should be aware of when submitting an expense report?"
+        ]
+      }
+    },
+    {
+      "run_id": "40c33caa-6d8f-4bac-a74a-967fa89d4600",
+      "name": "retrieve_docs",
+      "start_time": 1753664046.548022,
+      "end_time": 1753664047.2081568,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How do I submit an expense report?",
+            "sub_questions": [
+              "What information is required to submit an expense report?  ",
+              "What platform or system should I use to submit an expense report?  ",
+              "What are the steps to fill out and upload an expense report?  ",
+              "Who do I send the completed expense report to?  ",
+              "Are there any deadlines or policies I should be aware of when submitting an expense report?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "a2124c1d-045d-4ab3-b740-5b123bdc815f",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "All expense reports must be",
+            "type": "Document"
+          },
+          {
+            "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "within 30 days of the expense being incurred.",
+            "type": "Document"
+          },
+          {
+            "id": "26553ce1-c563-4bf6-804b-21e107265549",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "incurred. Original receipts are mandatory",
+            "type": "Document"
+          },
+          {
+            "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "business-related expenses. This includes travel,",
+            "type": "Document"
+          },
+          {
+            "id": "53687e0d-18d5-4715-b111-bae860839124",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "40c33caa-6d8f-4bac-a74a-967fa89d4600",
+      "name": "synthesize_answer",
+      "start_time": 1753664047.2107663,
+      "end_time": 1753664047.7046323,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How do I submit an expense report?",
+            "sub_questions": [
+              "What information is required to submit an expense report?  ",
+              "What platform or system should I use to submit an expense report?  ",
+              "What are the steps to fill out and upload an expense report?  ",
+              "Who do I send the completed expense report to?  ",
+              "Are there any deadlines or policies I should be aware of when submitting an expense report?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "a2124c1d-045d-4ab3-b740-5b123bdc815f",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "All expense reports must be",
+                "type": "Document"
+              },
+              {
+                "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "within 30 days of the expense being incurred.",
+                "type": "Document"
+              },
+              {
+                "id": "26553ce1-c563-4bf6-804b-21e107265549",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "incurred. Original receipts are mandatory",
+                "type": "Document"
+              },
+              {
+                "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "business-related expenses. This includes travel,",
+                "type": "Document"
+              },
+              {
+                "id": "53687e0d-18d5-4715-b111-bae860839124",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context, you should submit an expense report through the employee portal. Original receipts for business-related expenses are mandatory, and direct deposit is required."
+      }
+    }
+  ],
+  "5f53b643-fa46-421f-a4ed-45e5c56fdb52": [
+    {
+      "run_id": "5f53b643-fa46-421f-a4ed-45e5c56fdb52",
+      "name": "rewrite_query",
+      "start_time": 1753664050.7232919,
+      "end_time": 1753664051.7544258,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "Can I carry over unused vacation days?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the company's policy on carrying over unused vacation days?  ",
+          "Are there limits on the number of vacation days that can be carried over?  ",
+          "Does carrying over unused vacation days require approval?  ",
+          "Are there deadlines or restrictions for using carried over vacation days?  ",
+          "What happens to unused vacation days that are not carried over?"
+        ]
+      }
+    },
+    {
+      "run_id": "5f53b643-fa46-421f-a4ed-45e5c56fdb52",
+      "name": "retrieve_docs",
+      "start_time": 1753664051.756572,
+      "end_time": 1753664052.7022169,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "Can I carry over unused vacation days?",
+            "sub_questions": [
+              "What is the company's policy on carrying over unused vacation days?  ",
+              "Are there limits on the number of vacation days that can be carried over?  ",
+              "Does carrying over unused vacation days require approval?  ",
+              "Are there deadlines or restrictions for using carried over vacation days?  ",
+              "What happens to unused vacation days that are not carried over?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "3881480e-b6ac-4ca3-b744-a47cc89a6c88",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days",
+            "type": "Document"
+          },
+          {
+            "id": "d2472fe4-dcb0-401d-8d99-2b53eff429a0",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Unused vacation days up to a maximum of 5 days,",
+            "type": "Document"
+          },
+          {
+            "id": "cb488e18-4f77-43d8-98d7-22c163f5243f",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "weeks in advance via the employee portal. Unused",
+            "type": "Document"
+          },
+          {
+            "id": "c0700d6d-cdf7-43f7-9fc7-2d52344d2137",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "20 days per year, accrued bi-weekly. Time off",
+            "type": "Document"
+          },
+          {
+            "id": "4cf1c9fe-5ce9-4c44-b45d-a80b968a9b2f",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "5 days, can be rolled over to the next calendar",
+            "type": "Document"
+          },
+          {
+            "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "must be approved by IT.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "5f53b643-fa46-421f-a4ed-45e5c56fdb52",
+      "name": "synthesize_answer",
+      "start_time": 1753664052.7045822,
+      "end_time": 1753664053.118244,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "Can I carry over unused vacation days?",
+            "sub_questions": [
+              "What is the company's policy on carrying over unused vacation days?  ",
+              "Are there limits on the number of vacation days that can be carried over?  ",
+              "Does carrying over unused vacation days require approval?  ",
+              "Are there deadlines or restrictions for using carried over vacation days?  ",
+              "What happens to unused vacation days that are not carried over?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "3881480e-b6ac-4ca3-b744-a47cc89a6c88",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days",
+                "type": "Document"
+              },
+              {
+                "id": "d2472fe4-dcb0-401d-8d99-2b53eff429a0",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Unused vacation days up to a maximum of 5 days,",
+                "type": "Document"
+              },
+              {
+                "id": "cb488e18-4f77-43d8-98d7-22c163f5243f",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "weeks in advance via the employee portal. Unused",
+                "type": "Document"
+              },
+              {
+                "id": "c0700d6d-cdf7-43f7-9fc7-2d52344d2137",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "20 days per year, accrued bi-weekly. Time off",
+                "type": "Document"
+              },
+              {
+                "id": "4cf1c9fe-5ce9-4c44-b45d-a80b968a9b2f",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "5 days, can be rolled over to the next calendar",
+                "type": "Document"
+              },
+              {
+                "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "must be approved by IT.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Yes, you can carry over up to a maximum of 5 unused vacation days to the next calendar year."
+      }
+    }
+  ],
+  "a90da3ed-5ff5-45be-9dc3-79d58991cc64": [
+    {
+      "run_id": "a90da3ed-5ff5-45be-9dc3-79d58991cc64",
+      "name": "rewrite_query",
+      "start_time": 1753664056.1282136,
+      "end_time": 1753664056.689686,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the first step in the performance review process?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the initial action taken in the performance review process?",
+          "How does the performance review process begin?",
+          "What must be done first when starting a performance review?",
+          "What is the primary step involved in conducting a performance review?"
+        ]
+      }
+    },
+    {
+      "run_id": "a90da3ed-5ff5-45be-9dc3-79d58991cc64",
+      "name": "retrieve_docs",
+      "start_time": 1753664056.692193,
+      "end_time": 1753664057.1259358,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the first step in the performance review process?",
+            "sub_questions": [
+              "What is the initial action taken in the performance review process?",
+              "How does the performance review process begin?",
+              "What must be done first when starting a performance review?",
+              "What is the primary step involved in conducting a performance review?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          },
+          {
+            "id": "f0a27687-4cba-44e7-85a5-893a62ae2910",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews",
+            "type": "Document"
+          },
+          {
+            "id": "0aa41b41-7616-45a3-bae3-4773993309b2",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "a self-assessment by the",
+            "type": "Document"
+          },
+          {
+            "id": "afb578f8-9b58-49ac-a8b9-d5e2de4fa0ad",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "reviews every November. The process includes a",
+            "type": "Document"
+          },
+          {
+            "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "must be approved by IT.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "a90da3ed-5ff5-45be-9dc3-79d58991cc64",
+      "name": "synthesize_answer",
+      "start_time": 1753664057.128608,
+      "end_time": 1753664057.4785721,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the first step in the performance review process?",
+            "sub_questions": [
+              "What is the initial action taken in the performance review process?",
+              "How does the performance review process begin?",
+              "What must be done first when starting a performance review?",
+              "What is the primary step involved in conducting a performance review?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              },
+              {
+                "id": "f0a27687-4cba-44e7-85a5-893a62ae2910",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews",
+                "type": "Document"
+              },
+              {
+                "id": "0aa41b41-7616-45a3-bae3-4773993309b2",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "a self-assessment by the",
+                "type": "Document"
+              },
+              {
+                "id": "afb578f8-9b58-49ac-a8b9-d5e2de4fa0ad",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "reviews every November. The process includes a",
+                "type": "Document"
+              },
+              {
+                "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "must be approved by IT.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "The first step in the performance review process is a self-assessment by the employee."
+      }
+    }
+  ],
+  "cb92a9a0-d029-41e0-82d0-2d099bdfe5a7": [
+    {
+      "run_id": "cb92a9a0-d029-41e0-82d0-2d099bdfe5a7",
+      "name": "rewrite_query",
+      "start_time": 1753664060.4891868,
+      "end_time": 1753664061.9692135,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I had to buy some software for a project, can I expense it?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What kind of software did I buy for the project?  ",
+          "Is the software purchase related to my work or the project requirements?  ",
+          "What are my organization's policies on expensing software purchases?  ",
+          "Do I need approval or documentation to expense software for a project?  ",
+          "Are there any limits or restrictions on expensing software in my company?"
+        ]
+      }
+    },
+    {
+      "run_id": "cb92a9a0-d029-41e0-82d0-2d099bdfe5a7",
+      "name": "retrieve_docs",
+      "start_time": 1753664061.9724298,
+      "end_time": 1753664062.812965,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I had to buy some software for a project, can I expense it?",
+            "sub_questions": [
+              "What kind of software did I buy for the project?  ",
+              "Is the software purchase related to my work or the project requirements?  ",
+              "What are my organization's policies on expensing software purchases?  ",
+              "Do I need approval or documentation to expense software for a project?  ",
+              "Are there any limits or restrictions on expensing software in my company?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "0b973be4-a910-4003-aa9d-779a6e8e7309",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "see IT to comple setup. All software must be",
+            "type": "Document"
+          },
+          {
+            "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "4efd3798-bab4-4dbc-b3b0-c7391767b5c6",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "a new MacBook Pro on their first day. Please see",
+            "type": "Document"
+          },
+          {
+            "id": "26553ce1-c563-4bf6-804b-21e107265549",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "incurred. Original receipts are mandatory",
+            "type": "Document"
+          },
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          },
+          {
+            "id": "287d78d1-35d0-443e-9640-bd6e3f3d1cdf",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "666ff97b-296e-4764-8e66-bcb3e6a18a40",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved,",
+            "type": "Document"
+          },
+          {
+            "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "within 30 days of the expense being incurred.",
+            "type": "Document"
+          },
+          {
+            "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "business-related expenses. This includes travel,",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "cb92a9a0-d029-41e0-82d0-2d099bdfe5a7",
+      "name": "synthesize_answer",
+      "start_time": 1753664062.816276,
+      "end_time": 1753664063.2641315,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I had to buy some software for a project, can I expense it?",
+            "sub_questions": [
+              "What kind of software did I buy for the project?  ",
+              "Is the software purchase related to my work or the project requirements?  ",
+              "What are my organization's policies on expensing software purchases?  ",
+              "Do I need approval or documentation to expense software for a project?  ",
+              "Are there any limits or restrictions on expensing software in my company?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "0b973be4-a910-4003-aa9d-779a6e8e7309",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "see IT to comple setup. All software must be",
+                "type": "Document"
+              },
+              {
+                "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "4efd3798-bab4-4dbc-b3b0-c7391767b5c6",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "a new MacBook Pro on their first day. Please see",
+                "type": "Document"
+              },
+              {
+                "id": "26553ce1-c563-4bf6-804b-21e107265549",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "incurred. Original receipts are mandatory",
+                "type": "Document"
+              },
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              },
+              {
+                "id": "287d78d1-35d0-443e-9640-bd6e3f3d1cdf",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "666ff97b-296e-4764-8e66-bcb3e6a18a40",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved,",
+                "type": "Document"
+              },
+              {
+                "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "within 30 days of the expense being incurred.",
+                "type": "Document"
+              },
+              {
+                "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "business-related expenses. This includes travel,",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context, all software must be approved by IT. Therefore, you can only expense the software if it was pre-approved by IT."
+      }
+    }
+  ],
+  "0a300dc8-97f4-4637-9fcc-a0fa08b91bb1": [
+    {
+      "run_id": "0a300dc8-97f4-4637-9fcc-a0fa08b91bb1",
+      "name": "rewrite_query",
+      "start_time": 1753664066.2748744,
+      "end_time": 1753664067.458429,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I just started, what do I need to know about my computer and how I get paid?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What basic information do I need to know about my computer for my new role?  ",
+          "What are the essential functions or programs I should be familiar with on my computer?  ",
+          "How does the payment process work for my position?  ",
+          "What steps do I need to take to ensure I get paid correctly and on time?  ",
+          "Are there any specific tools or systems I need to use to track my work hours or submit invoices?"
+        ]
+      }
+    },
+    {
+      "run_id": "0a300dc8-97f4-4637-9fcc-a0fa08b91bb1",
+      "name": "retrieve_docs",
+      "start_time": 1753664067.465396,
+      "end_time": 1753664068.2481892,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I just started, what do I need to know about my computer and how I get paid?",
+            "sub_questions": [
+              "What basic information do I need to know about my computer for my new role?  ",
+              "What are the essential functions or programs I should be familiar with on my computer?  ",
+              "How does the payment process work for my position?  ",
+              "What steps do I need to take to ensure I get paid correctly and on time?  ",
+              "Are there any specific tools or systems I need to use to track my work hours or submit invoices?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "4efd3798-bab4-4dbc-b3b0-c7391767b5c6",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "a new MacBook Pro on their first day. Please see",
+            "type": "Document"
+          },
+          {
+            "id": "0b973be4-a910-4003-aa9d-779a6e8e7309",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "see IT to comple setup. All software must be",
+            "type": "Document"
+          },
+          {
+            "id": "287d78d1-35d0-443e-9640-bd6e3f3d1cdf",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "53687e0d-18d5-4715-b111-bae860839124",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "a58c7f22-8e60-497f-afcc-11abc38e1768",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis.",
+            "type": "Document"
+          },
+          {
+            "id": "666ff97b-296e-4764-8e66-bcb3e6a18a40",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved,",
+            "type": "Document"
+          },
+          {
+            "id": "a5421d0d-cd7a-4578-b702-3463ddba8b3a",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "15th and last day of each month via the employee",
+            "type": "Document"
+          },
+          {
+            "id": "74803ee1-4b84-440c-9fcf-2092f9e2e851",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "basis. Pay stubs are available on the 15th and",
+            "type": "Document"
+          },
+          {
+            "id": "26553ce1-c563-4bf6-804b-21e107265549",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "incurred. Original receipts are mandatory",
+            "type": "Document"
+          },
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "0a300dc8-97f4-4637-9fcc-a0fa08b91bb1",
+      "name": "synthesize_answer",
+      "start_time": 1753664068.251917,
+      "end_time": 1753664069.5072315,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I just started, what do I need to know about my computer and how I get paid?",
+            "sub_questions": [
+              "What basic information do I need to know about my computer for my new role?  ",
+              "What are the essential functions or programs I should be familiar with on my computer?  ",
+              "How does the payment process work for my position?  ",
+              "What steps do I need to take to ensure I get paid correctly and on time?  ",
+              "Are there any specific tools or systems I need to use to track my work hours or submit invoices?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "4efd3798-bab4-4dbc-b3b0-c7391767b5c6",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "a new MacBook Pro on their first day. Please see",
+                "type": "Document"
+              },
+              {
+                "id": "0b973be4-a910-4003-aa9d-779a6e8e7309",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "see IT to comple setup. All software must be",
+                "type": "Document"
+              },
+              {
+                "id": "287d78d1-35d0-443e-9640-bd6e3f3d1cdf",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "53687e0d-18d5-4715-b111-bae860839124",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "a58c7f22-8e60-497f-afcc-11abc38e1768",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis.",
+                "type": "Document"
+              },
+              {
+                "id": "666ff97b-296e-4764-8e66-bcb3e6a18a40",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved,",
+                "type": "Document"
+              },
+              {
+                "id": "a5421d0d-cd7a-4578-b702-3463ddba8b3a",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "15th and last day of each month via the employee",
+                "type": "Document"
+              },
+              {
+                "id": "74803ee1-4b84-440c-9fcf-2092f9e2e851",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "basis. Pay stubs are available on the 15th and",
+                "type": "Document"
+              },
+              {
+                "id": "26553ce1-c563-4bf6-804b-21e107265549",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "incurred. Original receipts are mandatory",
+                "type": "Document"
+              },
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context:\n\n- You will receive a new MacBook Pro on your first day. You need to see IT to complete the setup, and all software must be approved by IT.\n- ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.\n- For reimbursements, only pre-approved expenses with original receipts will be reimbursed."
+      }
+    }
+  ],
+  "cd5bea7e-bd8c-4a71-b7c5-0e188952c094": [
+    {
+      "run_id": "cd5bea7e-bd8c-4a71-b7c5-0e188952c094",
+      "name": "rewrite_query",
+      "start_time": 1753664072.5187092,
+      "end_time": 1753664073.4038186,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I need to book travel for a client visit and take a day off afterwards, what are the procedures?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the procedure for booking travel for a client visit?  ",
+          "What steps do I need to follow to request a day off after the client visit?  ",
+          "Are there any specific approval processes required for booking travel and taking leave?  ",
+          "What documentation or forms do I need to complete for travel booking and requesting time off?  ",
+          "Who do I need to notify or get approval from for travel arrangements and leave?"
+        ]
+      }
+    },
+    {
+      "run_id": "cd5bea7e-bd8c-4a71-b7c5-0e188952c094",
+      "name": "retrieve_docs",
+      "start_time": 1753664073.408497,
+      "end_time": 1753664074.1132398,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I need to book travel for a client visit and take a day off afterwards, what are the procedures?",
+            "sub_questions": [
+              "What is the procedure for booking travel for a client visit?  ",
+              "What steps do I need to follow to request a day off after the client visit?  ",
+              "Are there any specific approval processes required for booking travel and taking leave?  ",
+              "What documentation or forms do I need to complete for travel booking and requesting time off?  ",
+              "Who do I need to notify or get approval from for travel arrangements and leave?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "593dedbf-368c-44c9-981a-65e551fd83b5",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "travel, accommodation,",
+            "type": "Document"
+          },
+          {
+            "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "business-related expenses. This includes travel,",
+            "type": "Document"
+          },
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          },
+          {
+            "id": "92b6f085-a334-4bfa-82e2-d30fab18f489",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "and client meals. For client meals, the",
+            "type": "Document"
+          },
+          {
+            "id": "3881480e-b6ac-4ca3-b744-a47cc89a6c88",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days",
+            "type": "Document"
+          },
+          {
+            "id": "d2472fe4-dcb0-401d-8d99-2b53eff429a0",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Unused vacation days up to a maximum of 5 days,",
+            "type": "Document"
+          },
+          {
+            "id": "cb488e18-4f77-43d8-98d7-22c163f5243f",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "weeks in advance via the employee portal. Unused",
+            "type": "Document"
+          },
+          {
+            "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "c0700d6d-cdf7-43f7-9fc7-2d52344d2137",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "20 days per year, accrued bi-weekly. Time off",
+            "type": "Document"
+          },
+          {
+            "id": "7cde503c-ec8a-4da2-89bb-0264a0d265b0",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "on March 31st. Manager approval is required and",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "cd5bea7e-bd8c-4a71-b7c5-0e188952c094",
+      "name": "synthesize_answer",
+      "start_time": 1753664074.1169536,
+      "end_time": 1753664076.538311,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I need to book travel for a client visit and take a day off afterwards, what are the procedures?",
+            "sub_questions": [
+              "What is the procedure for booking travel for a client visit?  ",
+              "What steps do I need to follow to request a day off after the client visit?  ",
+              "Are there any specific approval processes required for booking travel and taking leave?  ",
+              "What documentation or forms do I need to complete for travel booking and requesting time off?  ",
+              "Who do I need to notify or get approval from for travel arrangements and leave?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "593dedbf-368c-44c9-981a-65e551fd83b5",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "travel, accommodation,",
+                "type": "Document"
+              },
+              {
+                "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "business-related expenses. This includes travel,",
+                "type": "Document"
+              },
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              },
+              {
+                "id": "92b6f085-a334-4bfa-82e2-d30fab18f489",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "and client meals. For client meals, the",
+                "type": "Document"
+              },
+              {
+                "id": "3881480e-b6ac-4ca3-b744-a47cc89a6c88",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days",
+                "type": "Document"
+              },
+              {
+                "id": "d2472fe4-dcb0-401d-8d99-2b53eff429a0",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Unused vacation days up to a maximum of 5 days,",
+                "type": "Document"
+              },
+              {
+                "id": "cb488e18-4f77-43d8-98d7-22c163f5243f",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "weeks in advance via the employee portal. Unused",
+                "type": "Document"
+              },
+              {
+                "id": "7aab0842-c2d4-4d08-863e-519e00b41ad1",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "c0700d6d-cdf7-43f7-9fc7-2d52344d2137",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "20 days per year, accrued bi-weekly. Time off",
+                "type": "Document"
+              },
+              {
+                "id": "7cde503c-ec8a-4da2-89bb-0264a0d265b0",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "on March 31st. Manager approval is required and",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based only on the provided context:\n\nFor booking travel for a client visit:  \n- Business-related travel and client meals are considered business expenses, which are allowed.\n\nFor taking a day off afterwards:\n- Employees accrue 20 vacation days per year, accrued bi-weekly.\n- Time off requests must be submitted weeks in advance via the employee portal.\n- Manager approval is required, and unused vacation days up to a maximum of 5 days can be carried over on March 31st.\n\nTherefore, you should:\n1. Ensure your travel and client meal expenses are documented as business-related expenses.\n2. Submit your vacation day request for the day off in advance through the employee portal.\n3. Wait for your manager to approve your time off."
+      }
+    }
+  ],
+  "8e670e9f-b71c-4de4-9223-2db91137f19c": [
+    {
+      "run_id": "8e670e9f-b71c-4de4-9223-2db91137f19c",
+      "name": "rewrite_query",
+      "start_time": 1753664079.549749,
+      "end_time": 1753664079.9367526,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What's the policy on professional conduct during business trips, and how do I file expenses?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the policy on professional conduct during business trips?  ",
+          "How do I file expenses for business trips?"
+        ]
+      }
+    },
+    {
+      "run_id": "8e670e9f-b71c-4de4-9223-2db91137f19c",
+      "name": "retrieve_docs",
+      "start_time": 1753664079.9428144,
+      "end_time": 1753664080.2291875,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What's the policy on professional conduct during business trips, and how do I file expenses?",
+            "sub_questions": [
+              "What is the policy on professional conduct during business trips?  ",
+              "How do I file expenses for business trips?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "287d78d1-35d0-443e-9640-bd6e3f3d1cdf",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "business-related expenses. This includes travel,",
+            "type": "Document"
+          },
+          {
+            "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "employee, followed by a formal review meeting",
+            "type": "Document"
+          },
+          {
+            "id": "593dedbf-368c-44c9-981a-65e551fd83b5",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "travel, accommodation,",
+            "type": "Document"
+          },
+          {
+            "id": "a2124c1d-045d-4ab3-b740-5b123bdc815f",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "All expense reports must be",
+            "type": "Document"
+          },
+          {
+            "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "within 30 days of the expense being incurred.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "8e670e9f-b71c-4de4-9223-2db91137f19c",
+      "name": "synthesize_answer",
+      "start_time": 1753664080.2333553,
+      "end_time": 1753664080.7577515,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What's the policy on professional conduct during business trips, and how do I file expenses?",
+            "sub_questions": [
+              "What is the policy on professional conduct during business trips?  ",
+              "How do I file expenses for business trips?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "287d78d1-35d0-443e-9640-bd6e3f3d1cdf",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "ddf195a0-263a-4c29-898a-35f11eb3922a",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "business-related expenses. This includes travel,",
+                "type": "Document"
+              },
+              {
+                "id": "0a2303fb-83c5-4598-847c-3b67c0bfaf90",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "employee, followed by a formal review meeting",
+                "type": "Document"
+              },
+              {
+                "id": "593dedbf-368c-44c9-981a-65e551fd83b5",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "travel, accommodation,",
+                "type": "Document"
+              },
+              {
+                "id": "a2124c1d-045d-4ab3-b740-5b123bdc815f",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "All expense reports must be",
+                "type": "Document"
+              },
+              {
+                "id": "9d5414f0-d241-4a1a-aaf8-5dbb5177aeeb",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "within 30 days of the expense being incurred.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context:\n\n- All communication should be professional.\n- Expense reports for business-related expenses, including travel and accommodation, must be filed within 30 days of the expense being incurred."
+      }
+    }
+  ]
+}

@@ -193,7 +193,7 @@ Make sure your chatbot application is running, then execute the test runner.
 
 ```bash
 # Run all test phases sequentially
-chatbot-tester run --full-run
+chatbot-tester run --full-run --config path/to/config.yaml
 ```
 
 ## 🔧 Advanced Usage

@@ -1,0 +1,20 @@
+{
+  "average_step_latencies": [
+    {
+      "step_name": "rewrite_query",
+      "average_latency_seconds": 0.7913,
+      "total_runs_measured": 10
+    },
+    {
+      "step_name": "retrieve_docs",
+      "average_latency_seconds": 0.8358,
+      "total_runs_measured": 10
+    },
+    {
+      "step_name": "synthesize_answer",
+      "average_latency_seconds": 0.8151,
+      "total_runs_measured": 10
+    }
+  ],
+  "overall_average_run_latency_seconds": 2.4479
+}

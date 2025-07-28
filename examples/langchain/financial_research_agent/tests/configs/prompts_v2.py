@@ -20,6 +20,12 @@ You are an expert AI Test Engineer evaluating a single step within a larger chat
 **Original User Question:**
 "{original_question}"
 
+**Workflow Steps:**
+1. rewrite_query: the task of this step is rewriting the user's question into sub-questions.
+2. retrieve_docs: the task of this step is retrieving relevant documents based on the sub-questions.
+3. rerank_docs: the task of this step is re-ranking the retrieved documents based on relevance to the original question.
+4. synthesize_answer:  the task of this step is synthesizing a final answer based on the re-ranked documents.
+
 ---
 
 **Step to Evaluate:**

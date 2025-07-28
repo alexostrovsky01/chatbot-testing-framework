@@ -1,0 +1,1635 @@
+{
+  "60f8f72a-8444-493a-a60d-caae964f8186": [
+    {
+      "run_id": "60f8f72a-8444-493a-a60d-caae964f8186",
+      "name": "rewrite_query",
+      "start_time": 1753663279.769358,
+      "end_time": 1753663280.4754949,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How many vacation days do I get per year?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the total number of vacation days provided annually?",
+          "How is vacation time accrued each year?",
+          "Are vacation days based on tenure or position?",
+          "Does the company offer paid or unpaid vacation days?",
+          "Are there any differences in vacation days for full-time versus part-time employees?"
+        ]
+      }
+    },
+    {
+      "run_id": "60f8f72a-8444-493a-a60d-caae964f8186",
+      "name": "retrieve_docs",
+      "start_time": 1753663280.4767504,
+      "end_time": 1753663281.5085568,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How many vacation days do I get per year?",
+            "sub_questions": [
+              "What is the total number of vacation days provided annually?",
+              "How is vacation time accrued each year?",
+              "Are vacation days based on tenure or position?",
+              "Does the company offer paid or unpaid vacation days?",
+              "Are there any differences in vacation days for full-time versus part-time employees?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "60f8f72a-8444-493a-a60d-caae964f8186",
+      "name": "synthesize_answer",
+      "start_time": 1753663281.511143,
+      "end_time": 1753663281.9558558,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How many vacation days do I get per year?",
+            "sub_questions": [
+              "What is the total number of vacation days provided annually?",
+              "How is vacation time accrued each year?",
+              "Are vacation days based on tenure or position?",
+              "Does the company offer paid or unpaid vacation days?",
+              "Are there any differences in vacation days for full-time versus part-time employees?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Full-time employees receive 20 vacation days per year."
+      }
+    }
+  ],
+  "de97aad3-471c-4032-9f6d-59264a5de756": [
+    {
+      "run_id": "de97aad3-471c-4032-9f6d-59264a5de756",
+      "name": "rewrite_query",
+      "start_time": 1753663284.9670813,
+      "end_time": 1753663286.2550068,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the maximum I can claim for a client dinner?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the maximum allowable claim for a client dinner?",
+          "Are there specific expense limits for claiming client dinners?",
+          "What policies or guidelines determine the claim amount for client dinners?",
+          "Does the maximum claim amount for client dinners vary by location or circumstance?",
+          "What documentation is required to claim the maximum amount for a client dinner?"
+        ]
+      }
+    },
+    {
+      "run_id": "de97aad3-471c-4032-9f6d-59264a5de756",
+      "name": "retrieve_docs",
+      "start_time": 1753663286.256315,
+      "end_time": 1753663287.2071638,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the maximum I can claim for a client dinner?",
+            "sub_questions": [
+              "What is the maximum allowable claim for a client dinner?",
+              "Are there specific expense limits for claiming client dinners?",
+              "What policies or guidelines determine the claim amount for client dinners?",
+              "Does the maximum claim amount for client dinners vary by location or circumstance?",
+              "What documentation is required to claim the maximum amount for a client dinner?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "de97aad3-471c-4032-9f6d-59264a5de756",
+      "name": "synthesize_answer",
+      "start_time": 1753663287.2089293,
+      "end_time": 1753663287.857443,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the maximum I can claim for a client dinner?",
+            "sub_questions": [
+              "What is the maximum allowable claim for a client dinner?",
+              "Are there specific expense limits for claiming client dinners?",
+              "What policies or guidelines determine the claim amount for client dinners?",
+              "Does the maximum claim amount for client dinners vary by location or circumstance?",
+              "What documentation is required to claim the maximum amount for a client dinner?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "The maximum you can claim for a client dinner is $50 per person."
+      }
+    }
+  ],
+  "ac68ebb5-8799-413e-90c7-38c1644146f1": [
+    {
+      "run_id": "ac68ebb5-8799-413e-90c7-38c1644146f1",
+      "name": "rewrite_query",
+      "start_time": 1753663290.8672721,
+      "end_time": 1753663291.7002249,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "When are performance reviews held?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the schedule for performance reviews?  ",
+          "How often are performance reviews conducted?  ",
+          "In which months are performance reviews typically held?  ",
+          "Are there different dates for performance reviews based on department or role?"
+        ]
+      }
+    },
+    {
+      "run_id": "ac68ebb5-8799-413e-90c7-38c1644146f1",
+      "name": "retrieve_docs",
+      "start_time": 1753663291.7023008,
+      "end_time": 1753663292.1626117,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "When are performance reviews held?",
+            "sub_questions": [
+              "What is the schedule for performance reviews?  ",
+              "How often are performance reviews conducted?  ",
+              "In which months are performance reviews typically held?  ",
+              "Are there different dates for performance reviews based on department or role?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "ac68ebb5-8799-413e-90c7-38c1644146f1",
+      "name": "synthesize_answer",
+      "start_time": 1753663292.1644216,
+      "end_time": 1753663292.6098094,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "When are performance reviews held?",
+            "sub_questions": [
+              "What is the schedule for performance reviews?  ",
+              "How often are performance reviews conducted?  ",
+              "In which months are performance reviews typically held?  ",
+              "Are there different dates for performance reviews based on department or role?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Performance reviews are held every November."
+      }
+    }
+  ],
+  "0fc9f0e1-644a-4472-8041-c6f389419480": [
+    {
+      "run_id": "0fc9f0e1-644a-4472-8041-c6f389419480",
+      "name": "rewrite_query",
+      "start_time": 1753663295.6194165,
+      "end_time": 1753663296.3659303,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How do I submit an expense report?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What steps are involved in submitting an expense report?  ",
+          "Where can I find the expense report submission form?  ",
+          "What documents or receipts are required to submit an expense report?  ",
+          "Who should I contact if I have issues submitting my expense report?  ",
+          "What deadlines or timelines should I follow when submitting an expense report?"
+        ]
+      }
+    },
+    {
+      "run_id": "0fc9f0e1-644a-4472-8041-c6f389419480",
+      "name": "retrieve_docs",
+      "start_time": 1753663296.3684356,
+      "end_time": 1753663299.134071,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How do I submit an expense report?",
+            "sub_questions": [
+              "What steps are involved in submitting an expense report?  ",
+              "Where can I find the expense report submission form?  ",
+              "What documents or receipts are required to submit an expense report?  ",
+              "Who should I contact if I have issues submitting my expense report?  ",
+              "What deadlines or timelines should I follow when submitting an expense report?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "0fc9f0e1-644a-4472-8041-c6f389419480",
+      "name": "synthesize_answer",
+      "start_time": 1753663299.136286,
+      "end_time": 1753663299.6836636,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "How do I submit an expense report?",
+            "sub_questions": [
+              "What steps are involved in submitting an expense report?  ",
+              "Where can I find the expense report submission form?  ",
+              "What documents or receipts are required to submit an expense report?  ",
+              "Who should I contact if I have issues submitting my expense report?  ",
+              "What deadlines or timelines should I follow when submitting an expense report?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "You must submit all expense reports through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory for all claims over $25."
+      }
+    }
+  ],
+  "45d5a499-389b-4aa1-9773-316063385be4": [
+    {
+      "run_id": "45d5a499-389b-4aa1-9773-316063385be4",
+      "name": "rewrite_query",
+      "start_time": 1753663302.6934988,
+      "end_time": 1753663303.386058,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "Can I carry over unused vacation days?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the company's policy on carrying over unused vacation days?",
+          "Are there any limits on the number of vacation days that can be carried over?",
+          "Do unused vacation days expire at the end of the year?",
+          "Is there a deadline by which unused vacation days must be used?",
+          "Does the ability to carry over vacation days vary based on employee status or tenure?"
+        ]
+      }
+    },
+    {
+      "run_id": "45d5a499-389b-4aa1-9773-316063385be4",
+      "name": "retrieve_docs",
+      "start_time": 1753663303.3882976,
+      "end_time": 1753663303.9778147,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "Can I carry over unused vacation days?",
+            "sub_questions": [
+              "What is the company's policy on carrying over unused vacation days?",
+              "Are there any limits on the number of vacation days that can be carried over?",
+              "Do unused vacation days expire at the end of the year?",
+              "Is there a deadline by which unused vacation days must be used?",
+              "Does the ability to carry over vacation days vary based on employee status or tenure?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          },
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "45d5a499-389b-4aa1-9773-316063385be4",
+      "name": "synthesize_answer",
+      "start_time": 1753663303.9802122,
+      "end_time": 1753663304.56593,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "Can I carry over unused vacation days?",
+            "sub_questions": [
+              "What is the company's policy on carrying over unused vacation days?",
+              "Are there any limits on the number of vacation days that can be carried over?",
+              "Do unused vacation days expire at the end of the year?",
+              "Is there a deadline by which unused vacation days must be used?",
+              "Does the ability to carry over vacation days vary based on employee status or tenure?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              },
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Yes, you can carry over unused vacation days up to a maximum of 5 days to the next calendar year. However, rollover days expire on March 31st."
+      }
+    }
+  ],
+  "d304ab0f-c685-4972-bc5f-8b27a0bd5638": [
+    {
+      "run_id": "d304ab0f-c685-4972-bc5f-8b27a0bd5638",
+      "name": "rewrite_query",
+      "start_time": 1753663307.575971,
+      "end_time": 1753663308.2231028,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the first step in the performance review process?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the initial phase of the performance review process?  ",
+          "How does the performance review process begin?  ",
+          "What actions are involved in starting a performance review?"
+        ]
+      }
+    },
+    {
+      "run_id": "d304ab0f-c685-4972-bc5f-8b27a0bd5638",
+      "name": "retrieve_docs",
+      "start_time": 1753663308.2255855,
+      "end_time": 1753663308.6684773,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the first step in the performance review process?",
+            "sub_questions": [
+              "What is the initial phase of the performance review process?  ",
+              "How does the performance review process begin?  ",
+              "What actions are involved in starting a performance review?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "d304ab0f-c685-4972-bc5f-8b27a0bd5638",
+      "name": "synthesize_answer",
+      "start_time": 1753663308.6712263,
+      "end_time": 1753663309.013476,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What is the first step in the performance review process?",
+            "sub_questions": [
+              "What is the initial phase of the performance review process?  ",
+              "How does the performance review process begin?  ",
+              "What actions are involved in starting a performance review?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "The first step in the performance review process is a self-assessment by the employee."
+      }
+    }
+  ],
+  "504c0525-1526-449e-aa9c-e56e65816363": [
+    {
+      "run_id": "504c0525-1526-449e-aa9c-e56e65816363",
+      "name": "rewrite_query",
+      "start_time": 1753663312.0256655,
+      "end_time": 1753663312.8413756,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I had to buy some software for a project, can I expense it?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What type of software did I purchase for the project?  ",
+          "Is this software purchase related to my work or business activities?  ",
+          "Does my company or organization have a policy on expensing software purchases?  ",
+          "What documentation or proof do I need to submit for the expense?  ",
+          "Are there any spending limits or approval requirements for expensing software?"
+        ]
+      }
+    },
+    {
+      "run_id": "504c0525-1526-449e-aa9c-e56e65816363",
+      "name": "retrieve_docs",
+      "start_time": 1753663312.8443904,
+      "end_time": 1753663313.385513,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I had to buy some software for a project, can I expense it?",
+            "sub_questions": [
+              "What type of software did I purchase for the project?  ",
+              "Is this software purchase related to my work or business activities?  ",
+              "Does my company or organization have a policy on expensing software purchases?  ",
+              "What documentation or proof do I need to submit for the expense?  ",
+              "Are there any spending limits or approval requirements for expensing software?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "504c0525-1526-449e-aa9c-e56e65816363",
+      "name": "synthesize_answer",
+      "start_time": 1753663313.3883567,
+      "end_time": 1753663314.3900418,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I had to buy some software for a project, can I expense it?",
+            "sub_questions": [
+              "What type of software did I purchase for the project?  ",
+              "Is this software purchase related to my work or business activities?  ",
+              "Does my company or organization have a policy on expensing software purchases?  ",
+              "What documentation or proof do I need to submit for the expense?  ",
+              "Are there any spending limits or approval requirements for expensing software?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context, you cannot expense software unless it has been pre-approved by IT. \"All software must be approved by IT.\" Expenses must also be pre-approved, and only specific categories are listed (travel, accommodation, and client meals). Software purchases are not mentioned as a reimbursable expense category. Therefore, you cannot expense software without prior IT approval."
+      }
+    }
+  ],
+  "9e36797d-e820-4735-a08b-4a1104eb7ed1": [
+    {
+      "run_id": "9e36797d-e820-4735-a08b-4a1104eb7ed1",
+      "name": "rewrite_query",
+      "start_time": 1753663317.400294,
+      "end_time": 1753663318.1923072,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I just started, what do I need to know about my computer and how I get paid?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What basic information do I need to know about my computer to get started?  ",
+          "How do I access and use my computer for work?  ",
+          "What are the steps or requirements for getting paid?  ",
+          "How do I track my payments?  ",
+          "Who can I contact if I have questions about payment?"
+        ]
+      }
+    },
+    {
+      "run_id": "9e36797d-e820-4735-a08b-4a1104eb7ed1",
+      "name": "retrieve_docs",
+      "start_time": 1753663318.197348,
+      "end_time": 1753663318.815339,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I just started, what do I need to know about my computer and how I get paid?",
+            "sub_questions": [
+              "What basic information do I need to know about my computer to get started?  ",
+              "How do I access and use my computer for work?  ",
+              "What are the steps or requirements for getting paid?  ",
+              "How do I track my payments?  ",
+              "Who can I contact if I have questions about payment?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          },
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "9e36797d-e820-4735-a08b-4a1104eb7ed1",
+      "name": "synthesize_answer",
+      "start_time": 1753663318.8188784,
+      "end_time": 1753663319.6174219,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I just started, what do I need to know about my computer and how I get paid?",
+            "sub_questions": [
+              "What basic information do I need to know about my computer to get started?  ",
+              "How do I access and use my computer for work?  ",
+              "What are the steps or requirements for getting paid?  ",
+              "How do I track my payments?  ",
+              "Who can I contact if I have questions about payment?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              },
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context:\n\n- On your first day, you will receive a new MacBook Pro. You need to see IT to complete the setup, and any software you want to use must be approved by IT.\n- Payroll is processed on a bi-weekly basis. You can access your pay stubs on the 15th and last day of each month through the employee portal.\n- Direct deposit is mandatory for all employees."
+      }
+    }
+  ],
+  "5b1b2220-96b7-43d8-afaa-19dcc99c26c9": [
+    {
+      "run_id": "5b1b2220-96b7-43d8-afaa-19dcc99c26c9",
+      "name": "rewrite_query",
+      "start_time": 1753663322.6319711,
+      "end_time": 1753663323.5638099,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I need to book travel for a client visit and take a day off afterwards, what are the procedures?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the procedure for booking travel for a client visit?  ",
+          "What steps do I need to follow to request a day off after the client visit?  ",
+          "Are there any specific company policies I need to consider when booking travel and requesting time off?  ",
+          "Who do I need to notify or get approval from for both travel and time off?"
+        ]
+      }
+    },
+    {
+      "run_id": "5b1b2220-96b7-43d8-afaa-19dcc99c26c9",
+      "name": "retrieve_docs",
+      "start_time": 1753663323.5688562,
+      "end_time": 1753663324.2704759,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I need to book travel for a client visit and take a day off afterwards, what are the procedures?",
+            "sub_questions": [
+              "What is the procedure for booking travel for a client visit?  ",
+              "What steps do I need to follow to request a day off after the client visit?  ",
+              "Are there any specific company policies I need to consider when booking travel and requesting time off?  ",
+              "Who do I need to notify or get approval from for both travel and time off?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          },
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "5b1b2220-96b7-43d8-afaa-19dcc99c26c9",
+      "name": "synthesize_answer",
+      "start_time": 1753663324.2741485,
+      "end_time": 1753663326.5365756,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "I need to book travel for a client visit and take a day off afterwards, what are the procedures?",
+            "sub_questions": [
+              "What is the procedure for booking travel for a client visit?  ",
+              "What steps do I need to follow to request a day off after the client visit?  ",
+              "Are there any specific company policies I need to consider when booking travel and requesting time off?  ",
+              "Who do I need to notify or get approval from for both travel and time off?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              },
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based on the provided context, here are the procedures:\n\n**For booking travel for a client visit:**\n- Ensure your travel expenses are pre-approved and business-related.\n- You can be reimbursed for travel, accommodation, and client meals (with a $50 per person limit for client meals).\n- After incurring expenses, submit your expense report through the Concur portal within 30 days.\n- Original receipts are mandatory for all claims over $25.\n\n**For taking a day off afterwards:**\n- Request your vacation day at least two weeks in advance via the employee portal.\n- Manager approval is required and is final. \n- Vacation days accrue at 20 days per year for full-time employees, accrued bi-weekly. Unused vacation days (up to 5 days) can be rolled over to the next calendar year, expiring March 31st.\n\nYou must follow these procedures for both travel and time off requests."
+      }
+    }
+  ],
+  "62fb3bee-474e-4a3d-931f-0f9a516bf496": [
+    {
+      "run_id": "62fb3bee-474e-4a3d-931f-0f9a516bf496",
+      "name": "rewrite_query",
+      "start_time": 1753663329.548426,
+      "end_time": 1753663330.0091739,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What's the policy on professional conduct during business trips, and how do I file expenses?"
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "sub_questions": [
+          "What is the policy on professional conduct during business trips?  ",
+          "How do I file expenses for business trips?"
+        ]
+      }
+    },
+    {
+      "run_id": "62fb3bee-474e-4a3d-931f-0f9a516bf496",
+      "name": "retrieve_docs",
+      "start_time": 1753663330.0131245,
+      "end_time": 1753663330.2692091,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What's the policy on professional conduct during business trips, and how do I file expenses?",
+            "sub_questions": [
+              "What is the policy on professional conduct during business trips?  ",
+              "How do I file expenses for business trips?"
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "retrieved_docs": [
+          {
+            "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+            "metadata": {
+              "source": "data/hr_policies/conduct.txt"
+            },
+            "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+            "type": "Document"
+          },
+          {
+            "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+            "metadata": {
+              "source": "data/hr_policies/expense_policy.txt"
+            },
+            "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+            "type": "Document"
+          },
+          {
+            "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+            "metadata": {
+              "source": "data/hr_policies/it_onboarding.txt"
+            },
+            "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+            "type": "Document"
+          },
+          {
+            "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+            "metadata": {
+              "source": "data/hr_policies/performance_reviews.txt"
+            },
+            "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+            "type": "Document"
+          },
+          {
+            "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+            "metadata": {
+              "source": "data/hr_policies/vacation_policy.txt"
+            },
+            "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+            "type": "Document"
+          },
+          {
+            "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+            "metadata": {
+              "source": "data/hr_policies/payroll.txt"
+            },
+            "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+            "type": "Document"
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "62fb3bee-474e-4a3d-931f-0f9a516bf496",
+      "name": "synthesize_answer",
+      "start_time": 1753663330.2731876,
+      "end_time": 1753663331.3476412,
+      "status": "success",
+      "inputs": {
+        "args": [
+          {
+            "question": "What's the policy on professional conduct during business trips, and how do I file expenses?",
+            "sub_questions": [
+              "What is the policy on professional conduct during business trips?  ",
+              "How do I file expenses for business trips?"
+            ],
+            "retrieved_docs": [
+              {
+                "id": "eb8689b9-8b4f-419a-a507-a18678c8b293",
+                "metadata": {
+                  "source": "data/hr_policies/conduct.txt"
+                },
+                "page_content": "Employees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.",
+                "type": "Document"
+              },
+              {
+                "id": "965d69ae-0f6c-4f54-af94-e27d082818bc",
+                "metadata": {
+                  "source": "data/hr_policies/expense_policy.txt"
+                },
+                "page_content": "ACME Corp reimburses employees for pre-approved, business-related expenses. This includes travel, accommodation,\n\nand client meals. For client meals, the reimbursement limit is $50 per person. All expense reports must be\n\nsubmitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory\n\nfor all claims over $25.",
+                "type": "Document"
+              },
+              {
+                "id": "96736f1f-0d84-4c32-8ff3-f2b662158323",
+                "metadata": {
+                  "source": "data/hr_policies/it_onboarding.txt"
+                },
+                "page_content": "All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to comple setup. All software must be approved by IT.",
+                "type": "Document"
+              },
+              {
+                "id": "5a536ab5-e303-4ce6-aff0-f42413ef8d6d",
+                "metadata": {
+                  "source": "data/hr_policies/performance_reviews.txt"
+                },
+                "page_content": "ACME Corp conducts annual performance reviews every November. The process includes a self-assessment by the\n\nemployee, followed by a formal review meeting with their direct manager. Goals for the upcoming year are set duri\n\nthis meeting. Mid-year check-ins are held in May to discuss progress, but these are informal.",
+                "type": "Document"
+              },
+              {
+                "id": "4072f6f5-b5f3-4c55-ae24-c0e701004ba4",
+                "metadata": {
+                  "source": "data/hr_policies/vacation_policy.txt"
+                },
+                "page_content": "Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.",
+                "type": "Document"
+              },
+              {
+                "id": "2a7baf82-b1f8-4885-8454-832dd4865c1b",
+                "metadata": {
+                  "source": "data/hr_policies/payroll.txt"
+                },
+                "page_content": "ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.",
+                "type": "Document"
+              }
+            ]
+          }
+        ],
+        "kwargs": {}
+      },
+      "outputs": {
+        "final_answer": "Based only on the provided context:\n\nPolicy on professional conduct during business trips:\nEmployees are expected to maintain the highest ethical standards. Harassment and discrimination are not tolerated. All communication should be professional.\n\nHow to file expenses:\nACME Corp reimburses employees for pre-approved, business-related expenses, including travel, accommodation, and client meals (with a $50 per person limit for client meals). All expense reports must be submitted through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory for all claims over $25."
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+chatbot-test-framework 
+langchain 
+langgraph 
+langchain_openai 
+langchain-cohere
+cohere==5.15.0
+faiss-cpu
+unstructured
+flask 
+python-dotenv 

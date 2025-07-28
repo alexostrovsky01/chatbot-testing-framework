@@ -1,0 +1,95 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+
+# Deep Dive Workflow Analysis
+
+# Chatbot Evaluation Deep-Dive Report
+
+## Overall Summary
+
+The chatbot demonstrates strong policy adherence and safety in its final answers, with generally coherent and relevant responses. However, its answers often lack completeness and specificity compared to model answers, primarily due to limitations in the internal synthesis step and occasional retrieval of less relevant documents. The internal workflow is efficient in query rewriting but shows weaknesses in document retrieval relevance and comprehensive answer synthesis.
+
+---
+
+## Key Findings
+
+- **Positives:**
+  - High scores for policy adherence (4.5/5) and safety (5.0/5) in final answers.
+  - Strong coherence and relevance in responses (4.2/5).
+  - Query rewriting step is highly accurate and relevant (4.6/5 for both correctness and relevance).
+- **Negatives:**
+  - Final answers frequently lack completeness, omitting critical details present in model answers.
+  - Synthesis step underperforms (3.5/5 correctness, 3.9/5 relevance), often missing key policy requirements or procedural steps.
+  - Document retrieval occasionally includes irrelevant or fragmented content, reducing the effectiveness of subsequent steps.
+  - Some answers introduce unsupported assumptions or extraneous information, leading to minor policy adherence issues.
+
+---
+
+## Final Answer Analysis
+
+### Criterion: answer_quality_vs_model (3.40 / 5.0)
+- **Observations:** Answers are factually correct but often less complete than model answers. Key details—such as policy qualifiers, deadlines, or procedural specifics—are frequently omitted.
+- **Common Low-Score Themes:**
+  - Omission of critical details (e.g., policy coverage, expiration dates, employee qualifiers).
+  - Answers are less clear or specific than model responses.
+  - Tendency to provide only partial information, impacting overall completeness.
+
+### Criterion: coherence_and_relevance (4.20 / 5.0)
+- **Observations:** Responses are generally logical and easy to follow, addressing the user's question in a relevant manner.
+- **Common Low-Score Themes:**
+  - Inclusion of tangential or unnecessary information that may distract from the main point.
+  - Partial coverage of the user's question, with some procedural steps or required systems (e.g., "Concur" portal) omitted.
+  - Occasional lack of focus, leading to less direct answers.
+
+### Criterion: policy_adherence (4.50 / 5.0)
+- **Observations:** The chatbot consistently avoids policy violations such as expressing opinions or referencing competitors. Minor issues arise from unsupported assumptions.
+- **Common Low-Score Themes:**
+  - Addition of details not present in the context (e.g., mandatory receipts, direct deposit) without explicit evidence.
+  - Occasional guessing or extrapolation beyond provided information, violating strict policy adherence.
+
+### Criterion: safety (5.00 / 5.0)
+- **Observations:** No safety issues were identified across all test runs.
+
+---
+
+## Step-by-Step Analysis
+
+### Step: retrieve_docs
+- **Average Correctness:** 4.20 / 5.0
+- **Average Relevance:** 4.10 / 5.0
+- **Error Patterns:**
+  - Retrieval includes mostly relevant documents but sometimes pulls in unrelated sources (e.g., payroll, performance reviews).
+  - Retrieved snippets are often too short or fragmented, failing to fully address all sub-questions.
+  - Occasional lack of direct answers to procedural or platform-specific queries.
+
+### Step: rewrite_query
+- **Average Correctness:** 4.60 / 5.0
+- **Average Relevance:** 4.60 / 5.0
+- **Error Patterns:** 
+  - No significant issues reported; this step is consistently high-performing.
+
+### Step: synthesize_answer
+- **Average Correctness:** 3.50 / 5.0
+- **Average Relevance:** 3.90 / 5.0
+- **Error Patterns:**
+  - Answers often omit important policy requirements or procedural details (e.g., deadlines, required systems, approval steps).
+  - Synthesis is sometimes too narrow, focusing only on a subset of relevant information.
+  - Occasional introduction of irrelevant or incorrect details from unrelated documents (e.g., direct deposit from payroll).
+  - Failure to clarify when information is missing from the retrieved context, leading to incomplete answers.
+
+---
+
+## Actionable Recommendations
+
+- **Enhance Answer Synthesis:** Improve the synthesis step to ensure all relevant policy details and procedural steps are included, and explicitly state when information is unavailable.
+- **Refine Document Retrieval:** Adjust retrieval algorithms to prioritize longer, more comprehensive, and directly relevant snippets, while filtering out unrelated documents.
+- **Reduce Unsupported Assumptions:** Implement stricter controls to prevent the chatbot from introducing details not present in the source material.
+- **Increase Specificity:** Encourage the inclusion of qualifiers (e.g., "Full-time employees"), deadlines, and platform names to match the completeness of model answers.
+- **Focus on User Intent:** Train the model to avoid adding tangential information and to maintain focus on the user's core question for greater answer relevance and clarity.

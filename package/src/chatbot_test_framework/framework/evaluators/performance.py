@@ -121,70 +121,110 @@ class PerformanceEvaluator:
                 }
         return report
 
-    def _generate_deep_dive_summary(self, all_step_evaluations: List[Dict]) -> str:
-        """
-        Uses an LLM to generate a qualitative deep-dive summary from all step evaluations.
-        """
-        logger.info("Generating deep-dive performance summary...")
-        
-        # 1. Pre-process the raw step evaluation data into a concise summary
-        step_analysis = defaultdict(lambda: {
-            'correctness_scores': [], 
-            'relevance_scores': [],
-            'failure_reasons': []
-        })
-
-        for eval_item in all_step_evaluations:
-            step_name = eval_item['step_name']
-            eval_data = eval_item.get('evaluation', {})
-            if 'error' in eval_data:
-                continue
-
-            correctness = eval_data.get('correctness', {})
-            relevance = eval_data.get('relevance', {})
-
-            if (score := correctness.get('score')) is not None:
-                step_analysis[step_name]['correctness_scores'].append(score)
-                if score < 4: # Consider a score below 4 a notable failure
-                    step_analysis[step_name]['failure_reasons'].append(correctness.get('reasoning', 'No reasoning provided.'))
-
-            if (score := relevance.get('score')) is not None:
-                step_analysis[step_name]['relevance_scores'].append(score)
-                if score < 4 and (reasoning := relevance.get('reasoning')):
-                     # Avoid duplicate reasons if both scores are low
-                    if reasoning not in step_analysis[step_name]['failure_reasons']:
-                        step_analysis[step_name]['failure_reasons'].append(reasoning)
-
-        # 2. Format the processed data into a string for the prompt
-        summary_for_prompt = []
-        for step_name, data in sorted(step_analysis.items()):
-            c_scores = data['correctness_scores']
-            r_scores = data['relevance_scores']
-            avg_c = f"{sum(c_scores) / len(c_scores):.2f}" if c_scores else "N/A"
-            avg_r = f"{sum(r_scores) / len(r_scores):.2f}" if r_scores else "N/A"
-
-            summary_for_prompt.append(f"### Step: {step_name}")
-            summary_for_prompt.append(f"- Average Correctness Score: {avg_c} / 5.0")
-            summary_for_prompt.append(f"- Average Relevance Score: {avg_r} / 5.0")
-            
-            if data['failure_reasons']:
-                summary_for_prompt.append("- Examples of Failure Reasons:")
-                # Limit to 5 unique reasons to keep the prompt concise
-                unique_reasons = list(set(data['failure_reasons']))
-                for reason in unique_reasons[:5]:
-                    summary_for_prompt.append(f"  - \"{reason}\"")
-            summary_for_prompt.append("\n")
-
-        # 3. Create the final prompt and invoke the LLM
-        prompt = self.DEEP_DIVE_SUMMARY_PROMPT.format(step_data_summary="\n".join(summary_for_prompt))
-        
-        try:
-            deep_dive_text = self.llm_provider.invoke(prompt)
-            time.sleep(self.config['llm_provider']['requests_delay']) 
-            return deep_dive_text
-        except Exception as e:
-            logger.error(f"Failed to generate deep-dive summary from LLM: {e}")
-            return "Error: The deep-dive summary could not be generated due to an LLM provider error."
+    def _generate_deep_dive_summary(self, all_step_evaluations: List[Dict], all_final_evaluations: List[Dict]) -> str:                                                                                                              
+        """                                                                                                       
+        Uses an LLM to generate a qualitative deep-dive summary from both final answer and step evaluations.      
+        """                                                                                                       
+        logger.info("Generating deep-dive performance summary...")                                                
+                                                                                                                
+        summary_parts = []                                                                                        
+                                                                                                                
+        # --- Part 1: Pre-process and Format Final Answer Evaluations ---                                         
+        summary_parts.append("## Final Answer Performance Analysis")                                              
+        if not all_final_evaluations:                                                                             
+            summary_parts.append("No final answer evaluations were available to analyze.")                        
+        else:                                                                                                     
+            final_answer_analysis = defaultdict(lambda: {'scores': [], 'low_score_reasons': []})                  
+            final_answer_criteria = [                                                                             
+                "coherence_and_relevance", "safety", "policy_adherence", "answer_quality_vs_model"                
+            ]                                                                                                     
+                                                                                                                
+            for final_eval in all_final_evaluations:                                                              
+                eval_data = final_eval.get('evaluation', {})                                                      
+                if 'error' in eval_data:                                                                          
+                    continue                                                                                      
+                                                                                                                
+                for criterion in final_answer_criteria:                                                           
+                    criterion_data = eval_data.get(criterion, {})                                                 
+                    if (score := criterion_data.get('score')) is not None:                                        
+                        final_answer_analysis[criterion]['scores'].append(score)                                  
+                        if score < 4:  # Low score threshold                                                      
+                            reason = criterion_data.get('reasoning', 'No reasoning provided.')                    
+                            final_answer_analysis[criterion]['low_score_reasons'].append(reason)                  
+                                                                                                                
+            for criterion, data in sorted(final_answer_analysis.items()):                                         
+                scores = data['scores']                                                                           
+                avg_score = f"{sum(scores) / len(scores):.2f}" if scores else "N/A"                               
+                summary_parts.append(f"### Criterion: {criterion}")                                               
+                summary_parts.append(f"- Average Score: {avg_score} / 5.0 across {len(scores)} runs.")            
+                if data['low_score_reasons']:                                                                     
+                    summary_parts.append("- Examples of Low-Score Reasons:")                                      
+                    unique_reasons = list(set(data['low_score_reasons']))                                         
+                    for reason in unique_reasons[:3]:  # Limit to 3 unique examples                               
+                        summary_parts.append(f"  - \"{reason}\"")                                                 
+                summary_parts.append("") # Add a newline for spacing                                              
+                                                                                                                
+        summary_parts.append("\n---\n") # Separator                                                               
+                                                                                                                
+        # --- Part 2: Pre-process and Format Step Evaluations ---                                                 
+        summary_parts.append("## Step-by-Step Workflow Analysis")                                                 
+        if not all_step_evaluations:                                                                              
+            summary_parts.append("No step evaluations were available to analyze.")                                
+        else:                                                                                                     
+            step_analysis = defaultdict(lambda: {                                                                 
+                'correctness_scores': [],                                                                         
+                'relevance_scores': [],                                                                           
+                'failure_reasons': []                                                                             
+            })                                                                                                    
+                                                                                                                
+            for eval_item in all_step_evaluations:                                                                
+                step_name = eval_item['step_name']                                                                
+                eval_data = eval_item.get('evaluation', {})                                                       
+                if 'error' in eval_data:                                                                          
+                    continue                                                                                      
+                                                                                                                
+                correctness = eval_data.get('correctness', {})                                                    
+                relevance = eval_data.get('relevance', {})                                                        
+                                                                                                                
+                if (score := correctness.get('score')) is not None:                                               
+                    step_analysis[step_name]['correctness_scores'].append(score)                                  
+                    if score < 4:                                                                                 
+                        step_analysis[step_name]['failure_reasons'].append(correctness.get('reasoning', 'No reasoning provided.'))                                                                                            
+                                                                                                                
+                if (score := relevance.get('score')) is not None:                                                 
+                    step_analysis[step_name]['relevance_scores'].append(score)                                    
+                    if score < 4 and (reasoning := relevance.get('reasoning')):                                   
+                        if reasoning not in step_analysis[step_name]['failure_reasons']:                          
+                            step_analysis[step_name]['failure_reasons'].append(reasoning)                         
+                                                                                                                
+            for step_name, data in sorted(step_analysis.items()):                                                 
+                c_scores = data['correctness_scores']                                                             
+                r_scores = data['relevance_scores']                                                               
+                avg_c = f"{sum(c_scores) / len(c_scores):.2f}" if c_scores else "N/A"                             
+                avg_r = f"{sum(r_scores) / len(r_scores):.2f}" if r_scores else "N/A"                             
+                                                                                                                
+                summary_parts.append(f"### Step: {step_name}")                                                    
+                summary_parts.append(f"- Average Correctness Score: {avg_c} / 5.0")                               
+                summary_parts.append(f"- Average Relevance Score: {avg_r} / 5.0")                                 
+                                                                                                                
+                if data['failure_reasons']:                                                                       
+                    summary_parts.append("- Examples of Failure Reasons:")                                        
+                    unique_reasons = list(set(data['failure_reasons']))                                           
+                    for reason in unique_reasons[:5]:                                                             
+                        summary_parts.append(f"  - \"{reason}\"")                                                 
+                summary_parts.append("\n")                                                                        
+                                                                                                                
+        # --- Part 3: Create the final prompt and invoke the LLM ---                                              
+        evaluation_data_summary = "\n".join(summary_parts)                                                        
+        prompt = self.DEEP_DIVE_SUMMARY_PROMPT.format(evaluation_data_summary=evaluation_data_summary)            
+                                                                                                                
+        try:                                                                                                      
+            deep_dive_text = self.llm_provider.invoke(prompt)                                                     
+            time.sleep(self.config['llm_provider']['requests_delay'])                                             
+            return deep_dive_text                                                                                 
+        except Exception as e:                                                                                    
+            logger.error(f"Failed to generate deep-dive summary from LLM: {e}")                                   
+            return "Error: The deep-dive summary could not be generated due to an LLM provider error." 
 
     def generate_overall_summary(self, all_step_evaluations: List[Dict], all_final_evaluations: List[Dict]) -> str:
         """Generates the complete summary, including metrics, violations, and the deep-dive analysis."""
@@ -210,9 +250,12 @@ class PerformanceEvaluator:
                 pass
 
         # --- Section 2: LLM-Generated Deep Dive Analysis ---
-        if all_step_evaluations:
-            report_lines.append("\n# Deep Dive Workflow Analysis\n")
-            deep_dive_report = self._generate_deep_dive_summary(all_step_evaluations)
-            report_lines.append(deep_dive_report)
-        
+        if all_step_evaluations or all_final_evaluations:                                                         
+            report_lines.append("\n# Deep Dive Workflow Analysis\n")                                              
+            # Pass both sets of evaluations to the summary generator                                              
+            deep_dive_report = self._generate_deep_dive_summary(all_step_evaluations, all_final_evaluations)      
+            report_lines.append(deep_dive_report)                                                                 
+        else:                                                                                                     
+            report_lines.append("No evaluation data was available to generate a summary.")                        
+                                                                                                                
         return "\n".join(report_lines)

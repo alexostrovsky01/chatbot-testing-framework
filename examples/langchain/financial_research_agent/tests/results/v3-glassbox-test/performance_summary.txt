@@ -1,0 +1,113 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+- ✅ No policy violations detected.
+
+# Deep Dive Workflow Analysis
+
+# Chatbot Evaluation Deep-Dive Report
+
+## Overall Summary
+
+The chatbot demonstrates strong final answer quality, with consistently high scores in coherence, policy adherence, and safety, and only minor issues in answer precision. However, the internal workflow, particularly the document retrieval step, shows significant room for improvement in relevance and correctness, which may impact the overall answer quality in more complex scenarios.
+
+---
+
+## Key Findings
+
+- **Positives:**
+  - Final answers are highly coherent, relevant, policy-adherent, and safe (all 5.0/5.0).
+  - The query rewriting and answer synthesis steps in the workflow are generally accurate and relevant.
+  - The chatbot rarely introduces unsafe or policy-violating content.
+
+- **Negatives:**
+  - The document retrieval step frequently returns irrelevant documents, leading to low relevance (2.8/5.0) and moderate correctness (3.6/5.0).
+  - Occasional over-inclusion or omission of details in final answers, resulting in slightly reduced alignment with model answers.
+  - Some final answers include extra, unsupported details or omit minor but relevant information.
+
+---
+
+## Final Answer Analysis
+
+### Criterion Breakdown
+
+- **answer_quality_vs_model:**  
+  - **Average Score:** 4.60 / 5.0  
+  - **Analysis:** Most answers are factually correct and cover the main points, but some diverge from the model answer by either adding unsupported details or omitting minor but relevant information. The most common issues are:
+    - Inclusion of extra, contextually plausible but unsupported information (e.g., mandatory direct deposit, IT approval requirements).
+    - Omission of secondary details present in the model answer (e.g., informal mid-year check-ins).
+    - These issues do not compromise factual accuracy or safety but reduce strict alignment with the ideal answer.
+
+- **coherence_and_relevance:**  
+  - **Average Score:** 5.00 / 5.0  
+  - **Analysis:** Answers are consistently well-structured, logically organized, and directly address the user's questions.
+
+- **policy_adherence:**  
+  - **Average Score:** 5.00 / 5.0  
+  - **Analysis:** No policy violations were observed; answers consistently adhere to organizational and ethical guidelines.
+
+- **safety:**  
+  - **Average Score:** 5.00 / 5.0  
+  - **Analysis:** No unsafe content was generated; all answers are appropriate for user consumption.
+
+#### Common Themes in Low-Score Reasons
+
+- Over-inclusion of plausible but unsupported details.
+- Occasional omission of minor, relevant information.
+- No issues with coherence, policy, or safety.
+
+---
+
+## Step-by-Step Analysis
+
+### Step: retrieve_docs
+
+- **Average Correctness Score:** 3.60 / 5.0  
+- **Average Relevance Score:** 2.80 / 5.0  
+- **Error Patterns:**
+  - Retrieval often includes several irrelevant documents alongside relevant ones.
+  - The process lacks precision, failing to filter or prioritize documents strictly related to the user's query.
+  - Irrelevant documents dilute the quality of information available for subsequent steps, potentially impacting answer synthesis.
+
+### Step: rewrite_query
+
+- **Average Correctness Score:** 4.60 / 5.0  
+- **Average Relevance Score:** 4.80 / 5.0  
+- **Error Patterns:**
+  - Generally accurate and relevant reformulations.
+  - Minor issues may occur but do not significantly impact downstream steps.
+
+### Step: synthesize_answer
+
+- **Average Correctness Score:** 4.30 / 5.0  
+- **Average Relevance Score:** 4.70 / 5.0  
+- **Error Patterns:**
+  - Occasional minor inaccuracies or omissions, often traceable to limitations in the retrieved documents.
+  - High overall performance, but dependent on the quality of prior steps.
+
+---
+
+## Actionable Recommendations
+
+- **Improve Document Retrieval Precision:**
+  - Refine retrieval algorithms to better filter and prioritize documents directly relevant to the user's query and sub-questions.
+  - Implement stricter relevance thresholds or ranking mechanisms to reduce the inclusion of unrelated documents.
+
+- **Enhance Alignment with Model Answers:**
+  - Adjust answer synthesis logic to avoid introducing unsupported details and to ensure all relevant information from the model/context is included.
+  - Consider post-processing checks to flag and correct over-inclusion or omission of details.
+
+- **Monitor and Iterate on Workflow Steps:**
+  - Regularly audit the performance of each workflow step, especially retrieval, to identify and address recurring error patterns.
+  - Use feedback from low-scoring cases to inform targeted improvements in retrieval and synthesis modules.
+
+- **Maintain High Standards in Coherence, Policy, and Safety:**
+  - Continue current practices that ensure answers are coherent, policy-adherent, and safe, as these are clear strengths.
+
+---
