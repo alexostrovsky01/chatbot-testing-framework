@@ -2,19 +2,19 @@
   "average_step_latencies": [
     {
       "step_name": "rewrite_query",
-      "average_latency_seconds": 0.5369,
+      "average_latency_seconds": 1.0878,
       "total_runs_measured": 10
     },
     {
       "step_name": "retrieve_docs",
-      "average_latency_seconds": 0.4452,
+      "average_latency_seconds": 0.5678,
       "total_runs_measured": 10
     },
     {
       "step_name": "synthesize_answer",
-      "average_latency_seconds": 0.6788,
+      "average_latency_seconds": 1.2607,
       "total_runs_measured": 10
     }
   ],
-  "overall_average_run_latency_seconds": 1.6778
+  "overall_average_run_latency_seconds": 2.9215
 }

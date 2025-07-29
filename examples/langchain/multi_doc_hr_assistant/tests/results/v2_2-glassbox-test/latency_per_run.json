@@ -1,182 +1,182 @@
 [
   {
-    "run_id": "64779d66-aa1c-498f-9551-9b243a88f581",
+    "run_id": "2928c959-92dd-4f12-82fd-91215015d206",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.5516
+        "latency_seconds": 1.24
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.4486
+        "latency_seconds": 0.602
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.4769
+        "latency_seconds": 0.4089
       }
     ],
-    "total_run_latency_seconds": 1.4919
+    "total_run_latency_seconds": 2.2551
   },
   {
-    "run_id": "319ce5c1-3d36-413c-a5f1-e799952f4ea0",
+    "run_id": "2b03c18d-5d75-420d-b355-dccf412a18a9",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.4798
+        "latency_seconds": 0.5339
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.4668
+        "latency_seconds": 0.7325
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.4228
+        "latency_seconds": 0.4612
       }
     ],
-    "total_run_latency_seconds": 1.385
+    "total_run_latency_seconds": 1.7309
   },
   {
-    "run_id": "889d07a9-f8ec-4ae8-b825-2667f8703908",
+    "run_id": "39366476-12d3-44f4-817e-d05c406db991",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.5114
+        "latency_seconds": 0.4357
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.3608
+        "latency_seconds": 0.2674
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.3509
+        "latency_seconds": 0.6431
       }
     ],
-    "total_run_latency_seconds": 1.2375
+    "total_run_latency_seconds": 1.3496
   },
   {
-    "run_id": "55ec9e37-f44c-4b0c-8f2f-73166bb8bb0a",
+    "run_id": "42b96471-3eda-457e-9133-1194a71cbbf7",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.5762
+        "latency_seconds": 0.6715
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.979
+        "latency_seconds": 0.7391
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.5691
+        "latency_seconds": 0.6876
       }
     ],
-    "total_run_latency_seconds": 2.1419
+    "total_run_latency_seconds": 2.1035
   },
   {
-    "run_id": "ad49e6bf-5f12-42c4-8a97-abaa5fb3be25",
+    "run_id": "a6e2a7fb-644e-42f0-a2dc-2c051391750d",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.5804
+        "latency_seconds": 0.6984
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.6367
+        "latency_seconds": 0.7046
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.5285
+        "latency_seconds": 0.6234
       }
     ],
-    "total_run_latency_seconds": 1.7603
+    "total_run_latency_seconds": 2.0306
   },
   {
-    "run_id": "5fa1f01b-255b-4dc9-9d82-d85654087e25",
+    "run_id": "b11a4469-b273-47ec-885d-1794868c2f50",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.492
+        "latency_seconds": 0.8951
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.2557
+        "latency_seconds": 0.5012
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.3855
+        "latency_seconds": 0.4091
       }
     ],
-    "total_run_latency_seconds": 1.1491
+    "total_run_latency_seconds": 1.8101
   },
   {
-    "run_id": "a5bdcc52-2e05-4018-af72-8876b9f9d993",
+    "run_id": "f8ab44da-e3e8-458a-a7b6-6abf36bd6ff2",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.6504
+        "latency_seconds": 1.286
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.4092
+        "latency_seconds": 0.9736
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.9752
+        "latency_seconds": 0.9542
       }
     ],
-    "total_run_latency_seconds": 2.0522
+    "total_run_latency_seconds": 3.2187
   },
   {
-    "run_id": "bd23a16b-76b7-430c-a464-e7691530468b",
+    "run_id": "d5dcd1e3-17ba-4511-8cf1-ebfaa3faf96c",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.5684
+        "latency_seconds": 0.5914
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.3326
+        "latency_seconds": 0.3961
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.8344
+        "latency_seconds": 5.8455
       }
     ],
-    "total_run_latency_seconds": 1.7541
+    "total_run_latency_seconds": 6.8398
   },
   {
-    "run_id": "1567cf01-24d3-4348-a317-c34baa40b2d0",
+    "run_id": "15760968-0d84-4733-949d-3208ac8578f9",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.5115
+        "latency_seconds": 0.5769
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.2432
+        "latency_seconds": 0.4044
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 1.2924
+        "latency_seconds": 1.1967
       }
     ],
-    "total_run_latency_seconds": 2.0697
+    "total_run_latency_seconds": 2.186
   },
   {
-    "run_id": "5da134da-279e-4a32-a950-c4c47dfb7d44",
+    "run_id": "2399f21f-a1d5-4b70-b726-7f0e77902935",
     "step_latencies": [
       {
         "step_name": "rewrite_query",
-        "latency_seconds": 0.4477
+        "latency_seconds": 3.9492
       },
       {
         "step_name": "retrieve_docs",
-        "latency_seconds": 0.3189
+        "latency_seconds": 0.3573
       },
       {
         "step_name": "synthesize_answer",
-        "latency_seconds": 0.9527
+        "latency_seconds": 1.3772
       }
     ],
-    "total_run_latency_seconds": 1.7365
+    "total_run_latency_seconds": 5.6902
   }
 ]

@@ -19,7 +19,7 @@ llm = ChatOpenAI(model="gpt-4.1", temperature=0)
 embeddings = OpenAIEmbeddings()                                                                                   
 loader = DirectoryLoader("data/hr_policies/")                                                                     
 docs = loader.load()                                                                                              
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)                                   
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=0)                                   
 splits = text_splitter.split_documents(docs)                                                                      
 vectorstore = FAISS.from_documents(documents=splits, embedding=embeddings)                                        
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})                                                      
@@ -60,7 +60,8 @@ def synthesize_answer(state: RAGState):
     prompt = ChatPromptTemplate.from_template("""
 Answer the following question based only on the provided context.
 Do not use any external knowledge or assumptions. ONLY THE INFORMATION IN THE CONTEXT IS ALLOWED.
-You must answer the question as close as possible to the provided context.
+You must answer the question as close as possible to the provided context. retain all relevant facts. 
+If context is not sufficient, say "I don't have information regarding...".
 Not all information in the context is relevant, so you must select the most relevant parts.
 <context>{context}</context>
 Question: {input}""")                                                 

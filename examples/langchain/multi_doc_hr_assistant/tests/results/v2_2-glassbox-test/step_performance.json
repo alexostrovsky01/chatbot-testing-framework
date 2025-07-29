@@ -1,417 +1,417 @@
 [
   {
-    "session_id": "64779d66-aa1c-498f-9551-9b243a88f581",
+    "session_id": "2928c959-92dd-4f12-82fd-91215015d206",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The rewritten queries accurately capture the intent of the user's original question, which is to determine the number of vacation days an employee receives per year. The sub-questions are clear and directly related to the annual vacation policy. However, the queries could be slightly improved by including variations such as 'paid time off per year' or 'vacation allowance per year' to cover more possible document phrasings."
+        "reasoning": "The rewritten queries accurately capture the intent of the user's original question, which is to determine the number of vacation days allotted per year. The sub-questions are clear and directly related to annual vacation entitlement. However, the queries could be slightly improved by including more specific terms such as 'employee vacation days per year' or 'company vacation policy' to ensure broader coverage and context alignment with HR documentation."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "All sub-questions are highly relevant to the user's original question and are likely to retrieve the most pertinent documents from the HR knowledge base regarding vacation days per year."
+        "reasoning": "All sub-questions are highly relevant to the user's inquiry about annual vacation days. They are well-targeted to retrieve information from HR policy documents regarding vacation entitlements, which aligns perfectly with the chatbot's goal and the user's intent."
       }
     }
   },
   {
-    "session_id": "64779d66-aa1c-498f-9551-9b243a88f581",
+    "session_id": "2928c959-92dd-4f12-82fd-91215015d206",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The retrieval step successfully includes the most relevant document (vacation_policy.txt), which directly answers the user's question about annual vacation days. However, it also retrieves three unrelated documents (payroll, performance reviews, expense policy) that do not pertain to vacation days. While the correct document is present, the inclusion of irrelevant documents slightly reduces the correctness score."
+        "reasoning": "The output includes the most relevant document ('vacation_policy.txt') that directly answers the user's question about annual vacation days. However, it also includes three unrelated documents (payroll, expense policy, performance reviews) that do not pertain to vacation days. While the correct document is present, the inclusion of irrelevant documents slightly reduces the correctness score."
       },
       "relevance": {
         "score": 3,
-        "reasoning": "Only one out of four retrieved documents is relevant to the user's question and the sub-questions. The other three documents are unrelated to vacation policy and do not contribute to answering the question. The presence of the correct document is positive, but the overall relevance is diluted by the unrelated results."
+        "reasoning": "Only one of the four retrieved documents is relevant to the user's question about vacation days. The other three documents are unrelated to vacation policy and do not help answer the question. The retrieval step should ideally filter out these irrelevant documents and focus on those directly related to vacation entitlements."
       }
     }
   },
   {
-    "session_id": "64779d66-aa1c-498f-9551-9b243a88f581",
+    "session_id": "2928c959-92dd-4f12-82fd-91215015d206",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The answer accurately states that full-time employees at ACME Corp receive 20 vacation days per year, which is directly supported by the most relevant retrieved document. However, it omits important details from the source, such as the fact that vacation days are accrued bi-weekly, the process for requesting time off, and the rollover policy for unused days. Including these details would provide a more complete and precise answer."
+        "reasoning": "The answer accurately states that full-time employees at ACME Corp receive 20 vacation days per year, which is directly supported by the most relevant retrieved document. However, it omits important details from the source, such as the accrual method (bi-weekly), the requirement to request time off in advance, and the rollover policy for unused days. Including these would provide a more complete and precise answer."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer is highly relevant to the user's question, directly addressing the number of vacation days per year for full-time employees at ACME Corp. It does not include any irrelevant information from the other retrieved documents."
+        "reasoning": "The answer is highly relevant to the user's question, directly addressing the number of vacation days per year for full-time employees. It correctly ignores irrelevant information from other retrieved documents and focuses on the vacation policy."
       }
     }
   },
   {
-    "session_id": "319ce5c1-3d36-413c-a5f1-e799952f4ea0",
+    "session_id": "2b03c18d-5d75-420d-b355-dccf412a18a9",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The rewritten queries accurately capture the intent of the original user question, which is to find out the maximum claimable amount for a client dinner. Each sub-question is a valid rephrasing or related query that would help retrieve relevant policy information from the vector store."
+        "reasoning": "The rewritten sub-questions accurately capture the intent of the original user question, which is to find out the maximum claimable amount for a client dinner. Each sub-question is a valid rephrasing or expansion of the original query, ensuring that relevant information can be retrieved from the vector store."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "All sub-questions are directly relevant to the user's inquiry about client dinner expense limits. They focus on maximum claim amounts, expense limits, and reimbursement policy, which are the key aspects needed to answer the original question."
+        "reasoning": "All sub-questions are directly relevant to the user's inquiry about expense limits for client dinners. They focus on the maximum claim, expense limits, and reimbursement policy, which are the key aspects needed to answer the user's question."
       }
     }
   },
   {
-    "session_id": "319ce5c1-3d36-413c-a5f1-e799952f4ea0",
+    "session_id": "2b03c18d-5d75-420d-b355-dccf412a18a9",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The retrieval step correctly includes the most relevant document (expense_policy.txt), which directly answers the user's question about the maximum claim for a client dinner. However, it also retrieves several irrelevant documents (vacation_policy.txt, payroll.txt, conduct.txt, it_onboarding.txt) that do not pertain to the user's query or the sub-questions. While the correct document is present, the inclusion of unrelated documents slightly reduces the correctness score."
+        "reasoning": "The retrieval step successfully included the most relevant document (expense_policy.txt), which directly answers the user's question about the maximum claim for a client dinner. However, it also retrieved several irrelevant documents (vacation_policy.txt, payroll.txt, conduct.txt, it_onboarding.txt) that do not pertain to the user's query or the sub-questions. While the correct document is present, the inclusion of unrelated documents slightly reduces the correctness score."
       },
       "relevance": {
         "score": 3,
-        "reasoning": "Only one out of the five retrieved documents is relevant to the user's question and the sub-questions. The other four documents are unrelated to expense claims or client dinners. Ideally, the retrieval step should return only relevant documents or at least prioritize them, so the relevance score is moderate."
+        "reasoning": "Only one out of five retrieved documents is relevant to the user's question and sub-questions. The other four documents are unrelated to expense claims or client dinners. Ideally, the retrieval step should filter out these irrelevant documents and return only those directly related to the expense policy, which would improve the focus and efficiency of the next workflow steps."
       }
     }
   },
   {
-    "session_id": "319ce5c1-3d36-413c-a5f1-e799952f4ea0",
+    "session_id": "2b03c18d-5d75-420d-b355-dccf412a18a9",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The answer accurately reflects the information found in the most relevant retrieved document (expense_policy.txt), which states that the reimbursement limit for client meals is $50 per person. No contradictory information is present in the other documents."
+        "reasoning": "The answer accurately reflects the information found in the most relevant retrieved document, which states that the reimbursement limit for client meals is $50 per person. No additional or conflicting information is present in the other documents."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer is directly relevant to the user's question about the maximum claim for a client dinner. It does not include any extraneous information and is concise and to the point."
+        "reasoning": "The answer directly addresses the user's question about the maximum claim for a client dinner, using the correct policy document. Irrelevant documents were ignored, and only the pertinent information was synthesized."
       }
     }
   },
   {
-    "session_id": "889d07a9-f8ec-4ae8-b825-2667f8703908",
+    "session_id": "39366476-12d3-44f4-817e-d05c406db991",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The rewritten queries accurately capture the intent of the user's original question, which is to find out when performance reviews are held. The sub-questions focus on the schedule, dates, and timing of performance reviews, which are all relevant aspects. However, the queries could be slightly improved by including more direct phrasing such as 'When are performance reviews held?' or 'performance review period' to ensure maximum coverage."
+        "reasoning": "The rewritten queries 'performance review schedule' and 'performance review dates' accurately capture the intent of the user's original question about the timing of performance reviews. However, they could be slightly improved by including more explicit temporal language such as 'when are performance reviews held' or 'timing of performance reviews' to ensure maximum alignment with the user's query."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "All the sub-questions are highly relevant to the user's original question. They are likely to retrieve documents that contain information about the timing and scheduling of performance reviews, which directly addresses the user's inquiry."
+        "reasoning": "Both sub-questions are highly relevant to the user's inquiry, as they directly pertain to the schedule and dates of performance reviews, which is the core of the original question."
       }
     }
   },
   {
-    "session_id": "889d07a9-f8ec-4ae8-b825-2667f8703908",
-    "step_name": "retrieve_docs",
-    "evaluation": {
-      "correctness": {
-        "score": 4,
-        "reasoning": "The retrieval step successfully included the most relevant document (performance_reviews.txt), which directly answers the user's question about the timing of performance reviews. However, it also retrieved three unrelated documents (payroll, IT onboarding, and conduct), which do not pertain to performance reviews. While the key document is present, the inclusion of irrelevant documents slightly reduces correctness."
-      },
-      "relevance": {
-        "score": 3,
-        "reasoning": "Only one out of four retrieved documents is relevant to the user's question and the sub-questions. The other three documents are unrelated to performance reviews and do not contribute to answering the query. The presence of unrelated documents lowers the overall relevance of the retrieval step."
-      }
-    }
-  },
-  {
-    "session_id": "889d07a9-f8ec-4ae8-b825-2667f8703908",
-    "step_name": "synthesize_answer",
-    "evaluation": {
-      "correctness": {
-        "score": 4,
-        "reasoning": "The answer 'Performance reviews are held every November.' is correct based on the most relevant retrieved document, which states that annual performance reviews occur every November. However, the document also mentions mid-year informal check-ins in May, which are part of the performance review process. The answer omits this detail, so it is not fully comprehensive."
-      },
-      "relevance": {
-        "score": 4,
-        "reasoning": "The answer is highly relevant to the user's question about the timing of performance reviews. It directly addresses when the formal reviews are held. However, it could be improved by mentioning the informal mid-year check-ins, which are also related to performance evaluations."
-      }
-    }
-  },
-  {
-    "session_id": "55ec9e37-f44c-4b0c-8f2f-73166bb8bb0a",
-    "step_name": "rewrite_query",
-    "evaluation": {
-      "correctness": {
-        "score": 4,
-        "reasoning": "The rewritten queries accurately capture the intent of the user's original question, focusing on the process and steps for submitting an expense report. However, the queries could be slightly improved by removing trailing spaces and possibly including variations such as 'How do I file an expense report?' or 'Expense reimbursement submission.' Overall, the output is correct and suitable for retrieving relevant documents."
-      },
-      "relevance": {
-        "score": 5,
-        "reasoning": "All sub-questions are highly relevant to the user's original query about submitting an expense report. They are well-aligned with the HR support chatbot's goal and will likely retrieve the most pertinent documents from the vector store."
-      }
-    }
-  },
-  {
-    "session_id": "55ec9e37-f44c-4b0c-8f2f-73166bb8bb0a",
+    "session_id": "39366476-12d3-44f4-817e-d05c406db991",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
         "score": 3,
-        "reasoning": "The output includes the correct and highly relevant expense policy document, which directly addresses the user's question about submitting an expense report. However, it also includes three unrelated documents (payroll, IT onboarding, and performance reviews) that are not relevant to the user's query or the sub-questions. This indicates that the retrieval step is not filtering results strictly enough based on the sub-questions."
+        "reasoning": "The output includes the correct and highly relevant document about performance review schedules, which directly answers the user's question. However, it also retrieves three unrelated documents (payroll, IT onboarding, and expense policy), which are not relevant to the sub-questions or the user's intent. This indicates that the retrieval step is not sufficiently filtering for relevance."
       },
       "relevance": {
         "score": 2,
-        "reasoning": "Only one out of four retrieved documents is relevant to the user's question about expense report submission. The other three documents pertain to unrelated HR topics and do not contribute useful information for answering the user's query. The presence of these irrelevant documents reduces the overall relevance of the retrieval step's output."
+        "reasoning": "Only one out of four retrieved documents is relevant to the user's question about performance reviews. The other three documents pertain to unrelated HR topics (payroll, IT onboarding, expense policy) and do not contribute to answering the question. The retrieval should be more focused to improve relevance."
       }
     }
   },
   {
-    "session_id": "55ec9e37-f44c-4b0c-8f2f-73166bb8bb0a",
+    "session_id": "39366476-12d3-44f4-817e-d05c406db991",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The answer accurately states the main requirement for submitting an expense report: using the Concur portal within 30 days of the expense. This is directly supported by the relevant document. However, it omits other important details from the source, such as the need for original receipts for claims over $25 and that only pre-approved, business-related expenses are reimbursed. Including these would make the answer more complete."
+        "reasoning": "The answer correctly states that performance reviews are held every November, which is directly supported by the relevant retrieved document. However, the document also mentions mid-year informal check-ins in May, which are part of the performance review process. The answer omits this detail, so it is not fully comprehensive."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer is highly relevant to the user's question about how to submit an expense report. It directly addresses the process and references the correct system (Concur portal) and timeframe, which are the most critical aspects of the submission process."
+        "reasoning": "The answer is highly relevant to the user's question about the timing of performance reviews. It directly addresses when the formal reviews are held, which is the main focus of the question."
       }
     }
   },
   {
-    "session_id": "ad49e6bf-5f12-42c4-8a97-abaa5fb3be25",
-    "step_name": "rewrite_query",
-    "evaluation": {
-      "correctness": {
-        "score": 5,
-        "reasoning": "The rewritten queries accurately capture the intent of the user's original question. They cover the main aspects: the policy on carrying over unused vacation days, the concept of rollover, and the possibility of expiration or forfeiture. These are all relevant sub-questions that would help retrieve comprehensive information from the HR policy documents."
-      },
-      "relevance": {
-        "score": 5,
-        "reasoning": "All sub-questions are highly relevant to the user's inquiry about carrying over unused vacation days. They are well-phrased to match likely document language and will help ensure that the most pertinent information is retrieved from the knowledge base."
-      }
-    }
-  },
-  {
-    "session_id": "ad49e6bf-5f12-42c4-8a97-abaa5fb3be25",
-    "step_name": "retrieve_docs",
-    "evaluation": {
-      "correctness": {
-        "score": 4,
-        "reasoning": "The retrieval step correctly includes the most relevant document (vacation_policy.txt), which directly addresses the user's question about carrying over unused vacation days. However, it also retrieves three unrelated documents (expense_policy.txt, it_onboarding.txt, payroll.txt) that do not pertain to vacation policy or the user's query. While the key document is present, the inclusion of irrelevant documents slightly reduces the correctness score."
-      },
-      "relevance": {
-        "score": 3,
-        "reasoning": "Only one out of four retrieved documents is relevant to the user's question and the sub-questions. The other three documents are unrelated to vacation policy and do not contribute useful information for answering the query. The presence of irrelevant documents lowers the overall relevance of the retrieval step."
-      }
-    }
-  },
-  {
-    "session_id": "ad49e6bf-5f12-42c4-8a97-abaa5fb3be25",
-    "step_name": "synthesize_answer",
-    "evaluation": {
-      "correctness": {
-        "score": 5,
-        "reasoning": "The answer accurately reflects the information found in the most relevant retrieved document (vacation_policy.txt). It correctly states that up to 5 unused vacation days can be carried over to the next calendar year and that rollover days expire on March 31st. No incorrect or missing information is present regarding the carryover policy."
-      },
-      "relevance": {
-        "score": 5,
-        "reasoning": "The answer is directly relevant to the user's question about carrying over unused vacation days. It omits unrelated information from other retrieved documents and focuses solely on the vacation policy, providing a concise and precise response."
-      }
-    }
-  },
-  {
-    "session_id": "5fa1f01b-255b-4dc9-9d82-d85654087e25",
+    "session_id": "42b96471-3eda-457e-9133-1194a71cbbf7",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The rewritten queries accurately capture the intent of the original user question, focusing on the initial phase of the performance review process. Both sub-questions are semantically aligned with the user's request. However, the first sub-question contains an unnecessary trailing space, and both could be slightly improved for clarity and completeness (e.g., including 'in HR' or 'in our company' for more context)."
+        "reasoning": "The sub-questions generated are generally correct and capture the intent of the user's original question, which is about the process of submitting an expense report. However, the phrasing of the first two sub-questions is a bit awkward (e.g., 'Submitting an expense report process' is not a natural query), and could be improved for clarity and grammatical accuracy."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "Both sub-questions are highly relevant to the original question, as they directly address the first step or initial stage of the performance review process. They are likely to retrieve the most pertinent documents from the vector store."
+        "reasoning": "All sub-questions are highly relevant to the user's query about submitting an expense report. They focus on the process, steps, and method of filing an expense report, which aligns well with the user's intent and the HR support chatbot's domain."
       }
     }
   },
   {
-    "session_id": "5fa1f01b-255b-4dc9-9d82-d85654087e25",
+    "session_id": "42b96471-3eda-457e-9133-1194a71cbbf7",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
-        "score": 4,
-        "reasoning": "The output includes a document directly relevant to the user's question about the first step in the performance review process. The first document retrieved describes the performance review process, including the self-assessment as the initial step. However, two other documents unrelated to performance reviews (IT onboarding and code of conduct) were also retrieved, which slightly reduces the correctness score."
+        "score": 3,
+        "reasoning": "The output includes one highly relevant document (expense_policy.txt) that directly addresses the user's question about submitting an expense report. However, it also includes three unrelated documents (payroll.txt, performance_reviews.txt, it_onboarding.txt) that do not pertain to expense report submission. While the correct document is present, the inclusion of irrelevant documents reduces the overall correctness of the retrieval step."
       },
       "relevance": {
-        "score": 3,
-        "reasoning": "While the most relevant document was retrieved, the inclusion of two irrelevant documents (IT onboarding and code of conduct) indicates that the retrieval process is not sufficiently focused. Ideally, only documents directly related to performance reviews should have been returned for this query."
+        "score": 2,
+        "reasoning": "Only one out of four retrieved documents is relevant to the user's query and the sub-questions. The other three documents are unrelated to expense reporting and do not contribute useful information for answering the user's question. The retrieval should have filtered out these irrelevant documents to improve focus and efficiency."
       }
     }
   },
   {
-    "session_id": "5fa1f01b-255b-4dc9-9d82-d85654087e25",
+    "session_id": "42b96471-3eda-457e-9133-1194a71cbbf7",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
-        "score": 5,
-        "reasoning": "The answer accurately reflects the information found in the most relevant retrieved document, which states that the performance review process at ACME Corp begins with a self-assessment by the employee. No extraneous or incorrect information is included."
+        "score": 4,
+        "reasoning": "The answer accurately states the main process for submitting an expense report at ACME Corp: using the Concur portal within 30 days of the expense. This is directly supported by the relevant retrieved document. However, it omits an important detail from the same document: original receipts are mandatory for all claims over $25. Including this would make the answer more complete and precise."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer is directly relevant to the user's question about the first step in the performance review process. It ignores irrelevant documents and focuses solely on the content that addresses the question."
+        "reasoning": "The answer is highly relevant to the user's question about how to submit an expense report. It directly addresses the process and the required portal, and the 30-day submission window, which are the most pertinent details for the user's query."
       }
     }
   },
   {
-    "session_id": "a5bdcc52-2e05-4018-af72-8876b9f9d993",
+    "session_id": "a6e2a7fb-644e-42f0-a2dc-2c051391750d",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The rewritten sub-questions accurately capture the intent of the original user question, focusing on whether software purchases for a project are eligible for expense reimbursement. Both sub-questions are clear, specific, and directly related to the user's inquiry."
+        "reasoning": "The rewritten sub-questions accurately capture the intent of the user's original question. They cover the main aspects: whether unused vacation days can be carried over, the concept of rollover, and the possibility of expiration or forfeiture. These are all relevant angles to retrieve comprehensive policy information."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The sub-questions are highly relevant to the user's original question and the overall HR support chatbot's goal of addressing expense policy queries. They are well-phrased to retrieve the most pertinent policy documents regarding software expenses."
+        "reasoning": "All sub-questions are highly relevant to the user's inquiry about carrying over unused vacation days. They are well-phrased for searching a vector store and will likely retrieve the most pertinent HR policy documents."
       }
     }
   },
   {
-    "session_id": "a5bdcc52-2e05-4018-af72-8876b9f9d993",
+    "session_id": "a6e2a7fb-644e-42f0-a2dc-2c051391750d",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
-        "score": 3,
-        "reasoning": "The retrieval step returned four documents, but only two are potentially relevant to the user's question about expensing software: the expense policy and the IT onboarding document. The expense policy document does not mention software or technology expenses specifically, and the IT onboarding document only states that all software must be approved by IT, without addressing reimbursement or expensing. The other two documents (vacation policy and payroll) are unrelated. The retrieval is partially correct in that it includes the most likely relevant documents, but it also includes irrelevant ones and misses the opportunity to focus more tightly on expense policy details regarding software."
+        "score": 4,
+        "reasoning": "The retrieval step correctly includes the most relevant document (vacation_policy.txt), which directly addresses the user's question about carrying over unused vacation days. However, it also retrieves three unrelated documents (expense_policy.txt, it_onboarding.txt, payroll.txt) that do not pertain to vacation policy or carryover rules. Ideally, only relevant documents should be retrieved, or at least ranked higher."
       },
       "relevance": {
         "score": 3,
-        "reasoning": "Of the four documents retrieved, only two are tangentially relevant to the sub-questions about expensing software: the expense policy (which is general) and the IT onboarding (which mentions software approval but not expenses). The inclusion of vacation and payroll policies reduces the overall relevance of the retrieved set. Ideally, the retrieval should have prioritized documents that specifically address software purchases and expense reimbursement policies."
+        "reasoning": "While the most relevant document is present and contains the necessary information to answer the user's question, the inclusion of unrelated documents reduces the overall relevance of the retrieved set. The retrieval could be improved by filtering out documents that do not mention vacation, carryover, or related terms."
       }
     }
   },
   {
-    "session_id": "a5bdcc52-2e05-4018-af72-8876b9f9d993",
+    "session_id": "a6e2a7fb-644e-42f0-a2dc-2c051391750d",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
-        "score": 4,
-        "reasoning": "The answer accurately reflects the information in the retrieved documents, specifically that 'All software must be approved by IT.' It correctly infers that IT approval is required before expensing software. However, it does not explicitly mention that the expense policy document does not directly address software expenses or reimbursement, which would provide a more complete answer. The answer could be improved by clarifying that the expense policy does not specifically list software as a reimbursable expense and that IT approval is a prerequisite."
+        "score": 5,
+        "reasoning": "The answer accurately reflects the information found in the relevant vacation policy document. It correctly states that up to 5 unused vacation days can be carried over to the next calendar year and that these rollover days expire on March 31st. No incorrect or missing information is present regarding the carryover policy."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer is highly relevant to the user's question about expensing software for a project. It directly addresses the need for IT approval, which is the key point from the retrieved documents, and provides clear guidance on the next step for the user."
+        "reasoning": "The answer is directly relevant to the user's question about carrying over unused vacation days. It ignores irrelevant information from non-vacation policy documents and focuses solely on the vacation carryover policy, providing a concise and complete response."
       }
     }
   },
   {
-    "session_id": "bd23a16b-76b7-430c-a464-e7691530468b",
+    "session_id": "b11a4469-b273-47ec-885d-1794868c2f50",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The output correctly identifies the two main topics in the user's question: computer setup for new employees and payroll information. However, the phrasing could be slightly improved for clarity and completeness. For example, 'basic computer setup for new employees' could be more specific, such as 'What do I need to know about my computer as a new employee?' and 'how do I get paid as a new employee' could be rephrased to 'What is the payroll process for new employees?' Minor grammatical issues (extra spaces) are present."
+        "reasoning": "The rewritten queries accurately capture the intent of the user's original question, focusing on the initial phase of the performance review process. Both sub-questions are clear and semantically aligned with the user's request. However, the first sub-question contains an unnecessary trailing space, and both could be slightly improved for clarity (e.g., 'performance review process' vs. 'performance evaluation')."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "Both sub-questions are highly relevant to the user's original query. They directly address the two aspects the user is asking about: computer onboarding and payroll. No irrelevant or missing topics."
+        "reasoning": "Both sub-questions are highly relevant to the user's query about the first step in the performance review process. They are likely to retrieve documents that address the initial stage of performance reviews, which is exactly what the user is seeking."
       }
     }
   },
   {
-    "session_id": "bd23a16b-76b7-430c-a464-e7691530468b",
+    "session_id": "b11a4469-b273-47ec-885d-1794868c2f50",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The retrieval step correctly returns documents relevant to the sub-questions: one about IT onboarding (computer setup) and one about payroll (getting paid). However, it also includes two less relevant documents: one about the code of conduct and one about the expense policy, which are not directly related to the user's question. The most important documents are present, but some irrelevant ones are included."
+        "reasoning": "The output includes a document directly relevant to the user's question about the first step in the performance review process. The first document retrieved describes the performance review process, including the self-assessment as the initial step. However, two other documents retrieved are unrelated to performance reviews (one about IT onboarding and one about the code of conduct), which slightly reduces the correctness score."
       },
       "relevance": {
         "score": 3,
-        "reasoning": "Half of the retrieved documents (IT onboarding and payroll) are highly relevant to the sub-questions. The other two (conduct and expense policy) are not relevant to the user's immediate needs about computer setup and payroll. The presence of these less relevant documents lowers the overall relevance score."
+        "reasoning": "Only one out of the three retrieved documents is relevant to the user's query about the performance review process. The other two documents are not relevant to the topic, indicating that the retrieval step could be more focused and precise in filtering out unrelated documents."
       }
     }
   },
   {
-    "session_id": "bd23a16b-76b7-430c-a464-e7691530468b",
+    "session_id": "b11a4469-b273-47ec-885d-1794868c2f50",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The synthesized answer accurately reflects the information from the most relevant documents: it covers the new employee's computer setup (receiving a MacBook Pro, IT setup, software approval) and payroll process (bi-weekly, pay stubs, direct deposit). No incorrect or misleading information is present."
+        "reasoning": "The answer accurately reflects the information found in the most relevant retrieved document, which states that the performance review process begins with a self-assessment by the employee. This directly addresses the user's question about the first step."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer directly addresses both parts of the user's question\u2014what to know about their computer and how they get paid\u2014without including unrelated details from other documents (e.g., expense policy or code of conduct). The response is concise and focused on the user's needs."
+        "reasoning": "The synthesized answer is directly relevant to the user's question and is based solely on the appropriate document about performance reviews. Irrelevant documents about IT onboarding and code of conduct were correctly ignored."
       }
     }
   },
   {
-    "session_id": "1567cf01-24d3-4348-a317-c34baa40b2d0",
+    "session_id": "f8ab44da-e3e8-458a-a7b6-6abf36bd6ff2",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The output accurately rewrites the user's compound question into two clear and relevant sub-questions: one about travel booking procedures for client visits, and another about the process for requesting a day off after business travel. Both sub-questions directly address the user's original intent and are suitable for querying the HR knowledge base."
+        "reasoning": "The sub-questions accurately capture the intent of the user's original question, which is about whether software purchased for a project can be expensed. Each sub-question is a valid rephrasing or expansion of the original, focusing on the key aspects: software, expensing, and project work."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The sub-questions are highly relevant to the user's needs and the chatbot's HR support scope. They focus on travel booking and time-off procedures, which are both covered by the HR policies the chatbot is designed to address."
+        "reasoning": "All sub-questions are directly relevant to the user's inquiry and the HR Expense Policy domain. They are well-targeted to retrieve documents that would answer the user's question about expensing software for work-related projects."
       }
     }
   },
   {
-    "session_id": "1567cf01-24d3-4348-a317-c34baa40b2d0",
+    "session_id": "f8ab44da-e3e8-458a-a7b6-6abf36bd6ff2",
+    "step_name": "retrieve_docs",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The retrieval step returned four documents, but only one (the expense policy) is directly relevant to the user's question about expensing software. The IT onboarding document is tangentially relevant as it mentions software approval, but does not address reimbursement or expensing. The vacation policy and code of conduct documents are not relevant to the question. The retrieval step should have prioritized documents specifically addressing expense policy and, if available, any policy on software purchases or IT procurement. The inclusion of unrelated documents suggests the retrieval is not sufficiently precise."
+      },
+      "relevance": {
+        "score": 3,
+        "reasoning": "Of the four documents retrieved, only one (expense policy) is directly relevant, and one (IT onboarding) is marginally relevant. The other two documents (vacation policy and code of conduct) are not relevant to the user's question or the sub-questions. Ideally, the retrieval should have focused on documents that address expense reimbursement and software purchase policies, excluding unrelated topics."
+      }
+    }
+  },
+  {
+    "session_id": "f8ab44da-e3e8-458a-a7b6-6abf36bd6ff2",
+    "step_name": "synthesize_answer",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The answer accurately reflects the information found in the retrieved documents: the expense policy document does not mention software, and the IT onboarding document states that all software must be approved by IT, but does not address reimbursement. The answer correctly avoids making unsupported claims. However, it could be improved by explicitly advising the user to seek pre-approval from IT or HR before making such purchases, as this is implied by the policies."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The answer is directly relevant to the user's question and synthesizes the most pertinent information from the retrieved documents. It addresses both the expense policy and the IT approval requirement, which are the most relevant aspects for the user's query about expensing software."
+      }
+    }
+  },
+  {
+    "session_id": "d5dcd1e3-17ba-4511-8cf1-ebfaa3faf96c",
+    "step_name": "rewrite_query",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output correctly identifies two sub-questions from the user's query: one about computer setup for new employees and one about how employees get paid. However, the phrasing could be slightly improved for clarity and completeness. For example, 'basic computer setup and usage for new employees' could be more specific, such as 'IT onboarding process and computer setup for new employees.' The second sub-question is accurate but could be phrased as 'how do new employees receive their salary or get paid.' Overall, the intent is captured well."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "Both sub-questions are highly relevant to the user's original query, which asks about what they need to know regarding their computer (IT onboarding) and payment (payroll). The step output focuses directly on these two topics, ensuring that the next step will retrieve the most pertinent documents."
+      }
+    }
+  },
+  {
+    "session_id": "d5dcd1e3-17ba-4511-8cf1-ebfaa3faf96c",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The output includes documents relevant to both sub-questions: the expense policy (for travel booking and reimbursement) and the vacation policy (for requesting a day off). However, the IT onboarding and payroll documents are not relevant to the user's query. The retrieval step should ideally only return documents pertinent to the sub-questions, so including unrelated documents slightly reduces correctness."
+        "reasoning": "The retrieved documents include the most relevant information for the sub-questions: the IT onboarding document addresses computer setup for new employees, and the payroll document covers how employees get paid. However, two additional documents (conduct and vacation policy) are included that are not directly relevant to the user's question or the sub-questions. While this does not introduce incorrect information, it does reduce precision."
       },
       "relevance": {
-        "score": 4,
-        "reasoning": "Two of the four retrieved documents are directly relevant to the user's needs: expense policy (for travel booking) and vacation policy (for taking a day off). The other two (IT onboarding and payroll) are not relevant, which dilutes the overall relevance of the output. A more focused retrieval would have scored higher."
+        "score": 3,
+        "reasoning": "Two of the four retrieved documents are highly relevant (IT onboarding and payroll). The other two (conduct and vacation policy) are not relevant to the user's question about computer setup and payment. The inclusion of these irrelevant documents lowers the overall relevance of the output."
       }
     }
   },
   {
-    "session_id": "1567cf01-24d3-4348-a317-c34baa40b2d0",
+    "session_id": "d5dcd1e3-17ba-4511-8cf1-ebfaa3faf96c",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The synthesized answer accurately reflects the content of the retrieved documents. It correctly outlines the procedures for booking travel (pre-approval, reimbursement, expense report submission, receipt requirements) and for requesting a day off (two weeks' advance notice, employee portal, manager approval). No critical information from the relevant documents is omitted or misrepresented."
+        "reasoning": "The answer accurately synthesizes information from the relevant documents. It correctly states that new employees receive a MacBook Pro, need to see IT for setup, and that all software must be approved by IT. It also accurately describes the payroll process, including the bi-weekly schedule, pay stub availability, and mandatory direct deposit. No incorrect or misleading information is present."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The answer is directly relevant to the user's question, addressing both the travel booking and day-off procedures. It ignores irrelevant information from unrelated documents (e.g., IT onboarding, payroll) and focuses only on the policies that pertain to the user's needs."
+        "reasoning": "The answer directly addresses both parts of the user's question: what they need to know about their computer (IT onboarding) and how they get paid (payroll). It does not include irrelevant information from unrelated documents, such as vacation policy or code of conduct, maintaining focus on the user's needs."
       }
     }
   },
   {
-    "session_id": "5da134da-279e-4a32-a950-c4c47dfb7d44",
+    "session_id": "15760968-0d84-4733-949d-3208ac8578f9",
     "step_name": "rewrite_query",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The output accurately rewrites the user's compound question into two clear sub-questions: one about the policy on professional conduct during business trips, and another about the procedure for filing business trip expenses. Both sub-questions directly address the user's original intent."
+        "reasoning": "The output correctly breaks down the user's compound question into two clear sub-questions: one about booking travel for a client visit and another about requesting a day off after a business trip. Both sub-questions accurately reflect the user's original intent and are phrased in a way that will facilitate effective document retrieval."
       },
       "relevance": {
         "score": 5,
-        "reasoning": "The sub-questions are highly relevant to the original user query and align with the HR support chatbot's scope, specifically covering code of conduct and expense policy during business trips."
+        "reasoning": "Both sub-questions are highly relevant to the user's original query and the HR support chatbot's scope. They directly address the procedures the user is asking about, ensuring that the next step will retrieve the most pertinent documents."
       }
     }
   },
   {
-    "session_id": "5da134da-279e-4a32-a950-c4c47dfb7d44",
+    "session_id": "15760968-0d84-4733-949d-3208ac8578f9",
     "step_name": "retrieve_docs",
     "evaluation": {
       "correctness": {
         "score": 4,
-        "reasoning": "The step correctly retrieves documents that are relevant to the two sub-questions: one about professional conduct (conduct.txt) and one about expense filing (expense_policy.txt). However, it also retrieves unrelated documents about performance reviews, payroll, and vacation policy, which are not relevant to the user's question. The correct documents are present, but the inclusion of unrelated ones slightly reduces the score."
+        "reasoning": "The retrieved documents include the expense policy (relevant for booking travel for a client visit) and the vacation policy (relevant for requesting a day off after a business trip), which directly address the sub-questions. However, the IT onboarding and payroll documents are not relevant to the user's query and should not have been retrieved. The correct documents are present, but the inclusion of unrelated documents slightly reduces the score."
       },
       "relevance": {
-        "score": 3,
-        "reasoning": "While the two most relevant documents are included, the output also contains three irrelevant documents. Ideally, only documents directly related to professional conduct during business trips and expense filing should be retrieved. The presence of unrelated documents (performance reviews, payroll, vacation policy) dilutes the relevance of the retrieval step."
+        "score": 4,
+        "reasoning": "Two of the four retrieved documents are highly relevant to the user's sub-questions. The other two (IT onboarding and payroll) are not relevant to travel booking or vacation procedures. The retrieval system is partially effective but could be improved by filtering out unrelated documents."
       }
     }
   },
   {
-    "session_id": "5da134da-279e-4a32-a950-c4c47dfb7d44",
+    "session_id": "15760968-0d84-4733-949d-3208ac8578f9",
+    "step_name": "synthesize_answer",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The answer accurately summarizes the procedures for booking travel and requesting a day off, based on the retrieved documents. It correctly mentions pre-approval, reimbursement limits, submission through the Concur portal, and the need for original receipts for expenses. For the day off, it states the requirement to request time off at least two weeks in advance via the employee portal and that manager approval is required. However, it omits the detail that vacation days are accrued and does not mention the need to ensure the employee has sufficient accrued vacation days. It also does not specify that unused vacation days can be rolled over, which could be relevant if the user is concerned about eligibility."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The answer is highly relevant to the user's question, directly addressing both the travel booking and day-off procedures. It draws from the correct documents and does not include unrelated information from the IT onboarding or payroll documents."
+      }
+    }
+  },
+  {
+    "session_id": "2399f21f-a1d5-4b70-b726-7f0e77902935",
+    "step_name": "rewrite_query",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output correctly rewrites the user's compound question into two clear sub-questions: one about the policy on professional conduct during business trips, and one about the procedure for filing expenses. Both sub-questions accurately reflect the user's original intent and are suitable for querying a vector store."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "Both sub-questions are highly relevant to the user's original query and the overall HR support chatbot's scope. They directly address the two distinct topics raised by the user: conduct during business trips and expense filing procedures."
+      }
+    }
+  },
+  {
+    "session_id": "2399f21f-a1d5-4b70-b726-7f0e77902935",
+    "step_name": "retrieve_docs",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The output includes documents relevant to both sub-questions: one about professional conduct (conduct.txt) and one about expense filing (expense_policy.txt). However, it also includes three unrelated documents (performance_reviews.txt, payroll.txt, vacation_policy.txt) that do not pertain to the user's query. While the correct documents are present, the inclusion of irrelevant documents reduces the precision of the retrieval."
+      },
+      "relevance": {
+        "score": 3,
+        "reasoning": "Only two out of the five retrieved documents are relevant to the user's sub-questions. The other three documents are unrelated to business trip conduct or expense filing. This means the retrieval is partially relevant but not well-focused, as it introduces unnecessary information that could confuse downstream steps."
+      }
+    }
+  },
+  {
+    "session_id": "2399f21f-a1d5-4b70-b726-7f0e77902935",
     "step_name": "synthesize_answer",
     "evaluation": {
       "correctness": {
         "score": 5,
-        "reasoning": "The synthesized answer accurately reflects the content of the most relevant documents. It correctly summarizes the expectations for professional conduct (ethical standards, professional communication, no harassment or discrimination) and provides a clear, step-by-step procedure for filing expenses (use of Concur portal, 30-day deadline, receipt requirements, reimbursement limits). No incorrect or misleading information is present."
+        "reasoning": "The synthesized answer accurately reflects the content of the retrieved documents relevant to the user's question. It correctly summarizes the policy on professional conduct (ethical standards, professionalism, no harassment/discrimination) and the procedure for filing expenses (Concur portal, 30-day deadline, receipts over $25, reimbursement details). No incorrect or misleading information is present."
       },
       "relevance": {
         "score": 5,
