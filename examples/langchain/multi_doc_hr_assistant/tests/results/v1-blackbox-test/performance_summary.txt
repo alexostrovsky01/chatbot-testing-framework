@@ -1,0 +1,97 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+
+# Deep Dive Workflow Analysis
+
+# Chatbot Evaluation Deep-Dive Report
+
+## Overall Summary
+
+The chatbot demonstrates strong performance in generating safe, policy-adherent, and generally coherent final answers, with high average scores across most criteria. However, both the final answers and internal workflow steps reveal recurring issues with completeness and accuracy, particularly in multi-part or detail-oriented queries, indicating gaps in information retrieval and synthesis.
+
+---
+
+## Key Findings
+
+- **Positives:**
+  - Final answers are consistently safe (5.0/5.0) and adhere well to policy guidelines (4.7/5.0).
+  - Responses are generally coherent and relevant (4.4/5.0), maintaining professionalism and clarity.
+  - The workflow step achieves high relevance (4.4/5.0), indicating that retrieved information is usually on-topic.
+
+- **Negatives:**
+  - Final answers often lack completeness, omitting key details present in model answers (answer quality: 4.0/5.0).
+  - Internal workflow correctness is notably lower (3.2/5.0), with frequent issues in fully addressing multi-part questions or referencing authoritative sources.
+  - Some answers introduce unsupported assumptions, risking minor policy violations and potential misinformation.
+  - The workflow sometimes fails to synthesize all relevant aspects of a user's query, especially when multiple topics are involved.
+
+---
+
+## Final Answer Analysis
+
+### Criterion Breakdown
+
+- **answer_quality_vs_model (4.00/5.0):**
+  - The chatbot's answers are generally factually correct but often incomplete compared to the model answer.
+  - Common issues include omission of required procedures (e.g., travel booking, expense processes) and missing secondary details (e.g., informal check-ins, IT onboarding steps).
+  - Occasionally, answers introduce unsupported statements (e.g., "direct deposit is mandatory") not present in the model or context.
+
+- **coherence_and_relevance (4.40/5.0):**
+  - Responses are typically on-topic and logically structured.
+  - Lower scores stem from partial coverage of user queries, especially when questions have multiple components.
+  - Incomplete answers reduce overall coherence and relevance, even when the addressed portion is accurate.
+
+- **policy_adherence (4.70/5.0):**
+  - The chatbot maintains a professional tone and avoids prohibited content.
+  - Minor policy breaches occur when the bot makes assumptions not supported by the provided context (e.g., mandatory direct deposit).
+
+- **safety (5.00/5.0):**
+  - No safety issues were identified; all responses are appropriate and risk-free.
+
+#### Common Themes in Low Scores
+
+- Incomplete answers to multi-part questions.
+- Omission of important procedural or contextual details.
+- Occasional introduction of unsupported or assumed information.
+
+---
+
+## Step-by-Step Analysis
+
+### Step: full_rag_pipeline_v1
+
+- **Correctness (3.20/5.0):**
+  - The workflow often provides direct answers but lacks verification or reference to authoritative sources, leading to potential inaccuracies.
+  - Incomplete handling of multi-part queries is a recurring issue, with the system frequently addressing only one aspect of the user's request.
+  - Some answers make assumptions about company policies without explicit evidence, risking misinformation.
+
+- **Relevance (4.40/5.0):**
+  - Retrieved information is generally relevant to the user's question.
+  - Relevance drops when the workflow fails to address all components of a query, particularly in complex or multi-faceted scenarios.
+
+#### Common Error Patterns
+
+- Failure to synthesize and present all relevant information for multi-part questions.
+- Lack of explicit references or disclaimers when policy details are uncertain.
+- Over-reliance on partial context, leading to incomplete or potentially misleading answers.
+
+---
+
+## Actionable Recommendations
+
+- **Enhance Multi-Part Query Handling:**
+  - Improve the system's ability to detect and address all components of complex user questions, ensuring comprehensive answers.
+- **Strengthen Information Sourcing:**
+  - Require the workflow to reference authoritative sources or include disclaimers when policy details are not fully certain.
+- **Reduce Unsupported Assumptions:**
+  - Implement stricter checks to prevent the introduction of information not present in the context or model answer.
+- **Improve Workflow Correctness:**
+  - Refine the retrieval and synthesis logic to ensure that all relevant details are included, especially for procedural or policy-related queries.
+- **Continuous Evaluation:**
+  - Regularly review low-scoring cases to identify new error patterns and update training or retrieval strategies accordingly.

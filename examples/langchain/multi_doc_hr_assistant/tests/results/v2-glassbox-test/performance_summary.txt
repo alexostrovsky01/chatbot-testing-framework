@@ -1,0 +1,125 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+
+# Deep Dive Workflow Analysis
+
+# Chatbot Evaluation Deep-Dive Report
+
+## Overall Summary
+
+The chatbot demonstrates strong performance in generating safe, policy-adherent, and generally coherent final answers, but consistently falls short in completeness and coverage compared to model answers. Internal workflow steps, particularly query rewriting and document retrieval/reranking, exhibit significant weaknesses, leading to incomplete or partially relevant responses that impact the overall answer quality.
+
+---
+
+## Key Findings
+
+- **Positives:**
+  - Final answers are consistently safe (5.0/5.0) and adhere well to policy (4.7/5.0).
+  - Coherence and relevance in final answers are strong (4.4/5.0), with responses generally well-structured and understandable.
+  - The answer synthesis step shows relatively high relevance (4.1/5.0), indicating some ability to extract and summarize key information.
+
+- **Negatives:**
+  - Final answers are less complete than model answers, often omitting key aspects of multi-part user queries.
+  - The chatbot frequently fails to synthesize information from all relevant documents, leading to partial answers.
+  - The query rewriting step is notably weak (2.0/5.0 correctness, 2.2/5.0 relevance), producing vague, repetitive, or unhelpful sub-questions.
+  - Document retrieval and reranking steps suffer from low correctness (2.4/5.0 and 2.5/5.0, respectively) and issues with duplication, irrelevance, and omission of key documents.
+  - Workflow errors (duplication, missing document IDs, lack of deduplication) reduce traceability and downstream answer quality.
+
+---
+
+## Final Answer Analysis
+
+### Criterion: answer_quality_vs_model (3.90 / 5.0)
+- **Observations:** Answers are factually correct but consistently less complete than model answers. The chatbot often omits secondary or related information present in the model answer, such as informal check-ins, travel booking processes, or professional conduct policies.
+- **Common Low-Score Themes:**
+  - Incomplete coverage of multi-part questions.
+  - Omission of relevant details found in the model answer.
+  - Focus on only one aspect of the user's query, ignoring others.
+
+### Criterion: coherence_and_relevance (4.40 / 5.0)
+- **Observations:** Responses are generally well-structured and relevant to the part of the question they address. However, relevance drops when the answer fails to cover all aspects of the user's query.
+- **Common Low-Score Themes:**
+  - Partial answers that address only a subset of the user's needs.
+  - Introduction of unsupported assumptions not present in the context.
+  - Omission of key information, leading to incomplete relevance.
+
+### Criterion: policy_adherence (4.70 / 5.0)
+- **Observations:** The chatbot mostly follows policy, with rare violations such as making unsupported assumptions (e.g., stating direct deposit is mandatory without evidence).
+- **Common Low-Score Themes:**
+  - Guessing or making assumptions not supported by the provided context.
+  - Failing to explicitly acknowledge when information is missing.
+
+### Criterion: safety (5.00 / 5.0)
+- **Observations:** No safety issues were observed. Responses are consistently safe, professional, and free from inappropriate content.
+
+---
+
+## Step-by-Step Workflow Analysis
+
+### Step: rewrite_query
+- **Average Correctness:** 2.00 / 5.0
+- **Average Relevance:** 2.20 / 5.0
+- **Error Patterns:**
+  - Sub-questions are vague, repetitive, or simply restate the original question.
+  - Lack of specificity and actionable breakdowns for document retrieval.
+  - Failure to decompose complex queries into distinct, relevant sub-questions.
+
+### Step: retrieve_docs
+- **Average Correctness:** 2.40 / 5.0
+- **Average Relevance:** 2.30 / 5.0
+- **Error Patterns:**
+  - Retrieval of irrelevant documents alongside relevant ones.
+  - Frequent duplication of documents in the output.
+  - Insufficient filtering, leading to cluttered and confusing results.
+  - Omission of key documents directly related to the user's query.
+
+### Step: rerank_docs
+- **Average Correctness:** 2.50 / 5.0
+- **Average Relevance:** 3.80 / 5.0
+- **Error Patterns:**
+  - Reranked sets often include duplicates and omit highly relevant documents.
+  - Incomplete coverage of all aspects of the user's query.
+  - Loss of traceability due to missing document IDs.
+  - Focus on only one part of multi-faceted questions.
+
+### Step: synthesize_answer
+- **Average Correctness:** 3.60 / 5.0
+- **Average Relevance:** 4.10 / 5.0
+- **Error Patterns:**
+  - Answers accurately summarize available information but often miss relevant content from omitted documents.
+  - Incomplete synthesis when multiple documents are relevant.
+  - Partial answers that do not fully address all user sub-questions.
+
+---
+
+## Actionable Recommendations
+
+- **Improve Query Rewriting:**
+  - Enhance the logic for decomposing complex user queries into specific, actionable sub-questions that cover all aspects of the original request.
+  - Implement checks to avoid repetition and ensure sub-questions are distinct and relevant.
+
+- **Refine Document Retrieval and Reranking:**
+  - Strengthen filtering and deduplication mechanisms to eliminate irrelevant and duplicate documents.
+  - Ensure retrieval and reranking steps prioritize documents that address all facets of the user's query.
+  - Maintain document IDs throughout the workflow for traceability.
+
+- **Enhance Answer Synthesis:**
+  - Develop logic to ensure synthesis incorporates information from all relevant documents, especially for multi-part questions.
+  - Add explicit handling for cases where information is missing or ambiguous, rather than making unsupported assumptions.
+
+- **Monitor and Enforce Policy Adherence:**
+  - Implement safeguards to prevent the chatbot from making unsupported assumptions or guesses.
+  - Encourage explicit statements when information is not available in the provided context.
+
+- **Continuous Evaluation and Feedback:**
+  - Regularly review low-scoring cases to identify emerging error patterns.
+  - Use targeted retraining or rule adjustments to address recurring workflow weaknesses.
+
+---

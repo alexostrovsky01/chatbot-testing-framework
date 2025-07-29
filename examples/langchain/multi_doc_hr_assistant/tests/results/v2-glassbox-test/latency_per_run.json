@@ -1,0 +1,222 @@
+[
+  {
+    "run_id": "1597a032-1420-45e9-a29a-965c0b944fbc",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.482
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0991
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.3559
+      }
+    ],
+    "total_run_latency_seconds": 0.9427
+  },
+  {
+    "run_id": "f1e66d83-42a5-4869-bf12-f66c0f6f6745",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.496
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.1003
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.4773
+      }
+    ],
+    "total_run_latency_seconds": 1.0803
+  },
+  {
+    "run_id": "70809396-a548-4598-ba8d-4ff2a717bbcf",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.3791
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0851
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.4571
+      }
+    ],
+    "total_run_latency_seconds": 0.9313
+  },
+  {
+    "run_id": "3f7603b4-a9ed-4ffb-aaeb-38cd24949b43",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.4726
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0974
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.559
+      }
+    ],
+    "total_run_latency_seconds": 1.1412
+  },
+  {
+    "run_id": "ddb7c377-ba70-4a51-9bea-d4325ae47087",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.5207
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0903
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.5092
+      }
+    ],
+    "total_run_latency_seconds": 1.1348
+  },
+  {
+    "run_id": "303906a2-0ab3-44bc-9412-3f57dcf226f2",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.4607
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.079
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.6371
+      }
+    ],
+    "total_run_latency_seconds": 1.1938
+  },
+  {
+    "run_id": "2c0d4f86-f3c1-41b8-85ab-f2ba723d9e15",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.4614
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0932
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.7804
+      }
+    ],
+    "total_run_latency_seconds": 1.3567
+  },
+  {
+    "run_id": "dec2f102-1da4-4ffe-8428-cafa855cd318",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.4013
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0764
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.6631
+      }
+    ],
+    "total_run_latency_seconds": 1.1644
+  },
+  {
+    "run_id": "c039e804-4976-4ed1-b41e-c430cc45a6c0",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.6118
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0878
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.5157
+      }
+    ],
+    "total_run_latency_seconds": 1.2378
+  },
+  {
+    "run_id": "9058d4f9-83c4-4e7e-91ee-b70f0fcd4ec9",
+    "step_latencies": [
+      {
+        "step_name": "rewrite_query",
+        "latency_seconds": 0.0
+      },
+      {
+        "step_name": "retrieve_docs",
+        "latency_seconds": 0.3823
+      },
+      {
+        "step_name": "rerank_docs",
+        "latency_seconds": 0.0779
+      },
+      {
+        "step_name": "synthesize_answer",
+        "latency_seconds": 0.7224
+      }
+    ],
+    "total_run_latency_seconds": 1.2156
+  }
+]

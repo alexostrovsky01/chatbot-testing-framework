@@ -1,0 +1,102 @@
+[
+  {
+    "run_id": "97002d5d-6fab-4f80-a490-c8aac75a8b12",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.4581
+      }
+    ],
+    "total_run_latency_seconds": 2.4581
+  },
+  {
+    "run_id": "f3c687d0-1af3-43c9-8d07-ad5c969daf3b",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.7779
+      }
+    ],
+    "total_run_latency_seconds": 2.7779
+  },
+  {
+    "run_id": "927bc9b2-35c3-4d19-ae63-fab74ea0d98d",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.1357
+      }
+    ],
+    "total_run_latency_seconds": 1.1357
+  },
+  {
+    "run_id": "34c4ac35-da7d-4e80-8b8d-740497f39352",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.2828
+      }
+    ],
+    "total_run_latency_seconds": 1.2828
+  },
+  {
+    "run_id": "c1f648a5-a5cb-4a34-980a-62fa98b8c8fa",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.7285
+      }
+    ],
+    "total_run_latency_seconds": 1.7285
+  },
+  {
+    "run_id": "9987143a-91cc-4d47-a348-2d4f705045a6",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.2862
+      }
+    ],
+    "total_run_latency_seconds": 1.2862
+  },
+  {
+    "run_id": "2ed15256-09b4-4c6a-bae7-3e86e03cbb74",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.8686
+      }
+    ],
+    "total_run_latency_seconds": 2.8686
+  },
+  {
+    "run_id": "fc8626b3-9bfa-4905-a993-9845e5728a25",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.6004
+      }
+    ],
+    "total_run_latency_seconds": 1.6004
+  },
+  {
+    "run_id": "25249005-294c-4236-8ea8-67e5d019f286",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 2.4548
+      }
+    ],
+    "total_run_latency_seconds": 2.4548
+  },
+  {
+    "run_id": "d4249f65-3b29-4242-866e-7c28e100a0ac",
+    "step_latencies": [
+      {
+        "step_name": "full_rag_pipeline_v1",
+        "latency_seconds": 1.9914
+      }
+    ],
+    "total_run_latency_seconds": 1.9914
+  }
+]

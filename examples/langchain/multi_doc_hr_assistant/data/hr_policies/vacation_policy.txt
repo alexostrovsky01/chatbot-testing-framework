@@ -1,0 +1,2 @@
+Employees at ACME Corp accrue vacation days annually. Full-time employees receive 20 days per year, accrued bi-weekly. Time off must be requested at least two weeks in advance via the employee portal. Unused vacation days up to a maximum of 5 days, can be rolled over to the next calendar year. Rollover days expire on March 31st. Manager approval is required and is final.                                                                        
+                                            

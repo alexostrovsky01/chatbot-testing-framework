@@ -1,0 +1,142 @@
+[
+  {
+    "session_id": "97002d5d-6fab-4f80-a490-c8aac75a8b12",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output provides a clear and direct answer to the user's question, specifying the number of vacation days for full-time employees at ACME Corp. However, it assumes the user is a full-time employee and does not mention if the policy differs for part-time or contract employees, or if there are any conditions or accrual policies."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question about annual vacation days, directly addressing the inquiry within the context of the HR vacation policy."
+      }
+    }
+  },
+  {
+    "session_id": "f3c687d0-1af3-43c9-8d07-ad5c969daf3b",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The output provides a clear and direct answer to the user's question, specifying a maximum claim amount of $50 per person for a client dinner. However, there is no evidence in the step output or context that this amount is accurate or sourced from the actual HR Expense Policy. Without confirmation that $50 is the correct policy limit, the answer may be factually incorrect or misleading."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question, directly addressing the maximum claim for a client dinner, which falls under the Expense Policy category of the HR chatbot's scope."
+      }
+    }
+  },
+  {
+    "session_id": "927bc9b2-35c3-4d19-ae63-fab74ea0d98d",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output directly answers the user's question by specifying that performance reviews are held every November. However, it lacks detail about whether this applies to all employees, if there are exceptions, or if there are mid-year reviews, which could be relevant depending on company policy."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question about the timing of performance reviews, providing a clear and concise answer."
+      }
+    }
+  },
+  {
+    "session_id": "34c4ac35-da7d-4e80-8b8d-740497f39352",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output correctly identifies the Concur portal as the platform for submitting expense reports and mentions the 30-day submission window, which is a common policy. However, it lacks details on the actual steps involved in submitting the report (e.g., logging in, uploading receipts, submitting for approval), which would make the answer more complete."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is directly relevant to the user's question about submitting an expense report. It addresses the process and provides a key policy detail, staying focused on the user's intent."
+      }
+    }
+  },
+  {
+    "session_id": "c1f648a5-a5cb-4a34-980a-62fa98b8c8fa",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output directly answers the user's question about carrying over unused vacation days. It provides a clear policy: up to 5 days can be carried over, and specifies the expiration date for rollover days. This is precise and actionable information."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's query about vacation policy, specifically addressing the carryover of unused days, which aligns with the chatbot's HR support goal."
+      }
+    }
+  },
+  {
+    "session_id": "9987143a-91cc-4d47-a348-2d4f705045a6",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output correctly identifies 'self-assessment by the employee' as the first step in many standard performance review processes. However, without explicit reference to the company's specific HR policy, there is a small risk of inaccuracy if the process differs. The answer is generally correct but could be improved by clarifying if this is based on the company's documented process."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is directly relevant to the user's question, providing a clear and concise answer about the first step in the performance review process."
+      }
+    }
+  },
+  {
+    "session_id": "2ed15256-09b4-4c6a-bae7-3e86e03cbb74",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output accurately reflects a common policy that software purchases must be approved by IT before they can be expensed. It clearly states that without IT approval, the expense is not reimbursable, which is a standard HR and IT policy. The answer is precise and does not introduce any incorrect information."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response directly addresses the user's question about expensing software for a project. It provides actionable guidance (i.e., obtain IT approval) and references the relevant policy, making it highly relevant to the user's inquiry and the overall HR support chatbot goal."
+      }
+    }
+  },
+  {
+    "session_id": "fc8626b3-9bfa-4905-a993-9845e5728a25",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output accurately addresses both parts of the user's question: information about the computer (MacBook Pro, IT setup, software approval) and payroll (bi-weekly processing, pay stub dates, employee portal, direct deposit). However, it assumes all employees receive a MacBook Pro and that direct deposit is mandatory, which may not universally apply. There is no mention of what to do if there are issues or how to access support, which could be helpful for a new employee."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question, directly addressing both the IT onboarding (computer setup) and payroll process. It avoids unrelated HR topics and stays focused on the user's immediate needs as a new employee."
+      }
+    }
+  },
+  {
+    "session_id": "25249005-294c-4236-8ea8-67e5d019f286",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output accurately describes the procedures for booking travel (pre-approval, reimbursement, expense submission via Concur, receipt requirements) and for taking a day off (request via employee portal, two weeks in advance, manager approval). However, it could be improved by specifying how to obtain pre-approval for travel (e.g., who to contact or which form to use), and by clarifying if the day off should be marked as vacation, personal, or another type of leave."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response directly addresses both parts of the user's question: travel booking for a client visit and taking a day off afterwards. It provides actionable steps for each, matching the HR support chatbot's intended scope."
+      }
+    }
+  },
+  {
+    "session_id": "d4249f65-3b29-4242-866e-7c28e100a0ac",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 5,
+        "reasoning": "The output accurately addresses both parts of the user's question. It outlines the expectations for professional conduct during business trips, including ethical standards, professionalism, and a zero-tolerance policy for harassment and discrimination. It also provides clear, actionable instructions for filing expenses, specifying the use of the Concur portal, the 30-day submission window, receipt requirements, and reimbursement guidelines. The information is precise and consistent with standard HR and expense policies."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is directly relevant to the user's query, covering both the code of conduct during business trips and the process for filing expenses. It does not include extraneous information and remains focused on the topics requested by the user."
+      }
+    }
+  }
+]

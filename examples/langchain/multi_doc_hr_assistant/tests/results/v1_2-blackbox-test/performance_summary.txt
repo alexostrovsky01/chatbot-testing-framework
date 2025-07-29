@@ -1,0 +1,84 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+- ✅ No policy violations detected.
+
+# Deep Dive Workflow Analysis
+
+# Chatbot Evaluation Deep-Dive Report
+
+## Overall Summary
+
+The chatbot demonstrates strong overall performance, consistently delivering coherent, relevant, and policy-adherent answers with high safety standards. While final answers are generally of high quality, minor gaps in completeness and internal evidence sourcing within the workflow steps indicate areas for targeted improvement.
+
+---
+
+## Key Findings
+
+- **Positives:**
+  - Final answers are consistently coherent, relevant, and adhere to policy and safety guidelines (all scoring 5.0/5.0).
+  - The chatbot’s responses are factually correct and well-aligned with user queries.
+  - Internal workflow steps maintain high relevance to the user’s question (5.0/5.0).
+
+- **Negatives:**
+  - Some final answers lack completeness, occasionally omitting secondary but relevant details present in the model answer.
+  - The internal workflow sometimes fails to provide explicit evidence or sourcing for factual claims, leading to potential factual inaccuracies.
+  - The correctness of internal workflow steps is slightly lower (4.2/5.0), primarily due to insufficient evidence backing key assertions.
+
+---
+
+## Final Answer Analysis
+
+### Criterion Breakdown
+
+- **answer_quality_vs_model (4.50/5.0):**
+  - Most answers closely match the model in accuracy and coverage.
+  - Lower scores are attributed to incomplete answers—typically missing secondary details (e.g., omitting mention of informal mid-year check-ins when only annual reviews are discussed).
+  - The main theme in low-score reasons is partial coverage: answers are correct but not as comprehensive as the model expects.
+
+- **coherence_and_relevance (5.00/5.0):**
+  - All answers are clear, logically structured, and directly address the user’s question.
+  - No issues reported in this area.
+
+- **policy_adherence (5.00/5.0):**
+  - Responses consistently align with organizational policies.
+  - No deviations or policy violations observed.
+
+- **safety (5.00/5.0):**
+  - All answers are safe, with no harmful or inappropriate content.
+
+**Common Themes in Low Scores:**
+- Incomplete information compared to the model answer.
+- Omission of secondary but relevant details.
+
+---
+
+## Step-by-Step Analysis
+
+### Step: full_rag_pipeline_v1
+
+- **Correctness (4.20/5.0):**
+  - Most workflow steps produce correct outputs, but some lack explicit evidence or sourcing for factual claims.
+  - Example: Stating a $50 claim limit for client dinners without referencing the HR Expense Policy or providing supporting context.
+
+- **Relevance (5.00/5.0):**
+  - All workflow steps are highly relevant to the user’s question.
+
+**Common Error Patterns:**
+- Failure to cite or reference source material when making factual claims.
+- Potential for factual inaccuracies due to lack of evidence in the workflow output, even when the answer is clear and direct.
+
+---
+
+## Actionable Recommendations
+
+- Enhance the workflow to ensure all factual claims are explicitly supported by evidence or references from source documents.
+- Implement a completeness check in the final answer generation step to ensure secondary details from the model answer are included when relevant.
+- Provide additional training or prompt engineering to encourage the chatbot to surface supporting context or citations, especially for policy-related answers.
+- Periodically review and update the model answer set to ensure alignment with evolving policy details and user expectations.

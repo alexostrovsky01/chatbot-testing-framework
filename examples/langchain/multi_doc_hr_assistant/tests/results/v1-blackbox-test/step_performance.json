@@ -1,0 +1,142 @@
+[
+  {
+    "session_id": "890e4a8d-8651-49c7-98a8-27548425772e",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The output provides a clear and direct answer to the user's question, specifying '20 vacation days per year.' However, it lacks context or reference to company policy, and vacation days can vary by company, role, or tenure. Without confirming that 20 is the correct number for the user's specific situation, the answer risks being inaccurate."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question about annual vacation days. It directly addresses the inquiry without unnecessary information."
+      }
+    }
+  },
+  {
+    "session_id": "8ba6e82f-d84b-4346-9b11-a933c372d3cf",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The output provides a clear and direct answer to the user's question, specifying a maximum claim amount for a client dinner. However, without evidence that this amount is accurate or up-to-date with the company's actual expense policy, there is a risk of misinformation. The answer would be more correct if it referenced the policy source or included a disclaimer to check the latest guidelines."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question, directly addressing the maximum claim for a client dinner, which falls under the HR Expense Policy topic as outlined in the chatbot's overall goal."
+      }
+    }
+  },
+  {
+    "session_id": "bcf669cb-fc1a-4abe-b63b-fa4efc7891c8",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output directly answers the user's question by specifying that performance reviews are held every November. However, it lacks detail about whether this applies to all employees, if there are exceptions, or if there are mid-year reviews, which could be relevant depending on company policy."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is highly relevant to the user's question about the timing of performance reviews. It stays on topic and provides a clear, concise answer."
+      }
+    }
+  },
+  {
+    "session_id": "099896ed-8c5e-4ada-8d8e-b9237e0ecbfc",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output correctly identifies the Concur portal as the platform for submitting expense reports and mentions the 30-day submission window, which is a common policy. However, it lacks details on the actual steps involved in submitting the report (e.g., logging in, uploading receipts, approval process), which would make the answer more complete."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is directly relevant to the user's question about submitting an expense report. It addresses the process and provides a key policy detail, staying focused on the user's intent."
+      }
+    }
+  },
+  {
+    "session_id": "f96273cc-74ce-411a-9eba-ead47918fd97",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output provides a clear and specific answer to the user's question about carrying over unused vacation days, including the maximum number of days (5) and the expiration date (March 31st). However, without explicit reference to a source or confirmation that this matches the company's actual policy, there is a small risk of inaccuracy if the policy differs."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is directly relevant to the user's question about vacation day carryover and provides all necessary details related to the query."
+      }
+    }
+  },
+  {
+    "session_id": "f7483b37-7e2d-41d7-84ba-34f133ef053a",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 4,
+        "reasoning": "The output correctly identifies 'self-assessment by the employee' as the first step in many standard performance review processes. However, without explicit reference to the company's specific HR policy, there is a small risk of inaccuracy if the process differs. The answer is generally correct but could be improved by clarifying if this is standard or company-specific."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response is directly relevant to the user's question, clearly addressing the first step in the performance review process as requested."
+      }
+    }
+  },
+  {
+    "session_id": "a94a05fd-6a7a-42e1-8247-85fbbcd3a6eb",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The output provides a clear answer based on the context given, stating that software purchases are not eligible for reimbursement. However, it assumes that the only eligible expenses are travel, accommodation, and client meals, which may not be comprehensive unless explicitly stated in the company's expense policy. There is a risk of providing incorrect information if the policy allows for other types of expenses with pre-approval. The answer would be more accurate if it advised the user to check with HR or refer to the full expense policy for clarification."
+      },
+      "relevance": {
+        "score": 5,
+        "reasoning": "The response directly addresses the user's question about expensing software for a project and provides a policy-based explanation. It is highly relevant to the user's inquiry and the overall HR support chatbot goal."
+      }
+    }
+  },
+  {
+    "session_id": "8ff102fa-fd14-4573-8cd4-2c2bcba84faa",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 2,
+        "reasoning": "The output only addresses the payroll aspect of the user's question, mentioning pay stubs and direct deposit. It does not address anything about the computer, IT onboarding, or what the user needs to know about their computer, which was a key part of the question. The payroll information provided is plausible but may be incomplete without context-specific details."
+      },
+      "relevance": {
+        "score": 2,
+        "reasoning": "The response is partially relevant as it covers how the user gets paid, but it completely ignores the IT onboarding/computer aspect of the question. For a multi-step HR support chatbot, the answer should have addressed both parts of the user's query to be fully relevant."
+      }
+    }
+  },
+  {
+    "session_id": "c11974ef-7ab0-4b1d-96e4-12f9cbc082d4",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 2,
+        "reasoning": "The output only addresses the procedure for taking a day off, omitting any information about booking travel for a client visit. The user asked about both travel booking and time off procedures, so the answer is incomplete and only partially correct."
+      },
+      "relevance": {
+        "score": 3,
+        "reasoning": "The response is relevant to the part of the question about taking a day off, but it ignores the travel booking aspect, which is equally important to the user's request. Therefore, the relevance is limited."
+      }
+    }
+  },
+  {
+    "session_id": "ac4a8bed-d4af-4eb7-8e78-0654618be151",
+    "step_name": "full_rag_pipeline_v1",
+    "evaluation": {
+      "correctness": {
+        "score": 3,
+        "reasoning": "The output correctly provides information on how to file expenses, including the use of the Concur portal, the 30-day submission window, and the receipt requirement. However, it fails to answer the first part of the user's question regarding the policy on professional conduct during business trips, simply stating that the context does not mention it. Ideally, the step should attempt to provide at least a general guideline or direct the user to where such information can be found."
+      },
+      "relevance": {
+        "score": 4,
+        "reasoning": "The response is relevant to the user's question about filing expenses, but it is only partially relevant overall because it does not address the professional conduct policy during business trips. The output acknowledges the lack of context for that part, but does not attempt to bridge the gap or offer further assistance."
+      }
+    }
+  }
+]

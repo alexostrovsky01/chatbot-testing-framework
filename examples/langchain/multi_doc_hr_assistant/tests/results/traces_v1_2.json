@@ -1,0 +1,162 @@
+{
+  "97002d5d-6fab-4f80-a490-c8aac75a8b12": [
+    {
+      "run_id": "97002d5d-6fab-4f80-a490-c8aac75a8b12",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763326.3030603,
+      "end_time": 1753763328.7611244,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "How many vacation days do I get per year?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "Full-time employees at ACME Corp receive 20 vacation days per year."
+    }
+  ],
+  "f3c687d0-1af3-43c9-8d07-ad5c969daf3b": [
+    {
+      "run_id": "f3c687d0-1af3-43c9-8d07-ad5c969daf3b",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763331.765877,
+      "end_time": 1753763334.5437522,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "What is the maximum I can claim for a client dinner?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "The maximum you can claim for a client dinner is $50 per person."
+    }
+  ],
+  "927bc9b2-35c3-4d19-ae63-fab74ea0d98d": [
+    {
+      "run_id": "927bc9b2-35c3-4d19-ae63-fab74ea0d98d",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763337.5478754,
+      "end_time": 1753763338.6836228,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "When are performance reviews held?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "Performance reviews are held every November."
+    }
+  ],
+  "34c4ac35-da7d-4e80-8b8d-740497f39352": [
+    {
+      "run_id": "34c4ac35-da7d-4e80-8b8d-740497f39352",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763341.6880226,
+      "end_time": 1753763342.9707801,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "How do I submit an expense report?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "You must submit your expense report through the Concur portal within 30 days of the expense being incurred."
+    }
+  ],
+  "c1f648a5-a5cb-4a34-980a-62fa98b8c8fa": [
+    {
+      "run_id": "c1f648a5-a5cb-4a34-980a-62fa98b8c8fa",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763345.9752936,
+      "end_time": 1753763347.7037506,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "Can I carry over unused vacation days?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "Yes, you can carry over unused vacation days up to a maximum of 5 days to the next calendar year. Rollover days expire on March 31st."
+    }
+  ],
+  "9987143a-91cc-4d47-a348-2d4f705045a6": [
+    {
+      "run_id": "9987143a-91cc-4d47-a348-2d4f705045a6",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763350.7096615,
+      "end_time": 1753763351.9958804,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "What is the first step in the performance review process?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "The first step in the performance review process is a self-assessment by the employee."
+    }
+  ],
+  "2ed15256-09b4-4c6a-bae7-3e86e03cbb74": [
+    {
+      "run_id": "2ed15256-09b4-4c6a-bae7-3e86e03cbb74",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763354.999964,
+      "end_time": 1753763357.8685246,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "I had to buy some software for a project, can I expense it?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "Based on the provided context, you cannot expense software purchases unless the software is approved by IT. The context states, \"All software must be approved by IT.\" There is no mention of software expenses being reimbursable unless approved. Therefore, you need IT approval before expensing software."
+    }
+  ],
+  "fc8626b3-9bfa-4905-a993-9845e5728a25": [
+    {
+      "run_id": "fc8626b3-9bfa-4905-a993-9845e5728a25",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763360.8733807,
+      "end_time": 1753763362.473769,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "I just started, what do I need to know about my computer and how I get paid?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "You will receive a new MacBook Pro on your first day and need to see IT to complete setup. All software must be approved by IT. Payroll is processed bi-weekly, and pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory."
+    }
+  ],
+  "25249005-294c-4236-8ea8-67e5d019f286": [
+    {
+      "run_id": "25249005-294c-4236-8ea8-67e5d019f286",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763365.4807646,
+      "end_time": 1753763367.935531,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "I need to book travel for a client visit and take a day off afterwards, what are the procedures?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "To book travel for a client visit, you must ensure the expenses are pre-approved and business-related. You can be reimbursed for travel, accommodation, and client meals (with a $50 per person limit for meals). All expense reports must be submitted through the Concur portal within 30 days of incurring the expense, and original receipts are required for claims over $25.\n\nTo take a day off afterwards, you need to request time off at least two weeks in advance via the employee portal. Manager approval is required and is final."
+    }
+  ],
+  "d4249f65-3b29-4242-866e-7c28e100a0ac": [
+    {
+      "run_id": "d4249f65-3b29-4242-866e-7c28e100a0ac",
+      "name": "full_rag_pipeline_v1",
+      "start_time": 1753763370.9406817,
+      "end_time": 1753763372.932116,
+      "status": "success",
+      "inputs": {
+        "args": [
+          "What's the policy on professional conduct during business trips, and how do I file expenses?"
+        ],
+        "kwargs": {}
+      },
+      "outputs": "Employees are expected to maintain the highest ethical standards, and all communication should be professional. Harassment and discrimination are not tolerated.\n\nTo file expenses, employees must submit all expense reports through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory for all claims over $25. Reimbursement is provided for pre-approved, business-related expenses, including travel, accommodation, and client meals (with a $50 per person limit for client meals)."
+    }
+  ]
+}
