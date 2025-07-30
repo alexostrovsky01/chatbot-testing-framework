@@ -6,8 +6,7 @@ from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter                                                
 from langchain_community.vectorstores import FAISS                                                                
 from langchain.chains.combine_documents import create_stuff_documents_chain                                       
-from langchain_core.prompts import ChatPromptTemplate                                                             
-from langchain_cohere import CohereRerank                                                                         
+from langchain_core.prompts import ChatPromptTemplate                                                                                                                                    
 from dotenv import load_dotenv                                                                                    
 from langgraph.graph import StateGraph, END                                                                       
 from typing import TypedDict, List                                                                                
@@ -22,8 +21,7 @@ docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=0)                                   
 splits = text_splitter.split_documents(docs)                                                                      
 vectorstore = FAISS.from_documents(documents=splits, embedding=embeddings)                                        
-retriever = vectorstore.as_retriever(search_kwargs={"k": 3})                                                      
-# reranker = CohereRerank(model="rerank-english-v3.0", top_n=2)                                                                                  
+retriever = vectorstore.as_retriever(search_kwargs={"k": 3})                                                                                                                                      
                                                                                                                 
 # --- 2. Define Graph State ---                                                                                   
 class RAGState(TypedDict):                                                                                        
@@ -38,10 +36,9 @@ def rewrite_query(state: RAGState):
     question = state['question']     
     prompt = ChatPromptTemplate.from_template("""Rewrite the user's question into vector store queries for better retrieval:
 "{input}". Try to limit number of queries to less than 3. Only write the queries, one per line.""")
-    response = llm.invoke(prompt.format(input=question))  # Assuming the LLM returns sub-questions in a list format
+    response = llm.invoke(prompt.format(input=question))
     print(f"Sub-questions generated: {response.content}")  # Debugging output
-    sub_qs = response.content.split('\n')  # Assuming the LLM returns sub-questions in a list format
-    # sub_qs = [question, f"details about {question.split(' and ')[0]}", f"details about {question.split(' and  ')[-1]}"]                                                                                                         
+    sub_qs = response.content.split('\n')  # Assuming the LLM returns sub-questions in a list format                                                                                                      
     return {"sub_questions": sub_qs}                                                                               
                                                                                                                 
 def retrieve_docs(state: RAGState):                                                                               
@@ -51,10 +48,7 @@ def retrieve_docs(state: RAGState):
     # Simple deduplication                                                                                        
     unique_docs = {doc.page_content: doc for doc in all_docs}.values()                                            
     return {"retrieved_docs": list(unique_docs)}                                                                  
-                                                                                                                
-# def rerank_docs(state: RAGState):                                                                                 
-#     reranked = reranker.compress_documents(documents=state['retrieved_docs'], query=state['question'])            
-#     return {"reranked_docs": reranked}                                                                            
+                                                                                                                                                                                          
                                                                                                                 
 def synthesize_answer(state: RAGState):                                                                           
     prompt = ChatPromptTemplate.from_template("""
@@ -81,19 +75,16 @@ def handle_request():
     tracer = Tracer(recorder=recorder, run_id=session_id)                                                         
                                                                                                                 
     traced_rewrite = tracer.trace(step_name="rewrite_query")(rewrite_query)                                       
-    traced_retrieve = tracer.trace(step_name="retrieve_docs")(retrieve_docs)                                      
-    # traced_rerank = tracer.trace(step_name="rerank_docs")(rerank_docs)                                            
+    traced_retrieve = tracer.trace(step_name="retrieve_docs")(retrieve_docs)                                                                                
     traced_synthesize = tracer.trace(step_name="synthesize_answer")(synthesize_answer)                            
                                                                                                                 
     workflow = StateGraph(RAGState)                                                                               
     workflow.add_node("rewrite", traced_rewrite)                                                                  
-    workflow.add_node("retrieve", traced_retrieve)                                                                
-    # workflow.add_node("rerank", traced_rerank)                                                                    
+    workflow.add_node("retrieve", traced_retrieve)                                                                                                                                  
     workflow.add_node("synthesize", traced_synthesize)                                                            
                                                                                                                 
     workflow.set_entry_point("rewrite")                                                                           
-    workflow.add_edge("rewrite", "retrieve")                                                                      
-    # workflow.add_edge("retrieve", "rerank")                                                                       
+    workflow.add_edge("rewrite", "retrieve")                                                                                                                                            
     workflow.add_edge("retrieve", "synthesize")                                                                     
     workflow.add_edge("synthesize", END)                                                                          
                                                                                                                 

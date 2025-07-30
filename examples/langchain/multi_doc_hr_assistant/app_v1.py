@@ -25,8 +25,7 @@ retriever = vectorstore.as_retriever(search_kwargs={"k": 4}) # Retrieve more to 
                                                                                                                 
 # --- 2. The V1 "Black Box" Pipeline Function ---                                                                 
 def run_full_pipeline_v1(question: str):                                                                          
-    # Step 1: Query Rewriting (Simplified for clarity)                                                            
-    # In a real app, this would be an LLM call. Here we simulate it.                                              
+    # Step 1: Query Rewriting (Simplified for clarity)                                                                                                          
     sub_questions = [question, f"details about {question.split(' and ')[0]}", f"details about {question.split(' and ')[-1]}"]                                                                                                         
                                                                                                                 
     # Step 2: Retrieval                                                                                           

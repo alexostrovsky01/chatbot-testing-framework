@@ -42,9 +42,7 @@ def rewrite_query(state: RAGState):
 def retrieve_docs(state: RAGState):                                                                               
     all_docs = []                                                                                                 
     for q in state['sub_questions']:                                                                              
-        all_docs.extend(retriever.invoke(q))                                                                      
-    # Simple deduplication                                                                                        
-    # unique_docs = {doc.page_content: doc for doc in all_docs}.values()                                            
+        all_docs.extend(retriever.invoke(q))                                                                                                               
     return {"retrieved_docs": all_docs}                                                                  
                                                                                                                 
 def rerank_docs(state: RAGState):                                                                                 

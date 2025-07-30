@@ -6,8 +6,7 @@ from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter                                                
 from langchain_community.vectorstores import FAISS                                                                
 from langchain.chains.combine_documents import create_stuff_documents_chain                                       
-from langchain_core.prompts import ChatPromptTemplate                                                             
-from langchain_cohere import CohereRerank                                                                         
+from langchain_core.prompts import ChatPromptTemplate                                                                                                                                    
 from langchain.chains import create_retrieval_chain                                                               
 from dotenv import load_dotenv                                                                                    
                                                                                                                 
@@ -26,12 +25,10 @@ retriever = vectorstore.as_retriever(search_kwargs={"k": 3}) # Retrieve more to 
 # --- 2. The V1 "Black Box" Pipeline Function ---                                                                 
 def run_full_pipeline_v1(question: str):                                                                          
     # Step 1: Query Rewriting (Simplified for clarity)                                                            
-    # In a real app, this would be an LLM call. Here we simulate it.                                              
-    # sub_questions = [question, f"details about {question.split(' and ')[0]}", f"details about {question.split(' and ')[-1]}"]                                                                             
- 
+
     prompt = ChatPromptTemplate.from_template("""Rewrite the user's question into vector store queries for better retrieval:
 "{input}". Try to limit number of queries to less than 3. Only write the queries, one per line.""")
-    response = llm.invoke(prompt.format(input=question))  # Assuming the LLM returns sub-questions in a list format
+    response = llm.invoke(prompt.format(input=question))  
     sub_questions = response.content.split('\n')  # Assuming the LLM returns sub-questions in a list format                                                                                                        
     print(f"Sub-questions generated: {sub_questions}")  # Debugging output
                                                                                                                 
@@ -39,12 +36,9 @@ def run_full_pipeline_v1(question: str):
     all_docs = []                                                                                                 
     for q in sub_questions:                                                                                       
         all_docs.extend(retriever.invoke(q))                                                                      
-    unique_docs = {doc.page_content: doc for doc in all_docs}.values()                                                                          
-    # Step 3: Re-ranking (The hidden flaw)                                                                        
-    # reranker = CohereRerank(model="rerank-english-v3.0", top_n=2)                                                                              
-    # reranked_docs = reranker.compress_documents(documents=all_docs, query=question)                               
+    unique_docs = {doc.page_content: doc for doc in all_docs}.values()                                                                                                      
                                                                                                                 
-    # Step 4: Synthesis                                                                                           
+    # Step 3: Synthesis                                                                                           
     prompt = ChatPromptTemplate.from_template("""
 Answer the following question based only on the provided context.
 Do not use any external knowledge or assumptions. ONLY THE INFORMATION IN THE CONTEXT IS ALLOWED.
