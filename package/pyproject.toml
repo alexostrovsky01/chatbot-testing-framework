@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chatbot-test-framework"
-version = "0.1.17"
+version = "0.1.18"
 authors = [
   { name="Olex Ostrovskyy", email="alexandr.ostrovsky@gmail.com" },
 ]
@@ -29,7 +29,8 @@ dependencies = [
     "openai",
     "google-genai",
     "numpy",       
-    "scikit-learn"  
+    "scikit-learn",
+    "markdown"  
 ]
 
 # This creates the command-line tool

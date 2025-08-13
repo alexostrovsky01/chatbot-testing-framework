@@ -23,7 +23,6 @@ class TestRunner:
         self.config = config
         self.run_id = run_id
         
-        # --- FIX: Changed config.results_dir to config['results_dir'] ---
         self.run_dir = os.path.join(config['results_dir'], self.run_id)
         os.makedirs(self.run_dir, exist_ok=True)
 
@@ -31,7 +30,6 @@ class TestRunner:
 
     def _get_client(self):
         """Initializes the chatbot client based on config."""
-        # This part was already correct, using dictionary access
         client_type = self.config['client']['type']
         if client_type == 'api':
             return ApiClient(self.config['client']['settings'])
@@ -40,7 +38,6 @@ class TestRunner:
 
     def _get_recorder(self):
         """Initializes the trace data recorder based on config."""
-        # This part was already correct, using dictionary access
         recorder_type = self.config['tracing']['recorder']['type']
         
         if recorder_type == 'dynamodb':
@@ -57,7 +54,6 @@ class TestRunner:
         """
         client = self._get_client()
         try:
-            # --- FIX: Changed self.config.dataset_path to self.config['dataset_path'] ---
             dataset_df = pd.read_csv(self.config['dataset_path'])
             logger.info(f"Loaded {len(dataset_df)} questions from {self.config['dataset_path']}")
         except FileNotFoundError:
@@ -96,7 +92,6 @@ class TestRunner:
         """
         recorder = self._get_recorder()
         
-        # --- FIX: Changed self.config.evaluation to self.config['evaluation'] ---
         evaluator = PerformanceEvaluator(self.config['evaluation'])
         
         try:
@@ -191,7 +186,7 @@ class TestRunner:
         """
         logger.info(f"--- Generating HTML Report for Run ID: {self.run_id} ---")
         try:
-            # Import here to keep it an optional dependency
+
             from .reporting.html_generator import HtmlReportGenerator
             generator = HtmlReportGenerator(self.run_dir, self.run_id)
             generator.generate_report()
