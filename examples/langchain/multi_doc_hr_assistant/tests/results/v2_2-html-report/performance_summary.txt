@@ -1,0 +1,115 @@
+# Performance Evaluation Summary
+
+
+## 🚨 Safety Violations (Score < 5)
+
+- ✅ No safety violations detected.
+
+## 📜 Policy Adherence Issues (Score < 5)
+
+- ✅ No policy violations detected.
+
+# Deep Dive Workflow Analysis
+
+# Chatbot Evaluation Deep-Dive Report
+
+## Overall Summary
+
+The chatbot demonstrates strong performance in generating coherent, policy-adherent, and safe final answers, with particularly high marks for clarity and compliance. However, its internal workflow reveals weaknesses, especially in the document retrieval step, which often introduces irrelevant information and limits the completeness and informativeness of the final responses.
+
+---
+
+## Key Findings
+
+- **Positives:**
+  - Final answers are consistently coherent, relevant, and fully adhere to policy and safety requirements.
+  - The query rewriting and answer synthesis steps are generally accurate and highly relevant.
+  - No safety or policy violations were observed in any test runs.
+
+- **Negatives:**
+  - Document retrieval frequently returns irrelevant documents, significantly lowering both correctness and relevance scores for this step.
+  - Final answers sometimes lack completeness and actionable detail due to missed opportunities to synthesize partial information from retrieved documents.
+  - The retrieval step’s low relevance score (2.80/5.0) is a bottleneck, impacting the overall quality of the chatbot’s responses.
+
+---
+
+## Final Answer Analysis
+
+### Criterion Breakdown
+
+- **answer_quality_vs_model:**  
+  - **Average Score:** 4.20 / 5.0  
+  - **Analysis:** The chatbot’s answers are generally factually correct but often less complete than the model answers. Common issues include omitting secondary details (e.g., informal check-ins) and failing to provide actionable information present in the model answer. The main theme in low scores is factual incompleteness rather than inaccuracy.
+
+- **coherence_and_relevance:**  
+  - **Average Score:** 4.80 / 5.0  
+  - **Analysis:** Responses are logical, on-topic, and easy to understand. Lower scores are attributed to a lack of depth and completeness, with answers sometimes missing specific policy details or actionable steps that would make them more informative.
+
+- **policy_adherence:**  
+  - **Average Score:** 5.00 / 5.0  
+  - **Analysis:** All answers fully comply with relevant policies, with no observed deviations.
+
+- **safety:**  
+  - **Average Score:** 5.00 / 5.0  
+  - **Analysis:** No safety issues were detected in any responses.
+
+**Common Themes in Low Scores:**
+- Incompleteness due to missing secondary or actionable details.
+- Failure to synthesize partial information from multiple sources.
+- Answers that are correct but less informative than the model standard.
+
+---
+
+## Step-by-Step Analysis
+
+### Step: retrieve_docs
+
+- **Average Correctness Score:** 3.70 / 5.0  
+- **Average Relevance Score:** 2.80 / 5.0  
+- **Analysis:**  
+  The retrieval step is the weakest link in the workflow. It often returns a mix of relevant and irrelevant documents, with only one out of several retrieved documents typically matching the user’s intent. This dilutes the quality of information available for answer synthesis and leads to missed opportunities for more complete responses.
+
+  **Common Error Patterns:**
+  - Inclusion of unrelated documents (e.g., vacation policy, payroll) alongside relevant ones.
+  - Insufficient filtering or prioritization of documents directly related to the user’s query.
+  - Overly broad retrieval criteria, resulting in low relevance.
+
+### Step: rewrite_query
+
+- **Average Correctness Score:** 4.40 / 5.0  
+- **Average Relevance Score:** 5.00 / 5.0  
+- **Analysis:**  
+  The query rewriting step is highly effective, producing queries that are both correct and highly relevant to the user’s intent. No significant issues were observed in this step.
+
+### Step: synthesize_answer
+
+- **Average Correctness Score:** 4.40 / 5.0  
+- **Average Relevance Score:** 4.80 / 5.0  
+- **Analysis:**  
+  The answer synthesis step generally produces accurate and relevant responses. However, it sometimes fails to integrate partial or tangentially relevant information from the retrieved documents, resulting in answers that are less informative than possible.
+
+  **Common Error Patterns:**
+  - Not referencing all relevant details from the retrieved documents.
+  - Missing opportunities to provide actionable guidance based on partial information (e.g., advising users to seek IT approval or pre-approval for expenses).
+
+---
+
+## Actionable Recommendations
+
+- **Improve Document Retrieval:**
+  - Refine retrieval algorithms to prioritize documents with direct relevance to the user’s query.
+  - Implement stricter filtering to exclude unrelated documents from the retrieval results.
+  - Consider using semantic search or intent classification to better match documents to user intent.
+
+- **Enhance Answer Synthesis:**
+  - Train the synthesis step to better integrate partial or tangentially relevant information, providing more complete and actionable answers.
+  - Encourage the model to reference all relevant policy details, even if only partially addressed in the retrieved documents.
+
+- **Monitor and Iterate:**
+  - Regularly review retrieval and synthesis outputs to identify recurring gaps in completeness or relevance.
+  - Use feedback from low-scoring answers to update retrieval and synthesis strategies.
+
+- **Maintain High Standards in Policy and Safety:**
+  - Continue current practices to ensure policy adherence and safety, as these are consistent strengths.
+
+---

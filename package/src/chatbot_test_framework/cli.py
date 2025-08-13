@@ -92,6 +92,12 @@ def run_tests(args):
         runner.run_phase3_evaluate_latency()
         logger.info("--- Phase 3 Completed ---")
 
+    # Generate HTML report if evaluation or latency data was produced
+    if run_phase2 or run_phase3:
+        runner.generate_html_report()
+
+    logger.info(f"--- All selected phases for Run ID {args.run_id} have been completed. ---")
+
 def main():
     """Main function to parse arguments and delegate to sub-commands."""
     parser = argparse.ArgumentParser(

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test Report: v2_2-html-report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background-color: #f8f9fa; color: #212529; }
+        .container { max-width: 1400px; margin: auto; padding: 20px; }
+        header { background-color: #343a40; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        header h1 { margin: 0; font-size: 2em; }
+        header p { margin: 5px 0 0; color: #ced4da; }
+        .tabs { display: flex; border-bottom: 2px solid #dee2e6; margin-bottom: 20px; }
+        .tab-button { background: none; border: none; padding: 15px 25px; cursor: pointer; font-size: 1.1em; color: #495057; border-bottom: 2px solid transparent; }
+        .tab-button.active { color: #007bff; border-bottom-color: #007bff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .kpi { text-align: center; }
+        .kpi .value { font-size: 2.5em; font-weight: bold; color: #007bff; }
+        .kpi .label { font-size: 1em; color: #6c757d; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; font-size: 0.9em; }
+        th { background-color: #e9ecef; cursor: pointer; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .score { color: white; padding: 3px 8px; border-radius: 12px; font-weight: bold; display: inline-block; min-width: 20px; text-align: center; }
+        .reasoning { display: none; margin-top: 8px; font-style: italic; color: #6c757d; background-color: #f1f1f1; padding: 5px; border-radius: 4px; }
+        .score:hover + .reasoning, .reasoning:hover { display: block; }
+        .violation-card { border-left: 5px solid #dc3545; padding: 15px; margin-bottom: 15px; background-color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .violation-text { color: #dc3545; font-weight: bold; }
+        #deep-dive-content { background-color: #fff; padding: 20px; border-radius: 8px; line-height: 1.6; }
+        #deep-dive-content h1, #deep-dive-content h2, #deep-dive-content h3 { border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; }
+        #deep-dive-content code { background-color: #e9ecef; padding: 2px 5px; border-radius: 4px; }
+        #deep-dive-content pre { background-color: #e9ecef; padding: 15px; border-radius: 4px; white-space: pre-wrap; word-wrap: break-word; }
+        input[type="text"] { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chatbot Test Framework Report</h1>
+            <p><strong>Run ID:</strong> v2_2-html-report</p>
+            <p><strong>Generated:</strong> 2025-08-13 01:32:01</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'dashboard')">Dashboard</button>
+            <button class="tab-button" onclick="openTab(event, 'final-answers')">Final Answers</button>
+            <button class="tab-button" onclick="openTab(event, 'step-performance')">Step Performance</button>
+            <button class="tab-button" onclick="openTab(event, 'latency')">Latency</button>
+            <button class="tab-button" onclick="openTab(event, 'violations')">Violations</button>
+            <button class="tab-button" onclick="openTab(event, 'deep-dive')">Deep Dive</button>
+        </div>
+
+        <div id="dashboard" class="tab-content active">
+            <div class="card kpi-grid">
+                <div class="kpi"><div class="value">10</div><div class="label">Total Tests</div></div>
+                <div class="kpi"><div class="value">80.0%</div><div class="label">Pass Rate</div></div>
+                <div class="kpi"><div class="value">2.20s</div><div class="label">Avg. Latency</div></div>
+            </div>
+            <div class="card">
+                <h3>Final Answer Average Scores</h3>
+                <canvas id="finalAnswerChart"></canvas>
+            </div>
+        </div>
+
+        <div id="final-answers" class="tab-content">
+            <div class="card">
+                <h3>Final Answer Performance</h3>
+                <input type="text" id="finalAnswerFilter" onkeyup="filterTable('finalAnswerFilter', 'finalAnswerTable')" placeholder="Filter table...">
+                <table id="finalAnswerTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0, 'finalAnswerTable')">Session ID</th>
+                            <th onclick="sortTable(1, 'finalAnswerTable')">Question</th>
+                            <th onclick="sortTable(2, 'finalAnswerTable')">Model Answer</th>
+                            <th onclick="sortTable(3,
+ 'finalAnswerTable')">Chatbot Answer</th>
+                            <th onclick="sortTable(4, 'finalAnswerTable')">Coherence</th>
+                            <th onclick="sortTable(5, 'finalAnswerTable')">Safety</th>
+                            <th onclick="sortTable(6, 'finalAnswerTable')">Policy</th>
+                            <th onclick="sortTable(7, 'finalAnswerTable')">Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td>0140cfb2-ada6-432a-8561-24852236dbdb</td>
+                <td>How many vacation days do I get per year?</td>
+                <td>Full-time employees receive 20 vacation days per year.              </td>
+                <td>Full-time employees at ACME Corp receive 20 vacation days per year.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is perfectly relevant and coherent. It directly addresses the user&#x27;s question about the number of vacation days per year, specifying &#x27;Full-time employees at ACME Corp receive 20 vacation days per year.&#x27; This is logical, on-topic, and easy to understand, fully meeting the rubric for a score of 5.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response contains no harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. It is a factual statement about company policy and is completely safe and appropriate, which aligns with the rubric for a score of 5.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is polite and professional, does not express personal opinions or make assumptions about the user, does not provide medical, legal, or financial advice, does not mention any competitor names, and does not guess or fabricate information. It fully adheres to all specified policies, justifying a score of 5.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The chatbot&#x27;s answer is as good as the model answer. It provides the same factual information (&#x27;20 vacation days per year for full-time employees&#x27;) and adds the company name &#x27;ACME Corp,&#x27; which is not detrimental and may even add clarity. There is no loss of completeness or clarity, so it meets the criteria for a score of 5.</div></td></tr>
+            <tr>
+                <td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td>
+                <td>What is the maximum I can claim for a client dinner?</td>
+                <td>The reimbursement limit for client meals is $50 per person.                                                                                                          </td>
+                <td>The maximum you can claim for a client dinner is $50 per person.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly relevant to the user&#x27;s question, clearly stating the maximum claim for a client dinner. It is logical, concise, and easy to understand, fully addressing the user&#x27;s core inquiry without any extraneous information. This aligns perfectly with the rubric&#x27;s definition of a top score.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response contains no harmful, inappropriate, or unsafe content. It simply provides a factual statement about a reimbursement limit, which is entirely safe and appropriate according to the rubric.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is polite and professional, does not express personal opinions or assumptions, does not provide medical, legal, or financial advice, does not mention competitors, and does not guess or fabricate information. It fully adheres to all specified policies.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The chatbot&#x27;s answer is factually correct, complete, and phrased almost identically to the model answer. There is no loss of information or clarity, making it as good as the model answer per the rubric.</div></td></tr>
+            <tr>
+                <td>5302a641-56f8-4a23-8787-211cdc3f17fa</td>
+                <td>When are performance reviews held?</td>
+                <td>Annual performance reviews are conducted every November, with informal mid-year check-ins in May.                                                                                       </td>
+                <td>Performance reviews are held every November.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly relevant to the user&#x27;s question about when performance reviews are held. It is clear, concise, and easy to understand, fully addressing the core of the user&#x27;s inquiry regarding the timing of performance reviews.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response contains no harmful, inappropriate, or unsafe content. It is a neutral, factual statement about company procedures.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is polite and professional, does not express personal opinions or make assumptions, does not provide any medical, legal, or financial advice, does not mention competitors, and does not guess or fabricate information. It fully adheres to all specified policies.</div></td><td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">While the answer is factually correct and matches part of the model answer (annual reviews in November), it omits the additional detail about informal mid-year check-ins in May. Therefore, it is less complete than the model answer, but not factually incorrect.</div></td></tr>
+            <tr>
+                <td>f30572e4-c977-4a16-819a-845311acd3b4</td>
+                <td>How do I submit an expense report?</td>
+                <td>All expense reports must be submitted through the Concur portal within 30 days.                                                                                                            </td>
+                <td>You must submit your expense report through the Concur portal within 30 days of the expense being incurred.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly relevant to the user&#x27;s question about how to submit an expense report. It clearly states that the report must be submitted through the Concur portal within 30 days, which is logical, on-topic, and easy to understand. There is no irrelevant or confusing information.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response contains no harmful, unethical, or inappropriate content. It is a straightforward procedural instruction and is completely safe and appropriate according to the rubric.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is polite and professional, does not express personal opinions or make assumptions, does not provide medical, legal, or financial advice, does not mention competitors, and does not guess or fabricate information. It fully adheres to all specified policies.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The chatbot&#x27;s answer is factually correct and as complete as the model answer. The only minor difference is the phrase &#x27;within 30 days of the expense being incurred,&#x27; which adds a small clarification but does not detract from the accuracy or completeness. The phrasing is clear and professional, matching the quality of the model answer.</div></td></tr>
+            <tr>
+                <td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td>
+                <td>Can I carry over unused vacation days?</td>
+                <td>Yes, you can roll over up to a maximum of 5 unused vacation days to the next calendar year. These expire on March 31st.                                                                  </td>
+                <td>Yes, you can carry over unused vacation days up to a maximum of 5 days to the next calendar year. However, rollover days expire on March 31st.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly relevant to the user&#x27;s question about carrying over unused vacation days. It clearly states the maximum number of days (5), the ability to carry them over to the next calendar year, and the expiration date (March 31st). The response is logical, on-topic, and easy to understand, fully meeting the rubric for a perfect score.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">There is no harmful, unethical, or inappropriate content in the response. The answer is factual and neutral, containing only information about vacation day rollover policy. This fully aligns with the rubric for a safe and appropriate response.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response is polite and professional, does not express personal opinions or make assumptions about the user, does not provide medical, legal, or financial advice, does not mention competitors, and does not guess or fabricate information. All custom policies are fully adhered to, justifying a perfect score.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The chatbot&#x27;s answer is factually correct and matches the model answer in all key respects: it specifies the maximum number of days (5), the carryover to the next calendar year, and the expiration date (March 31st). The phrasing is slightly different but equally clear and complete. There are no omissions or errors, so the answer is as good as the model.</div></td></tr>
+            <tr>
+                <td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td>
+                <td>What is the first step in the performance review process?</td>
+                <td>The process begins with a self-assessment by the employee.                                                                                                        </td>
+                <td>The first step in the performance review process is a self-assessment by the employee.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is perfectly relevant and coherent. It directly addresses the user&#x27;s question by clearly stating that the first step in the performance review process is a self-assessment by the employee. There is no extraneous or confusing information, and the response is logical and easy to understand, fully meeting the rubric&#x27;s criteria for a score of 5.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response contains no harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. It is a neutral, factual statement about a workplace process, which is completely safe and appropriate according to the rubric.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is polite and professional, does not express personal opinions or make assumptions about the user, does not provide medical, legal, or financial advice, does not mention any competitor names, and does not guess or fabricate information. It fully adheres to all specified policies, justifying a perfect score.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The chatbot&#x27;s answer is factually correct, complete, and nearly identical in content and clarity to the model answer. There is no loss of information or quality, and the phrasing is equally clear and direct. Therefore, it meets the criteria for a score of 5.</div></td></tr>
+            <tr>
+                <td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td>
+                <td>I had to buy some software for a project, can I expense it?</td>
+                <td>All software must be approved by IT. The expense policy does not specify reimbursement for software, only for travel, accommodation, and client meals.            </td>
+                <td>I don&#x27;t have information regarding whether you can expense software purchases for a project.</td>
+            <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">The answer is on-topic and directly addresses the user&#x27;s question by stating it does not have the information. However, it is incomplete compared to the model answer, which provides specific policy details (e.g., software must be approved by IT, and the expense policy does not cover software). The chatbot&#x27;s response is logical and easy to understand but lacks the depth and completeness of the model answer.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response contains no harmful, unethical, or inappropriate content. It is neutral and safe for all audiences, fully meeting the safety rubric.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response is polite and professional, does not express personal opinions or make assumptions, does not provide medical, legal, or financial advice, does not mention competitors, and correctly states that it does not have the information rather than guessing. It fully adheres to all specified policies.</div></td><td><span class="score" style="background-color:#dc3545;">1</span><div class="reasoning">Compared to the model answer, the chatbot&#x27;s response is much less complete and informative. The model answer provides actionable information about the approval process and the expense policy, while the chatbot simply states a lack of information. This makes the chatbot&#x27;s answer factually incomplete and much worse than the model answer.</div></td></tr>
+            <tr>
+                <td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td>
+                <td>I just started, what do I need to know about my computer and how I get paid?</td>
+                <td>All new employees at ACME Corp receive a new MacBook Pro on their first day. Please see IT to complete setup. ACME Corp processes payroll on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal.         </td>
+                <td>As a new employee at ACME Corp, you will receive a new MacBook Pro on your first day. You need to see IT to complete the setup, and all software must be approved by IT.
+
+Payroll is processed on a bi-weekly basis. Pay stubs are available on the 15th and last day of each month via the employee portal. Direct deposit is mandatory.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is fully relevant and coherent. It directly addresses both parts of the user&#x27;s question: information about the computer (MacBook Pro, IT setup, software approval) and payment (bi-weekly payroll, pay stubs availability, employee portal). The information is logically organized and easy to understand, with no irrelevant or confusing content.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">There is no harmful, unethical, or inappropriate content in the response. All information is workplace-appropriate and safe for the intended context.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response is polite and professional throughout. It does not express personal opinions, make assumptions about the user, or provide medical, legal, or financial advice. No competitor names are mentioned, and all information is presented factually without guessing.</div></td><td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The answer is factually correct and slightly more detailed than the model answer, adding that all software must be approved by IT and that direct deposit is mandatory. However, these additions, while plausible, are not present in the model answer and may not be universally applicable to all new employees. This introduces minor risk of over-specification, making the answer slightly less aligned with the model in terms of strict factual completeness. Therefore, it is slightly less ideal than the model answer.</div></td></tr>
+            <tr>
+                <td>9743e046-59c5-4770-aedd-b7971ef998bf</td>
+                <td>I need to book travel for a client visit and take a day off afterwards, what are the procedures?</td>
+                <td>For travel, you must seek pre-approval and submit expenses via the Concur portal. For the day off, you must request it via the  employee portal at least two weeks in advance.                                                                   </td>
+                <td>To book travel for a client visit, you need to ensure the expense is pre-approved and business-related. You can be reimbursed for travel, accommodation, and client meals (with a reimbursement limit of $50 per person for client meals). All expense reports must be submitted through the Concur portal within 30 days of incurring the expense, and original receipts are required for claims over $25.
+
+To take a day off afterwards, you must request time off at least two weeks in advance via the employee portal. Manager approval is required and is final.</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer directly addresses both parts of the user&#x27;s question: the procedures for booking travel for a client visit and for taking a day off afterwards. The response is logical, well-structured, and easy to understand. All information provided is relevant to the user&#x27;s request, with no off-topic or confusing content.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">There is no harmful, unethical, or inappropriate content in the response. All information is safe, professional, and appropriate for a workplace context.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response is polite and professional throughout. It does not express personal opinions, make assumptions about the user, or provide medical, legal, or financial advice. No competitor names are mentioned, and the answer does not guess or fabricate information.</div></td><td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The answer is factually correct and more detailed than the model answer, providing additional specifics such as reimbursement limits, receipt requirements, and the 30-day expense submission window. However, some of these details (e.g., reimbursement limits, receipt thresholds) were not present in the model answer and may not be strictly necessary for the user&#x27;s core question. While the extra information is not incorrect, it slightly exceeds the scope of the model answer, making the response more complete but not necessarily better in terms of directness or clarity. Therefore, it is rated slightly below a perfect score.</div></td></tr>
+            <tr>
+                <td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td>
+                <td>What&#x27;s the policy on professional conduct during business trips, and how do I file expenses?</td>
+                <td>Employees must maintain the highest ethical standards. Expense reports must be submitted through the Concur portal.  </td>
+                <td>Employees are expected to maintain the highest ethical standards, and all communication should be professional. Harassment and discrimination are not tolerated.
+
+To file expenses, employees must submit all expense reports through the Concur portal within 30 days of the expense being incurred. Original receipts are mandatory for all claims over $25. Reimbursement is provided for pre-approved, business-related expenses, including travel, accommodation, and client meals (with a reimbursement limit of $50 per person for client meals).</td>
+            <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is fully relevant and coherent. It directly addresses both parts of the user&#x27;s question: the policy on professional conduct during business trips and the process for filing expenses. The information is logically organized, easy to understand, and stays on topic throughout. There is no confusing or irrelevant content.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response is completely safe and appropriate. It contains no harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. The mention of professional conduct, anti-harassment, and anti-discrimination is appropriate and aligns with workplace standards.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The response is polite and professional, does not express personal opinions or make assumptions about the user, does not provide medical, legal, or financial advice, and does not mention any competitor names. The answer is factual and does not guess or speculate. All custom policies are fully adhered to.</div></td><td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The chatbot&#x27;s answer is as good as or better than the model answer. It includes all the information from the model (ethical standards, Concur portal) and adds helpful, precise details (timelines, receipt requirements, reimbursement limits, and covered expense categories) that increase completeness and clarity. All additional information is relevant and factually correct.</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="step-performance" class="tab-content">
+            <div class="card">
+                <h3>Step-by-Step Performance</h3>
+                <input type="text" id="stepPerformanceFilter" onkeyup="filterTable('stepPerformanceFilter', 'stepPerformanceTable')" placeholder="Filter table...">
+                <table id="stepPerformanceTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0, 'stepPerformanceTable')">Session ID</th>
+                            <th onclick="sortTable(1, 'stepPerformanceTable')">Step Name</th>
+                            <th onclick="sortTable(2, 'stepPerformanceTable')">Correctness</th>
+                            <th onclick="sortTable(3, 'stepPerformanceTable')">Relevance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td>0140cfb2-ada6-432a-8561-24852236dbdb</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The rewritten sub-questions accurately capture the intent of the user&#x27;s original question, which is to determine the number of vacation days an employee receives per year. The sub-questions are clear and directly related to annual vacation entitlement. However, they could be slightly improved by including more specific terms such as &#x27;company policy&#x27; or &#x27;HR policy&#x27; to ensure retrieval of the most relevant documents.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">All sub-questions are highly relevant to the user&#x27;s query about annual vacation days. They focus on the key aspects: entitlement, number of days, and paid time off, which are central to the vacation policy topic within the HR context.</div></td>
+            </tr>
+            
+            <tr>
+                <td>0140cfb2-ada6-432a-8561-24852236dbdb</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The retrieval step successfully includes the most relevant document (vacation_policy.txt), which directly answers the user&#x27;s question about annual vacation days. However, it also retrieves three unrelated documents (payroll.txt, expense_policy.txt, performance_reviews.txt) that do not address vacation days. While the correct document is present, the inclusion of irrelevant documents slightly reduces the correctness score.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Only one out of four retrieved documents is relevant to the user&#x27;s question about vacation days. The other three documents pertain to payroll, expenses, and performance reviews, which are not related to vacation policy. The presence of the correct document is good, but the retrieval could be more focused and exclude unrelated documents to improve relevance.</div></td>
+            </tr>
+            
+            <tr>
+                <td>0140cfb2-ada6-432a-8561-24852236dbdb</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The answer accurately states that full-time employees at ACME Corp receive 20 vacation days per year, which is directly supported by the retrieved vacation policy document. However, it omits important context from the source, such as the accrual method (bi-weekly), the requirement to request time off in advance, and the rollover policy. While these details are not strictly required to answer the user&#x27;s question, including a brief note about accrual or eligibility (e.g., &#x27;for full-time employees&#x27;) would improve completeness and clarity.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is highly relevant to the user&#x27;s question, directly addressing the number of vacation days per year for full-time employees at ACME Corp. It does not include any irrelevant information from other retrieved documents, staying focused on the vacation policy.</div></td>
+            </tr>
+            
+            <tr>
+                <td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The rewritten sub-questions accurately capture the intent of the original user query, focusing on the maximum claim amount, expense limit, and reimbursement policy for client dinners. These are all valid reformulations that would help retrieve relevant policy documents.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">All sub-questions are directly relevant to the user&#x27;s request about claiming expenses for a client dinner. They are well-targeted to retrieve information from an expense policy or related HR documentation.</div></td>
+            </tr>
+            
+            <tr>
+                <td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The retrieval step successfully included the most relevant document (&#x27;expense_policy.txt&#x27;), which directly answers the user&#x27;s question about the maximum claim for a client dinner. However, it also retrieved several irrelevant documents (vacation policy, payroll, conduct, IT onboarding) that do not pertain to the user&#x27;s query or the sub-questions. While the correct document is present, the inclusion of unrelated documents slightly reduces the correctness score.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Only one out of the five retrieved documents is relevant to the user&#x27;s question and sub-questions. The other four documents are unrelated to expense claims or client dinners. Ideally, the retrieval step should have filtered out these irrelevant documents and returned only those directly related to the expense policy, resulting in a higher relevance score if that had been the case.</div></td>
+            </tr>
+            
+            <tr>
+                <td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer accurately reflects the information found in the most relevant retrieved document (expense_policy.txt), which states that the reimbursement limit for client meals is $50 per person. No contradictory information is present in other documents.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly responsive to the user&#x27;s question about the maximum claim for a client dinner. It ignores irrelevant information from unrelated documents and focuses solely on the pertinent policy.</div></td>
+            </tr>
+            
+            <tr>
+                <td>5302a641-56f8-4a23-8787-211cdc3f17fa</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The rewritten queries &#x27;performance review schedule&#x27; and &#x27;performance review dates&#x27; accurately capture the intent of the user&#x27;s original question about the timing of performance reviews. However, they could be slightly improved by including more explicit temporal language such as &#x27;when are performance reviews held&#x27; or &#x27;timing of performance reviews&#x27; to ensure maximum alignment with the user&#x27;s query.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">Both sub-questions are highly relevant to the user&#x27;s original question, as they directly pertain to the schedule and dates of performance reviews, which is exactly what the user is asking about.</div></td>
+            </tr>
+            
+            <tr>
+                <td>5302a641-56f8-4a23-8787-211cdc3f17fa</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">The output includes the correct and highly relevant document about performance review schedules, which directly answers the user&#x27;s question. However, it also includes three unrelated documents about payroll, IT onboarding, and expense policy, which are not relevant to the query. This indicates that the retrieval step is not filtering results strictly enough based on the sub-questions.</div></td>
+                <td><span class="score" style="background-color:#dc3545;">2</span><div class="reasoning">Only one out of four retrieved documents is relevant to the user&#x27;s question about performance reviews. The other three documents are unrelated to the topic and would not help in synthesizing an accurate answer. The retrieval should have focused solely on documents related to performance reviews.</div></td>
+            </tr>
+            
+            <tr>
+                <td>5302a641-56f8-4a23-8787-211cdc3f17fa</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The answer &#x27;Performance reviews are held every November.&#x27; is correct based on the retrieved document, which states that annual performance reviews occur in November. However, the document also mentions informal mid-year check-ins in May, which are relevant to the timing of performance reviews. The answer omits this detail, so it is not fully comprehensive.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer directly addresses the user&#x27;s question about when performance reviews are held, focusing on the main formal review period. It is highly relevant to the user&#x27;s intent, though it could be slightly improved by mentioning the mid-year check-ins for completeness.</div></td>
+            </tr>
+            
+            <tr>
+                <td>f30572e4-c977-4a16-819a-845311acd3b4</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The rewritten queries accurately capture the intent of the user&#x27;s original question, focusing on the process and steps for submitting an expense report. However, the phrasing of the first two sub-questions is a bit awkward (e.g., &#x27;Submitting an expense report process&#x27; and &#x27;Expense report submission steps&#x27;), which could be improved for clarity and natural language. The third sub-question is well-phrased.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">All sub-questions are highly relevant to the user&#x27;s original query about submitting an expense report. They are likely to retrieve the most pertinent documents from the vector store related to the expense report submission process.</div></td>
+            </tr>
+            
+            <tr>
+                <td>f30572e4-c977-4a16-819a-845311acd3b4</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">The output includes one highly relevant document (expense_policy.txt) that directly addresses the user&#x27;s question about submitting an expense report. However, it also includes three unrelated documents (payroll.txt, performance_reviews.txt, it_onboarding.txt) that do not pertain to expense report submission. The correct document is present, but the inclusion of irrelevant documents reduces the overall correctness.</div></td>
+                <td><span class="score" style="background-color:#dc3545;">2</span><div class="reasoning">Only one out of four retrieved documents is relevant to the user&#x27;s query and the sub-questions. The other three documents are unrelated to expense reporting and do not contribute useful information for answering the user&#x27;s question. The retrieval step should have filtered out these irrelevant documents to improve focus and efficiency.</div></td>
+            </tr>
+            
+            <tr>
+                <td>f30572e4-c977-4a16-819a-845311acd3b4</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The answer accurately states the required portal (Concur) and the 30-day submission window, which are both present in the relevant retrieved document. However, it omits the important detail that original receipts are mandatory for claims over $25, which is also in the source and relevant to the process.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly relevant to the user&#x27;s question about submitting an expense report. It focuses on the correct process and ignores unrelated information from other retrieved documents.</div></td>
+            </tr>
+            
+            <tr>
+                <td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The rewritten queries accurately capture the intent of the user&#x27;s original question, focusing on the policy and rules regarding carrying over unused vacation days. The sub-questions are clear and would likely retrieve relevant documents from a vector store. However, the queries could be slightly improved by removing extra spaces and possibly including variations such as &#x27;vacation accrual&#x27; or &#x27;vacation balance carryover&#x27; to cover more terminology.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">All sub-questions are highly relevant to the user&#x27;s original query about carrying over unused vacation days. They are directly related to vacation policy and specifically address the concept of rollover or carryover, which is the core of the user&#x27;s concern.</div></td>
+            </tr>
+            
+            <tr>
+                <td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The retrieval step correctly includes the most relevant document (vacation_policy.txt), which directly addresses the user&#x27;s question about carrying over unused vacation days. However, it also retrieves three unrelated documents (expense_policy.txt, it_onboarding.txt, payroll.txt) that do not pertain to vacation day carryover. While the correct document is present, the inclusion of irrelevant documents slightly reduces the correctness score.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Only one out of four retrieved documents is relevant to the user&#x27;s query about vacation day carryover. The other three documents are unrelated to the topic and do not contribute useful information for answering the question. The presence of the correct document is positive, but the overall relevance is diluted by the unrelated results.</div></td>
+            </tr>
+            
+            <tr>
+                <td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer accurately reflects the information found in the most relevant retrieved document (vacation_policy.txt). It correctly states that up to 5 unused vacation days can be carried over to the next calendar year and that rollover days expire on March 31st. No incorrect or missing information is present regarding the carryover policy.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer is directly relevant to the user&#x27;s question about carrying over unused vacation days. It ignores irrelevant information from other retrieved documents and focuses solely on the vacation policy, providing a concise and precise response.</div></td>
+            </tr>
+            
+            <tr>
+                <td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The rewritten queries accurately capture the intent of the user&#x27;s original question, focusing on the initial phase of the performance review process. Both sub-questions are semantically aligned with the user&#x27;s request. However, the first sub-question contains an unnecessary trailing space, and both could be slightly improved for clarity and completeness (e.g., including &#x27;in HR&#x27; or &#x27;in company policy&#x27; for more context).</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">Both sub-questions are highly relevant to the user&#x27;s query about the first step in the performance review process. They are likely to retrieve the most pertinent documents from the vector store related to the initial stage of performance reviews.</div></td>
+            </tr>
+            
+            <tr>
+                <td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The output includes a document directly relevant to the user&#x27;s question about the first step in the performance review process. The first document retrieved describes the performance review process, including the self-assessment as the initial step. However, two other documents are included that are unrelated to performance reviews (IT onboarding and code of conduct), which slightly reduces the correctness score.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Only one of the three retrieved documents is relevant to the user&#x27;s query about the performance review process. The other two documents pertain to unrelated HR topics. Ideally, only documents directly related to performance reviews should have been retrieved, so the relevance is moderate.</div></td>
+            </tr>
+            
+            <tr>
+                <td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer accurately reflects the information found in the most relevant retrieved document, which states that the performance review process begins with a self-assessment by the employee. This directly answers the user&#x27;s question about the first step in the process.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The output is highly relevant to the user&#x27;s question, focusing specifically on the first step of the performance review process and ignoring unrelated information from other retrieved documents.</div></td>
+            </tr>
+            
+            <tr>
+                <td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The rewritten queries accurately capture the intent of the user&#x27;s original question, which is about whether software purchased for a project can be expensed. Each sub-question is a clear and direct reformulation that would help retrieve relevant policy documents or guidelines.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">All sub-questions are highly relevant to the user&#x27;s inquiry. They focus specifically on the expense policy as it relates to software purchases for work projects, ensuring that the retrieved documents will address the user&#x27;s needs.</div></td>
+            </tr>
+            
+            <tr>
+                <td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">The retrieval step returned four documents, but only one (the expense policy) is directly relevant to the user&#x27;s question about expensing software. The IT onboarding document is tangentially relevant as it mentions software approval, but does not address reimbursement or expensing. The vacation policy and payroll documents are not relevant to the question or sub-questions. The retrieval did not filter out unrelated documents, which reduces correctness.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Of the four documents retrieved, only the expense policy document is highly relevant. The IT onboarding document is somewhat relevant due to its mention of software approval, which could be pertinent to the process of expensing software. The other two documents (vacation policy and payroll) are not relevant to the sub-questions or the user&#x27;s intent. The retrieval should have prioritized documents more closely aligned with expense and software reimbursement policies.</div></td>
+            </tr>
+            
+            <tr>
+                <td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">The output correctly states that there is no explicit information in the retrieved documents about expensing software purchases for a project. However, the IT onboarding document does mention that &#x27;all software must be approved by IT,&#x27; which is relevant and should have been referenced. The expense policy document also discusses reimbursement for pre-approved, business-related expenses, which could be interpreted as potentially including software if pre-approved. The answer should have synthesized these points to provide a more informative response, such as advising the user to seek IT approval and ensure pre-approval for reimbursement.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">The answer is relevant in that it addresses the user&#x27;s question and acknowledges the lack of direct information. However, it misses an opportunity to provide helpful guidance based on the partial relevance of the retrieved documents (IT approval and pre-approval for expenses). A more relevant answer would have combined these policy elements to give the user actionable next steps.</div></td>
+            </tr>
+            
+            <tr>
+                <td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The output correctly identifies the two main topics in the user&#x27;s question: information about the computer (likely IT onboarding) and information about payroll. The sub-questions are generally accurate, but the phrasing could be more precise and professional. For example, &#x27;basic information for new employees about using their computer&#x27; could be more specific, such as &#x27;What do new employees need to know about IT onboarding and computer setup?&#x27; Similarly, &#x27;how do employees get paid and payroll process&#x27; could be rephrased for clarity. However, the intent is captured correctly.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">Both sub-questions are directly relevant to the user&#x27;s original query. They break down the user&#x27;s compound question into two actionable and focused queries that align with the HR support chatbot&#x27;s scope (IT onboarding and payroll). No irrelevant or extraneous topics are introduced.</div></td>
+            </tr>
+            
+            <tr>
+                <td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The step successfully retrieved documents directly relevant to the two sub-questions: the IT onboarding document addresses the computer setup for new employees, and the payroll document covers how employees get paid. However, two additional documents were retrieved: one about the code of conduct and another about the vacation policy. These are not directly relevant to the user&#x27;s question, indicating some over-retrieval. No relevant documents appear to be missing, but the inclusion of irrelevant documents slightly reduces the correctness.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Half of the retrieved documents (IT onboarding and payroll) are highly relevant to the user&#x27;s sub-questions. The other two (conduct and vacation policy) are not relevant to the user&#x27;s query about computers and payroll. This reduces the overall relevance, as the output includes unnecessary information that could distract from the user&#x27;s needs.</div></td>
+            </tr>
+            
+            <tr>
+                <td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The synthesized answer accurately reflects the information from the relevant documents. It correctly summarizes the IT onboarding process (receiving a MacBook Pro, IT setup, software approval) and the payroll process (bi-weekly payroll, pay stubs availability, direct deposit requirement). No incorrect or misleading information is present.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer directly addresses both parts of the user&#x27;s question: what they need to know about their computer and how they get paid. It excludes irrelevant information from the retrieved documents (such as vacation policy and code of conduct), focusing only on the IT onboarding and payroll details.</div></td>
+            </tr>
+            
+            <tr>
+                <td>9743e046-59c5-4770-aedd-b7971ef998bf</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The output correctly breaks down the user&#x27;s compound question into two clear sub-questions: one about booking travel for a client visit and another about requesting a day off after the trip. Both sub-questions accurately reflect the user&#x27;s original intent and are phrased in a way that will facilitate effective document retrieval.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">Both sub-questions are highly relevant to the user&#x27;s original query and the HR support chatbot&#x27;s domain. They directly address the procedures the user is asking about, ensuring that the next step will retrieve the most pertinent documents.</div></td>
+            </tr>
+            
+            <tr>
+                <td>9743e046-59c5-4770-aedd-b7971ef998bf</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The output includes documents relevant to both sub-questions: the expense policy (for booking travel for a client visit) and the vacation policy (for requesting a day off after a business trip). However, it also includes documents unrelated to the user&#x27;s query, such as IT onboarding and payroll, which are not pertinent to travel booking or time off procedures. The relevant documents do contain the necessary procedural information, but the inclusion of irrelevant documents slightly reduces the correctness.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Half of the retrieved documents (expense policy and vacation policy) are directly relevant to the sub-questions. The other half (IT onboarding and payroll) are not relevant to the user&#x27;s needs. Ideally, only documents directly related to travel booking and vacation/time off should be retrieved, so the relevance is average.</div></td>
+            </tr>
+            
+            <tr>
+                <td>9743e046-59c5-4770-aedd-b7971ef998bf</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The answer accurately summarizes the relevant procedures for booking travel (pre-approval, reimbursement, Concur portal, receipts) and requesting a day off (two weeks in advance, employee portal, manager approval). However, it does not explicitly mention that the day off should be requested as vacation (using accrued vacation days), which is implied in the vacation policy document. It also does not clarify if the day off immediately after a business trip is treated differently, but this information may not be present in the retrieved documents.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer directly addresses both sub-questions using information from the most relevant documents (expense policy and vacation policy). It omits unrelated information (IT onboarding, payroll), maintaining focus on the user&#x27;s needs.</div></td>
+            </tr>
+            
+            <tr>
+                <td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td>
+                <td>rewrite_query</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The output correctly identifies and splits the user&#x27;s compound question into two clear sub-questions: one about the policy on professional conduct during business trips, and another about the procedure for filing business trip expenses. Both sub-questions accurately reflect the user&#x27;s original intent.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">Both sub-questions are highly relevant to the user&#x27;s query and align with the HR support chatbot&#x27;s scope, specifically addressing code of conduct and expense policy during business trips.</div></td>
+            </tr>
+            
+            <tr>
+                <td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td>
+                <td>retrieve_docs</td>
+                <td><span class="score" style="background-color:#28a745;">4</span><div class="reasoning">The output includes documents that are directly relevant to the two sub-questions: one about professional conduct (conduct.txt) and one about expense filing (expense_policy.txt). However, it also includes documents unrelated to the user&#x27;s query (performance_reviews.txt, payroll.txt, vacation_policy.txt), which are not needed for answering the specific sub-questions. The correct documents are present, but the inclusion of irrelevant ones slightly reduces the score.</div></td>
+                <td><span class="score" style="background-color:#ffc107;">3</span><div class="reasoning">Only two of the five retrieved documents are relevant to the user&#x27;s question. The other three documents pertain to performance reviews, payroll, and vacation policy, which are not related to professional conduct during business trips or expense filing. The presence of these irrelevant documents lowers the overall relevance of the retrieval step.</div></td>
+            </tr>
+            
+            <tr>
+                <td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td>
+                <td>synthesize_answer</td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The synthesized answer accurately reflects the content of the relevant retrieved documents. It correctly summarizes the expectations for professional conduct (ethical standards, professional communication, no harassment/discrimination) and provides a clear, step-by-step procedure for filing expenses (use of Concur portal, 30-day deadline, receipt requirements, reimbursement limits, and eligible expenses). No incorrect or misleading information is present.</div></td>
+                <td><span class="score" style="background-color:#28a745;">5</span><div class="reasoning">The answer directly addresses both parts of the user&#x27;s question: the policy on professional conduct during business trips and the procedure for filing expenses. It omits irrelevant information from unrelated documents (e.g., performance reviews, payroll, vacation policy), focusing only on the pertinent details.</div></td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="latency" class="tab-content">
+            <div class="card">
+                <h3>Average Latencies</h3>
+                <table id="avgLatencyTable">
+                    <thead><tr><th>Step Name</th><th>Average Latency (s)</th></tr></thead>
+                    <tbody><tr><td>rewrite_query</td><td>0.8193</td></tr><tr><td>retrieve_docs</td><td>0.4469</td></tr><tr><td>synthesize_answer</td><td>0.9324</td></tr></tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Latency Per Run</h3>
+                <input type="text" id="latencyFilter" onkeyup="filterTable('latencyFilter', 'latencyTable')" placeholder="Filter table...">
+                <table id="latencyTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0, 'latencyTable')">Session ID</th>
+                            <th onclick="sortTable(1, 'latencyTable')">Step Name</th>
+                            <th onclick="sortTable(2, 'latencyTable')">Latency (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody><tr><td>0140cfb2-ada6-432a-8561-24852236dbdb</td><td>rewrite_query</td><td>0.5951</td></tr><tr><td>0140cfb2-ada6-432a-8561-24852236dbdb</td><td>retrieve_docs</td><td>0.7703</td></tr><tr><td>0140cfb2-ada6-432a-8561-24852236dbdb</td><td>synthesize_answer</td><td>0.4888</td></tr><tr><td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td><td>rewrite_query</td><td>0.6396</td></tr><tr><td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td><td>retrieve_docs</td><td>0.5311</td></tr><tr><td>9df85d0c-bfd0-46e1-96d9-f5934e89d598</td><td>synthesize_answer</td><td>0.5116</td></tr><tr><td>5302a641-56f8-4a23-8787-211cdc3f17fa</td><td>rewrite_query</td><td>0.7565</td></tr><tr><td>5302a641-56f8-4a23-8787-211cdc3f17fa</td><td>retrieve_docs</td><td>0.4623</td></tr><tr><td>5302a641-56f8-4a23-8787-211cdc3f17fa</td><td>synthesize_answer</td><td>0.5638</td></tr><tr><td>f30572e4-c977-4a16-819a-845311acd3b4</td><td>rewrite_query</td><td>0.7782</td></tr><tr><td>f30572e4-c977-4a16-819a-845311acd3b4</td><td>retrieve_docs</td><td>0.5181</td></tr><tr><td>f30572e4-c977-4a16-819a-845311acd3b4</td><td>synthesize_answer</td><td>0.9323</td></tr><tr><td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td><td>rewrite_query</td><td>0.5420</td></tr><tr><td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td><td>retrieve_docs</td><td>0.6080</td></tr><tr><td>3a559809-592d-4dd6-bc9c-7b4afeab5244</td><td>synthesize_answer</td><td>0.6205</td></tr><tr><td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td><td>rewrite_query</td><td>0.6061</td></tr><tr><td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td><td>retrieve_docs</td><td>0.3539</td></tr><tr><td>ecb2bc7b-5317-4bb0-a383-e59f20986f2d</td><td>synthesize_answer</td><td>0.5831</td></tr><tr><td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td><td>rewrite_query</td><td>0.8802</td></tr><tr><td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td><td>retrieve_docs</td><td>0.4043</td></tr><tr><td>ba9595d6-1832-49ef-b0ca-3bf588ca96d5</td><td>synthesize_answer</td><td>0.7724</td></tr><tr><td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td><td>rewrite_query</td><td>1.0586</td></tr><tr><td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td><td>retrieve_docs</td><td>0.2397</td></tr><tr><td>c0233c38-7b7e-40ac-8723-f2c2677e7c38</td><td>synthesize_answer</td><td>1.8956</td></tr><tr><td>9743e046-59c5-4770-aedd-b7971ef998bf</td><td>rewrite_query</td><td>1.1222</td></tr><tr><td>9743e046-59c5-4770-aedd-b7971ef998bf</td><td>retrieve_docs</td><td>0.2720</td></tr><tr><td>9743e046-59c5-4770-aedd-b7971ef998bf</td><td>synthesize_answer</td><td>1.3910</td></tr><tr><td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td><td>rewrite_query</td><td>1.2149</td></tr><tr><td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td><td>retrieve_docs</td><td>0.3096</td></tr><tr><td>71f71571-be8a-46e7-ab89-5aa207a59c4f</td><td>synthesize_answer</td><td>1.5646</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="violations" class="tab-content">
+            <div class="card">
+                <h3>Safety Violations</h3>
+                <div id="safety-violations-content">
+                    <p>No safety violations found.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Policy Violations</h3>
+                <div id="policy-violations-content">
+                    <p>No policy violations found.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="deep-dive" class="tab-content">
+            <div id="deep-dive-content">
+                <h1>Performance Evaluation Summary</h1>
+<h2>🚨 Safety Violations (Score &lt; 5)</h2>
+<ul>
+<li>✅ No safety violations detected.</li>
+</ul>
+<h2>📜 Policy Adherence Issues (Score &lt; 5)</h2>
+<ul>
+<li>✅ No policy violations detected.</li>
+</ul>
+<h1>Deep Dive Workflow Analysis</h1>
+<h1>Chatbot Evaluation Deep-Dive Report</h1>
+<h2>Overall Summary</h2>
+<p>The chatbot demonstrates strong performance in generating coherent, policy-adherent, and safe final answers, with particularly high marks for clarity and compliance. However, its internal workflow reveals weaknesses, especially in the document retrieval step, which often introduces irrelevant information and limits the completeness and informativeness of the final responses.</p>
+<hr />
+<h2>Key Findings</h2>
+<ul>
+<li><strong>Positives:</strong></li>
+<li>Final answers are consistently coherent, relevant, and fully adhere to policy and safety requirements.</li>
+<li>The query rewriting and answer synthesis steps are generally accurate and highly relevant.</li>
+<li>
+<p>No safety or policy violations were observed in any test runs.</p>
+</li>
+<li>
+<p><strong>Negatives:</strong></p>
+</li>
+<li>Document retrieval frequently returns irrelevant documents, significantly lowering both correctness and relevance scores for this step.</li>
+<li>Final answers sometimes lack completeness and actionable detail due to missed opportunities to synthesize partial information from retrieved documents.</li>
+<li>The retrieval step’s low relevance score (2.80/5.0) is a bottleneck, impacting the overall quality of the chatbot’s responses.</li>
+</ul>
+<hr />
+<h2>Final Answer Analysis</h2>
+<h3>Criterion Breakdown</h3>
+<ul>
+<li><strong>answer_quality_vs_model:</strong>  </li>
+<li><strong>Average Score:</strong> 4.20 / 5.0  </li>
+<li>
+<p><strong>Analysis:</strong> The chatbot’s answers are generally factually correct but often less complete than the model answers. Common issues include omitting secondary details (e.g., informal check-ins) and failing to provide actionable information present in the model answer. The main theme in low scores is factual incompleteness rather than inaccuracy.</p>
+</li>
+<li>
+<p><strong>coherence_and_relevance:</strong>  </p>
+</li>
+<li><strong>Average Score:</strong> 4.80 / 5.0  </li>
+<li>
+<p><strong>Analysis:</strong> Responses are logical, on-topic, and easy to understand. Lower scores are attributed to a lack of depth and completeness, with answers sometimes missing specific policy details or actionable steps that would make them more informative.</p>
+</li>
+<li>
+<p><strong>policy_adherence:</strong>  </p>
+</li>
+<li><strong>Average Score:</strong> 5.00 / 5.0  </li>
+<li>
+<p><strong>Analysis:</strong> All answers fully comply with relevant policies, with no observed deviations.</p>
+</li>
+<li>
+<p><strong>safety:</strong>  </p>
+</li>
+<li><strong>Average Score:</strong> 5.00 / 5.0  </li>
+<li><strong>Analysis:</strong> No safety issues were detected in any responses.</li>
+</ul>
+<p><strong>Common Themes in Low Scores:</strong>
+- Incompleteness due to missing secondary or actionable details.
+- Failure to synthesize partial information from multiple sources.
+- Answers that are correct but less informative than the model standard.</p>
+<hr />
+<h2>Step-by-Step Analysis</h2>
+<h3>Step: retrieve_docs</h3>
+<ul>
+<li><strong>Average Correctness Score:</strong> 3.70 / 5.0  </li>
+<li><strong>Average Relevance Score:</strong> 2.80 / 5.0  </li>
+<li><strong>Analysis:</strong><br />
+  The retrieval step is the weakest link in the workflow. It often returns a mix of relevant and irrelevant documents, with only one out of several retrieved documents typically matching the user’s intent. This dilutes the quality of information available for answer synthesis and leads to missed opportunities for more complete responses.</li>
+</ul>
+<p><strong>Common Error Patterns:</strong>
+  - Inclusion of unrelated documents (e.g., vacation policy, payroll) alongside relevant ones.
+  - Insufficient filtering or prioritization of documents directly related to the user’s query.
+  - Overly broad retrieval criteria, resulting in low relevance.</p>
+<h3>Step: rewrite_query</h3>
+<ul>
+<li><strong>Average Correctness Score:</strong> 4.40 / 5.0  </li>
+<li><strong>Average Relevance Score:</strong> 5.00 / 5.0  </li>
+<li><strong>Analysis:</strong><br />
+  The query rewriting step is highly effective, producing queries that are both correct and highly relevant to the user’s intent. No significant issues were observed in this step.</li>
+</ul>
+<h3>Step: synthesize_answer</h3>
+<ul>
+<li><strong>Average Correctness Score:</strong> 4.40 / 5.0  </li>
+<li><strong>Average Relevance Score:</strong> 4.80 / 5.0  </li>
+<li><strong>Analysis:</strong><br />
+  The answer synthesis step generally produces accurate and relevant responses. However, it sometimes fails to integrate partial or tangentially relevant information from the retrieved documents, resulting in answers that are less informative than possible.</li>
+</ul>
+<p><strong>Common Error Patterns:</strong>
+  - Not referencing all relevant details from the retrieved documents.
+  - Missing opportunities to provide actionable guidance based on partial information (e.g., advising users to seek IT approval or pre-approval for expenses).</p>
+<hr />
+<h2>Actionable Recommendations</h2>
+<ul>
+<li><strong>Improve Document Retrieval:</strong></li>
+<li>Refine retrieval algorithms to prioritize documents with direct relevance to the user’s query.</li>
+<li>Implement stricter filtering to exclude unrelated documents from the retrieval results.</li>
+<li>
+<p>Consider using semantic search or intent classification to better match documents to user intent.</p>
+</li>
+<li>
+<p><strong>Enhance Answer Synthesis:</strong></p>
+</li>
+<li>Train the synthesis step to better integrate partial or tangentially relevant information, providing more complete and actionable answers.</li>
+<li>
+<p>Encourage the model to reference all relevant policy details, even if only partially addressed in the retrieved documents.</p>
+</li>
+<li>
+<p><strong>Monitor and Iterate:</strong></p>
+</li>
+<li>Regularly review retrieval and synthesis outputs to identify recurring gaps in completeness or relevance.</li>
+<li>
+<p>Use feedback from low-scoring answers to update retrieval and synthesis strategies.</p>
+</li>
+<li>
+<p><strong>Maintain High Standards in Policy and Safety:</strong></p>
+</li>
+<li>Continue current practices to ensure policy adherence and safety, as these are consistent strengths.</li>
+</ul>
+<hr />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function filterTable(inputId, tableId) {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById(inputId);
+            filter = input.value.toUpperCase();
+            table = document.getElementById(tableId);
+            tr = table.getElementsByTagName("tr");
+            for (i = 1; i < tr.length; i++) { // Start from 1 to skip header
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        function sortTable(n, tableId) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById(tableId);
+            switching = true;
+            dir = "asc"; 
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    var xContent = x.innerText.toLowerCase();
+                    var yContent = y.innerText.toLowerCase();
+                    if (!isNaN(parseFloat(xContent)) && !isNaN(parseFloat(yContent))) {
+                        xContent = parseFloat(xContent);
+                        yContent = parseFloat(yContent);
+                    }
+                    if (dir == "asc") {
+                        if (xContent > yContent) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (xContent < yContent) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+        // Chart.js implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            const finalAnswerData = {"labels": ["Coherence And Relevance", "Safety", "Policy Adherence", "Answer Quality Vs Model"], "data": [4.8, 5.0, 5.0, 4.2]};
+            if (finalAnswerData) {
+                new Chart(document.getElementById('finalAnswerChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: finalAnswerData.labels,
+                        datasets: [{
+                            label: 'Average Score (out of 5)',
+                            data: finalAnswerData.data,
+                            backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+                            borderColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: { y: { beginAtZero: true, max: 5 } },
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

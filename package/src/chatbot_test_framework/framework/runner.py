@@ -184,3 +184,19 @@ class TestRunner:
         with open(avg_path, 'w') as f:
             json.dump(avg_report, f, indent=2)
         logger.info(f"Average latency report saved to {avg_path}")
+
+    def generate_html_report(self):
+        """
+        Generates a comprehensive HTML report for the test run.
+        """
+        logger.info(f"--- Generating HTML Report for Run ID: {self.run_id} ---")
+        try:
+            # Import here to keep it an optional dependency
+            from .reporting.html_generator import HtmlReportGenerator
+            generator = HtmlReportGenerator(self.run_dir, self.run_id)
+            generator.generate_report()
+            logger.info(f"HTML report saved to {os.path.join(self.run_dir, 'report.html')}")
+        except ImportError:
+            logger.warning("Could not generate HTML report. Missing dependency: 'markdown'. Please run 'pip install markdown'.")
+        except Exception as e:
+            logger.error(f"Failed to generate HTML report: {e}", exc_info=True)
